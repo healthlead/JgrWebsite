@@ -3,14 +3,24 @@ import { Button } from "@/components/ui/button";
 
 export default function Hero() {
   return (
-    <section className="relative pt-20 min-h-screen flex items-center">
-      {/* Miami skyline background */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')"
-        }}
-      />
+    <section className="relative pt-20 min-h-screen flex items-center overflow-hidden">
+      {/* Video background */}
+      <video 
+        autoPlay 
+        muted 
+        loop 
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/attached_assets/AQOZOlByVEB3EMNabX3zPhrGllsI9675kwqZYLZoSGystuB7k0er_KeWKRHZJk2uEDbxHMsrtImUzTjf-m8REmo67Qlg8nStA6gsU-s_1751929702130.mp4" type="video/mp4" />
+        {/* Fallback image if video fails to load */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')"
+          }}
+        />
+      </video>
       <div className="absolute inset-0 bg-gradient-to-r from-primary-burgundy/90 via-rich-black/70 to-transparent" />
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
