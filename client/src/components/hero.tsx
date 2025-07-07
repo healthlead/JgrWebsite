@@ -37,7 +37,7 @@ export default function Hero() {
               <Button 
                 variant="outline" 
                 size="lg"
-                className="border-2 border-white hover:bg-white hover:text-deep-blue px-8 py-4 text-lg font-semibold text-[#111827]"
+                className="border-2 border-white hover:bg-white hover:text-deep-blue px-8 py-4 text-lg font-semibold text-[#773B3C]"
               >
                 View Our Work
               </Button>
