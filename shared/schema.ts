@@ -12,6 +12,10 @@ export const projects = pgTable("projects", {
   status: text("status").notNull(),
   imageUrl: text("image_url"),
   featured: boolean("featured").default(false),
+  latitude: text("latitude"),
+  longitude: text("longitude"),
+  address: text("address"),
+  completionDate: text("completion_date"),
   createdAt: timestamp("created_at").defaultNow(),
 });
 

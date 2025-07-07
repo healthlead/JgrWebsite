@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import ProjectCard from "@/components/project-card";
+import ProjectsMap from "@/components/projects-map";
 import type { Project } from "@shared/schema";
+import { Badge } from "@/components/ui/badge";
 
 export default function Projects() {
   const { data: projects, isLoading } = useQuery<Project[]>({
@@ -20,8 +22,9 @@ export default function Projects() {
     );
   }
 
+  const completedProjects = projects?.filter(project => project.status === "Completed") || [];
+  const upcomingProjects = projects?.filter(project => project.status === "In Progress" || project.status === "Planning") || [];
   const featuredProjects = projects?.filter(project => project.featured) || [];
-  const otherProjects = projects?.filter(project => !project.featured) || [];
 
   return (
     <div className="pt-20 min-h-screen bg-gray-50">
@@ -38,9 +41,22 @@ export default function Projects() {
         </div>
       </section>
 
+      {/* Interactive Map Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Project Locations</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Explore our projects across Miami-Dade County and see the impact we've made on the skyline
+            </p>
+          </div>
+          <ProjectsMap projects={projects || []} />
+        </div>
+      </section>
+
       {/* Featured Projects */}
       {featuredProjects.length > 0 && (
-        <section className="py-20">
+        <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
               Featured Projects
@@ -58,9 +74,14 @@ export default function Projects() {
                     <h3 className="text-2xl font-bold mb-2">{project.name}</h3>
                     <p className="text-gray-200 mb-4">{project.description}</p>
                     <div className="flex items-center space-x-4 text-sm">
-                      <span className="bg-ocean-blue px-3 py-1 rounded-full">{project.type}</span>
+                      <Badge className="bg-ocean-blue hover:bg-ocean-blue">{project.type}</Badge>
                       {project.size && (
-                        <span className="bg-sunset-orange px-3 py-1 rounded-full">{project.size}</span>
+                        <Badge className="bg-sunset-orange hover:bg-sunset-orange">{project.size}</Badge>
+                      )}
+                      {project.completionDate && (
+                        <Badge variant="outline" className="border-white text-white">
+                          Completed {project.completionDate}
+                        </Badge>
                       )}
                     </div>
                   </div>
@@ -71,15 +92,31 @@ export default function Projects() {
         </section>
       )}
 
-      {/* All Projects */}
-      {otherProjects.length > 0 && (
+      {/* Completed Projects */}
+      {completedProjects.length > 0 && (
+        <section className="py-20 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
+              Completed Projects
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {completedProjects.map((project) => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Upcoming Projects */}
+      {upcomingProjects.length > 0 && (
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">
-              Additional Projects
+              Upcoming Projects
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {otherProjects.map((project) => (
+              {upcomingProjects.map((project) => (
                 <ProjectCard key={project.id} project={project} />
               ))}
             </div>
