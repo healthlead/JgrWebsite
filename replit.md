@@ -112,26 +112,8 @@ shared/
 
 ## Changelog
 
-- July 07, 2025: Initial setup with React/Express architecture
-- July 07, 2025: Applied JGR Construction brand colors and typography
-  - Primary color: #773B3C (Maroon/burgundy)
-  - Accent colors: #C3B8B6 (Light beige), #302B27 (Dark brown), #5497A7 (Teal blue)
-  - CTA color: #FFF05A (Bright yellow)
-  - Typography: Raleway for headings, Montserrat for body text
+- July 07, 2025. Initial setup
 
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
-
-## Brand Guidelines
-
-### Colors
-- **Primary**: #773B3C (jgr-primary) - Main brand color for headers and primary elements
-- **Accent Light**: #C3B8B6 (jgr-accent-light) - Subtle background accents
-- **Accent Dark**: #302B27 (jgr-accent-dark) - Dark text and contrasts
-- **Accent Blue**: #5497A7 (jgr-accent-blue) - Service icons and secondary elements
-- **CTA**: #FFF05A (jgr-cta) - Call-to-action buttons and highlights
-
-### Typography
-- **Headings**: Raleway (font-heading) - All h1-h6 elements
-- **Body**: Montserrat (font-body) - Paragraphs and body text

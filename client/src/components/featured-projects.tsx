@@ -39,8 +39,8 @@ export default function FeaturedProjects() {
     <section className="py-20 bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-heading">Signature Projects</h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto font-body">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">Signature Projects</h2>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Proud to have contributed to Miami's most iconic developments and luxury residential projects
           </p>
         </div>
@@ -55,12 +55,12 @@ export default function FeaturedProjects() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-8">
-                <h3 className="text-2xl font-bold mb-2 font-heading">{project.name}</h3>
-                <p className="text-gray-300 mb-4 font-body">{project.description}</p>
+                <h3 className="text-2xl font-bold mb-2">{project.name}</h3>
+                <p className="text-gray-300 mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-2">
-                  <Badge className="bg-jgr-accent-blue hover:bg-jgr-accent-blue">{project.type}</Badge>
+                  <Badge className="bg-ocean-blue hover:bg-ocean-blue">{project.type}</Badge>
                   {project.size && (
-                    <Badge className="bg-jgr-cta hover:bg-jgr-cta text-jgr-accent-dark">{project.size}</Badge>
+                    <Badge className="bg-sunset-orange hover:bg-sunset-orange">{project.size}</Badge>
                   )}
                 </div>
               </div>
@@ -80,8 +80,8 @@ export default function FeaturedProjects() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <h4 className="text-lg font-semibold mb-1 font-heading">{project.name}</h4>
-                  <p className="text-gray-300 text-sm font-body">{project.description}</p>
+                  <h4 className="text-lg font-semibold mb-1">{project.name}</h4>
+                  <p className="text-gray-300 text-sm">{project.description}</p>
                 </div>
               </div>
             ))}
@@ -90,7 +90,7 @@ export default function FeaturedProjects() {
         
         <div className="text-center mt-12">
           <Link href="/contact">
-            <Button className="bg-jgr-cta text-jgr-accent-dark hover:bg-yellow-400 px-8 py-4 font-semibold font-heading">
+            <Button className="bg-sunset-orange text-white hover:bg-orange-600 px-8 py-4 font-semibold">
               Discuss Your Project
             </Button>
           </Link>
