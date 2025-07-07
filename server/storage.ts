@@ -109,7 +109,15 @@ export class MemStorage implements IStorage {
 
     projectsData.forEach(project => {
       const id = this.currentProjectId++;
-      this.projects.set(id, { ...project, id, createdAt: new Date() });
+      const projectWithDefaults: Project = { 
+        ...project, 
+        id, 
+        createdAt: new Date(),
+        size: project.size || null,
+        imageUrl: project.imageUrl || null,
+        featured: project.featured || false
+      };
+      this.projects.set(id, projectWithDefaults);
     });
 
     // Seed services
@@ -154,7 +162,12 @@ export class MemStorage implements IStorage {
 
     servicesData.forEach(service => {
       const id = this.currentServiceId++;
-      this.services.set(id, { ...service, id });
+      const serviceWithDefaults: Service = { 
+        ...service, 
+        id,
+        featured: service.featured || false
+      };
+      this.services.set(id, serviceWithDefaults);
     });
   }
 
@@ -173,7 +186,14 @@ export class MemStorage implements IStorage {
 
   async createProject(insertProject: InsertProject): Promise<Project> {
     const id = this.currentProjectId++;
-    const project: Project = { ...insertProject, id, createdAt: new Date() };
+    const project: Project = { 
+      ...insertProject, 
+      id, 
+      createdAt: new Date(),
+      size: insertProject.size || null,
+      imageUrl: insertProject.imageUrl || null,
+      featured: insertProject.featured || false
+    };
     this.projects.set(id, project);
     return project;
   }
@@ -189,7 +209,11 @@ export class MemStorage implements IStorage {
 
   async createService(insertService: InsertService): Promise<Service> {
     const id = this.currentServiceId++;
-    const service: Service = { ...insertService, id };
+    const service: Service = { 
+      ...insertService, 
+      id,
+      featured: insertService.featured || false
+    };
     this.services.set(id, service);
     return service;
   }
@@ -205,7 +229,14 @@ export class MemStorage implements IStorage {
 
   async createContactInquiry(insertInquiry: InsertContactInquiry): Promise<ContactInquiry> {
     const id = this.currentInquiryId++;
-    const inquiry: ContactInquiry = { ...insertInquiry, id, createdAt: new Date() };
+    const inquiry: ContactInquiry = { 
+      ...insertInquiry, 
+      id, 
+      createdAt: new Date(),
+      phone: insertInquiry.phone || null,
+      company: insertInquiry.company || null,
+      projectType: insertInquiry.projectType || null
+    };
     this.contactInquiries.set(id, inquiry);
     return inquiry;
   }
