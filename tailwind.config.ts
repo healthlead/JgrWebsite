@@ -51,6 +51,11 @@ export default {
           "4": "var(--chart-4)",
           "5": "var(--chart-5)",
         },
+        "jgr-primary": "var(--jgr-primary)",
+        "jgr-accent-light": "var(--jgr-accent-light)",
+        "jgr-accent-dark": "var(--jgr-accent-dark)",
+        "jgr-accent-blue": "var(--jgr-accent-blue)",
+        "jgr-cta": "var(--jgr-cta)",
         sidebar: {
           DEFAULT: "var(--sidebar-background)",
           foreground: "var(--sidebar-foreground)",

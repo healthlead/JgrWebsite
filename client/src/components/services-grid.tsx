@@ -21,8 +21,8 @@ export default function ServicesGrid() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Our Expertise</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-heading">Our Expertise</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto font-body">
               Comprehensive structural construction services for commercial and residential projects across South Florida
             </p>
           </div>
@@ -44,8 +44,8 @@ export default function ServicesGrid() {
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Our Expertise</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-heading">Our Expertise</h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-body">
             Comprehensive structural construction services for commercial and residential projects across South Florida
           </p>
         </div>
@@ -56,11 +56,11 @@ export default function ServicesGrid() {
             
             return (
               <div key={service.id} className="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow group">
-                <div className="bg-ocean-blue/10 w-16 h-16 rounded-lg flex items-center justify-center mb-6 group-hover:bg-ocean-blue/20 transition-colors">
-                  <IconComponent className="w-8 h-8 text-ocean-blue" />
+                <div className="bg-jgr-accent-blue/10 w-16 h-16 rounded-lg flex items-center justify-center mb-6 group-hover:bg-jgr-accent-blue/20 transition-colors">
+                  <IconComponent className="w-8 h-8 text-jgr-accent-blue" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">{service.name}</h3>
-                <p className="text-gray-600 leading-relaxed">{service.description}</p>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4 font-heading">{service.name}</h3>
+                <p className="text-gray-600 leading-relaxed font-body">{service.description}</p>
               </div>
             );
           })}

@@ -1,34 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
   --background: hsl(0, 0%, 100%);
-  --foreground: hsl(20, 14.3%, 4.1%);
+  --foreground: hsl(0, 10%, 17%);
   --muted: hsl(60, 4.8%, 95.9%);
   --muted-foreground: hsl(25, 5.3%, 44.7%);
   --popover: hsl(0, 0%, 100%);
-  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --popover-foreground: hsl(0, 10%, 17%);
   --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --card-foreground: hsl(0, 10%, 17%);
   --border: hsl(20, 5.9%, 90%);
   --input: hsl(20, 5.9%, 90%);
-  --primary: hsl(207, 90%, 54%);
-  --primary-foreground: hsl(211, 100%, 99%);
+  --primary: hsl(359, 33%, 35%);
+  --primary-foreground: hsl(0, 0%, 100%);
   --secondary: hsl(60, 4.8%, 95.9%);
   --secondary-foreground: hsl(24, 9.8%, 10%);
   --accent: hsl(60, 4.8%, 95.9%);
   --accent-foreground: hsl(24, 9.8%, 10%);
   --destructive: hsl(0, 84.2%, 60.2%);
   --destructive-foreground: hsl(60, 9.1%, 97.8%);
-  --ring: hsl(20, 14.3%, 4.1%);
+  --ring: hsl(359, 33%, 35%);
   --radius: 0.5rem;
   
-  /* JGR Construction Custom Colors */
-  --ocean-blue: hsl(199, 89%, 48%);
-  --deep-blue: hsl(202, 84%, 39%);
-  --sunset-orange: hsl(45, 93%, 47%);
-  --construction-green: hsl(160, 84%, 39%);
+  /* JGR Construction Brand Colors */
+  --jgr-primary: hsl(359, 33%, 35%);     /* #773B3C */
+  --jgr-accent-light: hsl(19, 11%, 75%); /* #C3B8B6 */
+  --jgr-accent-dark: hsl(36, 12%, 17%);  /* #302B27 */
+  --jgr-accent-blue: hsl(193, 39%, 50%); /* #5497A7 */
+  --jgr-cta: hsl(56, 100%, 67%);        /* #FFF05A */
 }
 
 .dark {
@@ -64,56 +67,91 @@
   }
 }
 
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Raleway', sans-serif;
+  }
+  
+  body {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
 @layer utilities {
-  .text-ocean-blue {
-    color: var(--ocean-blue);
+  .font-heading {
+    font-family: 'Raleway', sans-serif;
   }
   
-  .text-deep-blue {
-    color: var(--deep-blue);
+  .font-body {
+    font-family: 'Montserrat', sans-serif;
   }
   
-  .text-sunset-orange {
-    color: var(--sunset-orange);
+  /* JGR Brand Colors */
+  .text-jgr-primary {
+    color: var(--jgr-primary);
   }
   
-  .text-construction-green {
-    color: var(--construction-green);
+  .text-jgr-accent-light {
+    color: var(--jgr-accent-light);
   }
   
-  .bg-ocean-blue {
-    background-color: var(--ocean-blue);
+  .text-jgr-accent-dark {
+    color: var(--jgr-accent-dark);
   }
   
-  .bg-deep-blue {
-    background-color: var(--deep-blue);
+  .text-jgr-accent-blue {
+    color: var(--jgr-accent-blue);
   }
   
-  .bg-sunset-orange {
-    background-color: var(--sunset-orange);
+  .text-jgr-cta {
+    color: var(--jgr-cta);
   }
   
-  .bg-construction-green {
-    background-color: var(--construction-green);
+  .bg-jgr-primary {
+    background-color: var(--jgr-primary);
   }
   
-  .border-ocean-blue {
-    border-color: var(--ocean-blue);
+  .bg-jgr-accent-light {
+    background-color: var(--jgr-accent-light);
   }
   
-  .hover\:bg-ocean-blue:hover {
-    background-color: var(--ocean-blue);
+  .bg-jgr-accent-dark {
+    background-color: var(--jgr-accent-dark);
   }
   
-  .hover\:bg-deep-blue:hover {
-    background-color: var(--deep-blue);
+  .bg-jgr-accent-blue {
+    background-color: var(--jgr-accent-blue);
   }
   
-  .hover\:bg-sunset-orange:hover {
-    background-color: var(--sunset-orange);
+  .bg-jgr-cta {
+    background-color: var(--jgr-cta);
   }
   
-  .hover\:text-ocean-blue:hover {
-    color: var(--ocean-blue);
+  .border-jgr-primary {
+    border-color: var(--jgr-primary);
+  }
+  
+  .border-jgr-accent-blue {
+    border-color: var(--jgr-accent-blue);
+  }
+  
+  .hover\:bg-jgr-primary:hover {
+    background-color: var(--jgr-primary);
+  }
+  
+  .hover\:bg-jgr-accent-blue:hover {
+    background-color: var(--jgr-accent-blue);
+  }
+  
+  .hover\:bg-jgr-cta:hover {
+    background-color: var(--jgr-cta);
+  }
+  
+  .hover\:text-jgr-primary:hover {
+    color: var(--jgr-primary);
+  }
+  
+  .hover\:text-jgr-accent-blue:hover {
+    color: var(--jgr-accent-blue);
   }
 }

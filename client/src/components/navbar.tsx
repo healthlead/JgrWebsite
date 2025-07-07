@@ -25,8 +25,8 @@ export default function Navbar() {
         <div className="flex justify-between h-20">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0">
-              <div className="text-2xl font-bold text-deep-blue">JGR</div>
-              <div className="text-xs text-gray-600 -mt-1">CONSTRUCTION</div>
+              <div className="text-2xl font-bold text-jgr-primary font-heading">JGR</div>
+              <div className="text-xs text-jgr-accent-dark -mt-1 font-heading">CONSTRUCTION</div>
             </Link>
           </div>
           
@@ -36,17 +36,17 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`font-medium transition-colors ${
+                className={`font-medium transition-colors font-body ${
                   isActive(item.href)
-                    ? "text-ocean-blue"
-                    : "text-gray-700 hover:text-ocean-blue"
+                    ? "text-jgr-primary"
+                    : "text-gray-700 hover:text-jgr-primary"
                 }`}
               >
                 {item.name}
               </Link>
             ))}
             <Link href="/contact">
-              <Button className="bg-ocean-blue text-white hover:bg-deep-blue">
+              <Button className="bg-jgr-cta text-jgr-accent-dark hover:bg-yellow-400 font-heading font-semibold">
                 Get Quote
               </Button>
             </Link>
@@ -78,10 +78,10 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`block px-3 py-2 font-medium ${
+                className={`block px-3 py-2 font-medium font-body ${
                   isActive(item.href)
-                    ? "text-ocean-blue"
-                    : "text-gray-700 hover:text-ocean-blue"
+                    ? "text-jgr-primary"
+                    : "text-gray-700 hover:text-jgr-primary"
                 }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
@@ -89,7 +89,7 @@ export default function Navbar() {
               </Link>
             ))}
             <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-              <Button className="mx-3 w-[calc(100%-1.5rem)] bg-ocean-blue text-white hover:bg-deep-blue">
+              <Button className="mx-3 w-[calc(100%-1.5rem)] bg-jgr-cta text-jgr-accent-dark hover:bg-yellow-400 font-heading font-semibold">
                 Get Quote
               </Button>
             </Link>

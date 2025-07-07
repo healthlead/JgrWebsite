@@ -54,7 +54,7 @@ export default function ContactForm() {
 
   return (
     <div className="bg-white rounded-2xl p-8 shadow-lg">
-      <h3 className="text-2xl font-bold text-gray-900 mb-6">Get a Quote</h3>
+      <h3 className="text-2xl font-bold text-gray-900 mb-6 font-heading">Get a Quote</h3>
       
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -165,7 +165,7 @@ export default function ContactForm() {
           
           <Button 
             type="submit" 
-            className="w-full bg-ocean-blue text-white hover:bg-deep-blue py-4"
+            className="w-full bg-jgr-cta text-jgr-accent-dark hover:bg-yellow-400 py-4 font-heading font-semibold"
             disabled={contactMutation.isPending}
           >
             {contactMutation.isPending ? "Sending..." : "Send Message"}

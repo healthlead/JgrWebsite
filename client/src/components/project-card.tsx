@@ -22,16 +22,16 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       </div>
       
       <div className="p-6">
-        <h3 className="text-xl font-semibold text-gray-900 mb-2">{project.name}</h3>
-        <p className="text-gray-600 mb-4 line-clamp-2">{project.description}</p>
+        <h3 className="text-xl font-semibold text-gray-900 mb-2 font-heading">{project.name}</h3>
+        <p className="text-gray-600 mb-4 line-clamp-2 font-body">{project.description}</p>
         
-        <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+        <div className="flex items-center justify-between text-sm text-gray-500 mb-4 font-body">
           <span>{project.location}</span>
           {project.size && <span>{project.size}</span>}
         </div>
         
         <div className="flex flex-wrap gap-2">
-          <Badge variant="outline" className="text-ocean-blue border-ocean-blue">
+          <Badge variant="outline" className="text-jgr-accent-blue border-jgr-accent-blue">
             {project.type}
           </Badge>
         </div>

@@ -9,13 +9,13 @@ export default function Footer() {
           {/* Company Info */}
           <div className="md:col-span-2">
             <div className="flex items-center mb-6">
-              <div className="text-3xl font-bold text-ocean-blue">JGR</div>
+              <div className="text-3xl font-bold text-jgr-cta font-heading">JGR</div>
               <div className="ml-3">
-                <div className="text-sm text-gray-400">CONSTRUCTION</div>
-                <div className="text-xs text-gray-500">Building Excellence Since 2009</div>
+                <div className="text-sm text-gray-400 font-heading">CONSTRUCTION</div>
+                <div className="text-xs text-gray-500 font-body">Building Excellence Since 2009</div>
               </div>
             </div>
-            <p className="text-gray-400 mb-6 max-w-md">
+            <p className="text-gray-400 mb-6 max-w-md font-body">
               Premier structural contractors specializing in concrete and masonry construction 
               for Miami's most prestigious residential and commercial developments.
             </p>
@@ -26,7 +26,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/company/jgr-construction-inc" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="bg-gray-800 w-10 h-10 rounded-lg flex items-center justify-center hover:bg-ocean-blue transition-colors"
+                className="bg-gray-800 w-10 h-10 rounded-lg flex items-center justify-center hover:bg-jgr-accent-blue transition-colors"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
@@ -34,7 +34,7 @@ export default function Footer() {
                 href="https://www.instagram.com/jgrconstruction/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="bg-gray-800 w-10 h-10 rounded-lg flex items-center justify-center hover:bg-sunset-orange transition-colors"
+                className="bg-gray-800 w-10 h-10 rounded-lg flex items-center justify-center hover:bg-jgr-cta transition-colors"
               >
                 <Instagram className="w-5 h-5" />
               </a>
