@@ -12,7 +12,7 @@ export default function Hero() {
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/attached_assets/AQOZOlByVEB3EMNabX3zPhrGllsI9675kwqZYLZoSGystuB7k0er_KeWKRHZJk2uEDbxHMsrtImUzTjf-m8REmo67Qlg8nStA6gsU-s_1751929702130.mp4" type="video/mp4" />
+        <source src="/construction-video.mp4" type="video/mp4" />
         {/* Fallback image if video fails to load */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
