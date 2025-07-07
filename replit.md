@@ -112,6 +112,10 @@ shared/
 
 ## Changelog
 
+- July 07, 2025. Added dynamic video background to homepage hero section:
+  - Replaced static background image with user's uploaded construction video
+  - Configured Express server to serve video files from public directory
+  - Video plays automatically with fallback to original image if needed
 - July 07, 2025. Updated to authentic JGR Construction brand colors:
   - Implemented company's authentic color palette (#773B3C burgundy primary, #E7B008 sunflower yellow, #002642 prussian blue, #C3B8B6 silver gray, #111827 rich black)
   - Updated all hero sections, buttons, and key UI elements to use brand colors

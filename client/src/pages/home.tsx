@@ -146,7 +146,7 @@ export default function Home() {
               <Button 
                 variant="outline" 
                 size="lg"
-                className="border-2 border-white text-white hover:bg-white hover:text-deep-blue px-8 py-4 text-lg font-semibold"
+                className="border-2 border-white text-white hover:bg-white hover:text-[#002242] px-8 py-4 text-lg font-semibold"
               >
                 Explore Services
               </Button>
