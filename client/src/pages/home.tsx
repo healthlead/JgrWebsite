@@ -137,10 +137,10 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact">
-              <Button size="lg" className="bg-sunflower-yellow text-rich-black hover:bg-yellow-500 px-8 py-4 text-lg font-semibold">
+              <button className="bg-sunflower-yellow text-rich-black hover:bg-yellow-500 px-8 py-4 text-lg font-semibold rounded-lg transition-colors inline-flex items-center">
                 Start Your Project
                 <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
+              </button>
             </Link>
             <Link href="/services">
               <button className="border-2 border-white text-white hover:bg-white hover:text-prussian-blue px-8 py-4 text-lg font-semibold rounded-lg transition-colors">
