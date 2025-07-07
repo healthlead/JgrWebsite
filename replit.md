@@ -1,0 +1,119 @@
+# JGR Construction Inc. - Company Website
+
+## Overview
+
+This is a full-stack web application for JGR Construction Inc., a premier structural contracting company specializing in concrete and masonry construction in South Florida. The application showcases the company's services, projects, and provides a contact form for potential clients.
+
+## System Architecture
+
+### Frontend Architecture
+- **Framework**: React 18 with TypeScript
+- **Routing**: Wouter for client-side routing
+- **Styling**: Tailwind CSS with shadcn/ui component library
+- **State Management**: TanStack Query (React Query) for server state
+- **Forms**: React Hook Form with Zod validation
+- **Build Tool**: Vite with development server integration
+
+### Backend Architecture
+- **Runtime**: Node.js with Express.js
+- **Language**: TypeScript with ES modules
+- **Development**: tsx for TypeScript execution
+- **Production**: esbuild for server bundling
+
+### Database & ORM
+- **Database**: PostgreSQL (configured for Neon serverless)
+- **ORM**: Drizzle ORM with drizzle-kit for migrations
+- **Validation**: Zod schemas for type-safe data validation
+
+## Key Components
+
+### Frontend Structure
+```
+client/
+├── src/
+│   ├── components/           # Reusable UI components
+│   │   ├── ui/              # shadcn/ui components
+│   │   ├── contact-form.tsx # Contact form with validation
+│   │   ├── featured-projects.tsx
+│   │   ├── navbar.tsx
+│   │   └── footer.tsx
+│   ├── pages/               # Route components
+│   ├── lib/                 # Utilities and configurations
+│   └── hooks/               # Custom React hooks
+```
+
+### Backend Structure
+```
+server/
+├── index.ts                 # Express server setup
+├── routes.ts               # API route definitions
+├── storage.ts              # Data access layer
+└── vite.ts                 # Vite development integration
+```
+
+### Shared Types
+```
+shared/
+└── schema.ts               # Drizzle schemas and Zod validators
+```
+
+## Data Flow
+
+### API Endpoints
+- `GET /api/projects` - Fetch all projects
+- `GET /api/projects/featured` - Fetch featured projects only
+- `GET /api/projects/:id` - Fetch specific project
+- `GET /api/services` - Fetch all services
+- `POST /api/contact` - Submit contact inquiry
+
+### Database Schema
+- **Projects**: Company portfolio with featured flag
+- **Services**: Service offerings with icons and descriptions
+- **Contact Inquiries**: Client contact submissions
+
+### Data Storage Strategy
+- Development: In-memory storage with seeded data
+- Production: PostgreSQL with Drizzle ORM
+- Migrations: Handled via drizzle-kit
+
+## External Dependencies
+
+### UI and Styling
+- **Radix UI**: Accessible component primitives
+- **Tailwind CSS**: Utility-first CSS framework
+- **Lucide React**: Icon library
+- **Class Variance Authority**: Component variant management
+
+### Development Tools
+- **Vite**: Build tool with HMR and development server
+- **Replit Integration**: Development environment support
+- **TypeScript**: Type safety across the stack
+
+### Database
+- **Neon Database**: Serverless PostgreSQL provider
+- **Connection Pooling**: Built-in with @neondatabase/serverless
+
+## Deployment Strategy
+
+### Development
+- Single command: `npm run dev`
+- Vite dev server with Express API proxy
+- Hot module replacement for frontend
+- TypeScript compilation via tsx
+
+### Production Build
+1. Frontend: Vite builds static assets to `dist/public`
+2. Backend: esbuild bundles server code to `dist/index.js`
+3. Database: Drizzle migrations via `npm run db:push`
+
+### Environment Variables
+- `DATABASE_URL`: PostgreSQL connection string (required)
+- `NODE_ENV`: Environment mode (development/production)
+
+## Changelog
+
+- July 07, 2025. Initial setup
+
+## User Preferences
+
+Preferred communication style: Simple, everyday language.
