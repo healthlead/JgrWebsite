@@ -143,13 +143,9 @@ export default function Home() {
               </Button>
             </Link>
             <Link href="/services">
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-2 border-white text-white hover:bg-white hover:text-[#002242] px-8 py-4 text-lg font-semibold"
-              >
+              <button className="border-2 border-white text-white hover:bg-white hover:text-prussian-blue px-8 py-4 text-lg font-semibold rounded-lg transition-colors">
                 Explore Services
-              </Button>
+              </button>
             </Link>
           </div>
         </div>
