@@ -1,61 +1,65 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { Project } from "@shared/schema";
 import { MapPin, Building, Home, Hotel } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+
+// Fix for default markers in react-leaflet
+delete (L.Icon.Default.prototype as any)._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+});
+
+// Custom marker icons
+const completedIcon = new L.Icon({
+  iconUrl: 'data:image/svg+xml;base64,' + btoa(`
+    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="41" viewBox="0 0 25 41">
+      <path fill="#059669" stroke="#fff" stroke-width="2" d="M12.5 0C5.596 0 0 5.596 0 12.5c0 12.5 12.5 28.5 12.5 28.5S25 25 25 12.5C25 5.596 19.404 0 12.5 0z"/>
+      <circle fill="#fff" cx="12.5" cy="12.5" r="6"/>
+      <path fill="#059669" d="M12.5 8l2 4h-4z"/>
+    </svg>
+  `),
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+});
+
+const inProgressIcon = new L.Icon({
+  iconUrl: 'data:image/svg+xml;base64,' + btoa(`
+    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="41" viewBox="0 0 25 41">
+      <path fill="#d97706" stroke="#fff" stroke-width="2" d="M12.5 0C5.596 0 0 5.596 0 12.5c0 12.5 12.5 28.5 12.5 28.5S25 25 25 12.5C25 5.596 19.404 0 12.5 0z"/>
+      <circle fill="#fff" cx="12.5" cy="12.5" r="6"/>
+      <path fill="#d97706" d="M12.5 8l2 4h-4z"/>
+    </svg>
+  `),
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+});
 
 interface ProjectsMapProps {
   projects: Project[];
 }
 
-const typeIcons = {
-  "Mixed-Use": Building,
-  "Residential": Home,
-  "Hospitality": Hotel,
-  "Commercial": Building,
-};
-
 export default function ProjectsMap({ projects }: ProjectsMapProps) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  
-  // Filter projects that have location data
-  const mappableProjects = projects.filter(p => p.latitude && p.longitude);
-  
-  // Miami center coordinates
-  const centerLat = 25.7617;
-  const centerLng = -80.1918;
-  
-  // Calculate bounds for all projects
-  const bounds = mappableProjects.reduce((acc, project) => {
-    const lat = parseFloat(project.latitude!);
-    const lng = parseFloat(project.longitude!);
-    return {
-      minLat: Math.min(acc.minLat, lat),
-      maxLat: Math.max(acc.maxLat, lat),
-      minLng: Math.min(acc.minLng, lng),
-      maxLng: Math.max(acc.maxLng, lng),
-    };
-  }, {
-    minLat: centerLat,
-    maxLat: centerLat,
-    minLng: centerLng,
-    maxLng: centerLng,
-  });
 
-  const mapWidth = 800;
-  const mapHeight = 500;
-  
-  // Convert lat/lng to SVG coordinates
-  const latToY = (lat: number) => {
-    const range = bounds.maxLat - bounds.minLat || 0.1;
-    const padding = 50;
-    return padding + ((bounds.maxLat - lat) / range) * (mapHeight - 2 * padding);
-  };
-  
-  const lngToX = (lng: number) => {
-    const range = bounds.maxLng - bounds.minLng || 0.1;
-    const padding = 50;
-    return padding + ((lng - bounds.minLng) / range) * (mapWidth - 2 * padding);
+  // Filter projects that have coordinates
+  const mappableProjects = projects.filter(
+    (project) => project.latitude && project.longitude
+  );
+
+  const typeIcons = {
+    "Residential Complex": Home,
+    "Mixed-Use Development": Building,
+    "Luxury Hotel": Hotel,
+    "Office Building": Building,
+    "Infrastructure": Building,
   };
 
   return (
@@ -65,165 +69,55 @@ export default function ProjectsMap({ projects }: ProjectsMapProps) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Map */}
         <div className="lg:col-span-2">
-          <div className="relative bg-gray-100 rounded-xl overflow-hidden border-2 border-gray-200">
-            <svg width={mapWidth} height={mapHeight} className="w-full h-auto">
-              {/* Map background */}
-              <rect width="100%" height="100%" fill="#f8fafc" />
-              
-              {/* Ocean/Atlantic Ocean */}
-              <rect x="650" y="0" width="150" height="500" fill="#3b82f6" opacity="0.6" />
-              
-              {/* Biscayne Bay */}
-              <path
-                d="M 500 50 Q 550 100 580 150 Q 600 200 590 250 Q 580 300 550 350 Q 520 400 480 450 L 450 420 Q 480 350 490 250 Q 480 150 500 50 Z"
-                fill="#60a5fa"
-                opacity="0.7"
+          <div className="relative rounded-xl overflow-hidden border-2 border-gray-200 h-[500px]">
+            <MapContainer
+              center={[25.7617, -80.1918]} // Miami center
+              zoom={11}
+              style={{ height: '100%', width: '100%' }}
+              className="rounded-xl"
+            >
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
-              
-              {/* Miami Beach (barrier island) */}
-              <rect x="600" y="100" width="35" height="280" fill="#fbbf24" opacity="0.4" rx="6" />
-              
-              {/* Downtown Miami */}
-              <rect x="420" y="200" width="60" height="50" fill="#6b7280" opacity="0.4" rx="3" />
-              
-              {/* Wynwood/Design District */}
-              <rect x="380" y="150" width="50" height="40" fill="#8b5cf6" opacity="0.4" rx="3" />
-              
-              {/* Brickell */}
-              <rect x="440" y="250" width="50" height="60" fill="#374151" opacity="0.4" rx="3" />
-              
-              {/* Coral Gables */}
-              <rect x="280" y="280" width="80" height="60" fill="#10b981" opacity="0.4" rx="3" />
-              
-              {/* Major highways - I-95 */}
-              <path d="M 250 0 L 230 500" stroke="#1f2937" strokeWidth="4" opacity="0.7" />
-              
-              {/* US-1 */}
-              <path d="M 350 0 L 330 500" stroke="#4b5563" strokeWidth="3" opacity="0.6" />
-              
-              {/* State Road 826 (Palmetto) */}
-              <path d="M 150 100 Q 200 150 250 200 Q 300 250 350 300 Q 400 350 450 400" stroke="#4b5563" strokeWidth="3" opacity="0.6" fill="none" />
-              
-              {/* Street grid */}
-              {Array.from({ length: 16 }, (_, i) => (
-                <line
-                  key={`v-${i}`}
-                  x1={50 + i * 45}
-                  y1="50"
-                  x2={50 + i * 45}
-                  y2="450"
-                  stroke="#e5e7eb"
-                  strokeWidth="1"
-                  opacity="0.4"
-                />
-              ))}
-              {Array.from({ length: 10 }, (_, i) => (
-                <line
-                  key={`h-${i}`}
-                  x1="50"
-                  y1={50 + i * 40}
-                  x2="750"
-                  y2={50 + i * 40}
-                  stroke="#e5e7eb"
-                  strokeWidth="1"
-                  opacity="0.4"
-                />
-              ))}
-              
-              {/* Area labels */}
-              <text x="405" y="175" className="text-xs font-medium fill-purple-700">Wynwood</text>
-              <text x="450" y="225" className="text-xs font-medium fill-gray-700">Downtown</text>
-              <text x="465" y="280" className="text-xs font-medium fill-gray-700">Brickell</text>
-              <text x="610" y="240" className="text-xs font-medium fill-blue-700">Miami Beach</text>
-              <text x="310" y="315" className="text-xs font-medium fill-green-700">Coral Gables</text>
-              <text x="520" y="180" className="text-xs font-medium fill-blue-600">Biscayne Bay</text>
-              <text x="670" y="80" className="text-xs font-medium fill-blue-500">Atlantic Ocean</text>
-              
-              {/* Roads labels */}
-              <text x="235" y="100" className="text-xs font-medium fill-gray-600" transform="rotate(-85 235 100)">I-95</text>
-              <text x="335" y="100" className="text-xs font-medium fill-gray-600" transform="rotate(-85 335 100)">US-1</text>
               
               {/* Project markers */}
               {mappableProjects.map((project) => {
-                // Map real coordinates to our SVG map more accurately
-                const lng = parseFloat(project.longitude!);
                 const lat = parseFloat(project.latitude!);
-                
-                // Better coordinate mapping for Miami area
-                // Miami roughly spans -80.35 to -80.1 lng, 25.7 to 25.85 lat
-                const x = ((lng + 80.35) / 0.25) * 500 + 150;
-                const y = 450 - ((lat - 25.7) / 0.15) * 350;
-                
-                const IconComponent = typeIcons[project.type as keyof typeof typeIcons] || Building;
-                const isSelected = selectedProject?.id === project.id;
+                const lng = parseFloat(project.longitude!);
+                const isCompleted = project.status === "Completed";
                 
                 return (
-                  <g key={project.id}>
-                    {/* Selection ring */}
-                    {isSelected && (
-                      <circle
-                        cx={x}
-                        cy={y}
-                        r="28"
-                        fill="none"
-                        stroke={project.status === "Completed" ? "#059669" : "#d97706"}
-                        strokeWidth="3"
-                        className="animate-pulse"
-                      />
-                    )}
-                    
-                    {/* Marker shadow */}
-                    <circle
-                      cx={x + 2}
-                      cy={y + 2}
-                      r="18"
-                      fill="rgba(0,0,0,0.2)"
-                    />
-                    
-                    {/* Marker background */}
-                    <circle
-                      cx={x}
-                      cy={y}
-                      r={isSelected ? 22 : 18}
-                      fill={project.status === "Completed" ? "#059669" : "#d97706"}
-                      stroke="white"
-                      strokeWidth="3"
-                      className="cursor-pointer transition-all duration-200 hover:scale-110"
-                      onClick={() => setSelectedProject(project)}
-                    />
-                    
-                    {/* Marker icon */}
-                    <foreignObject x={x - 8} y={y - 8} width={16} height={16} className="pointer-events-none">
-                      <div className="w-4 h-4 text-white flex items-center justify-center">
-                        <IconComponent className="w-3 h-3" />
+                  <Marker
+                    key={project.id}
+                    position={[lat, lng]}
+                    icon={isCompleted ? completedIcon : inProgressIcon}
+                    eventHandlers={{
+                      click: () => setSelectedProject(project)
+                    }}
+                  >
+                    <Popup>
+                      <div className="p-2 min-w-[200px]">
+                        <h4 className="font-semibold text-gray-900 mb-1">{project.name}</h4>
+                        <p className="text-sm text-gray-600 mb-2">{project.description}</p>
+                        <div className="flex items-center justify-between">
+                          <Badge 
+                            variant={isCompleted ? "default" : "secondary"}
+                            className={isCompleted ? "bg-green-500" : "bg-orange-500"}
+                          >
+                            {project.status}
+                          </Badge>
+                          <span className="text-xs text-gray-500">{project.type}</span>
+                        </div>
+                        <div className="text-xs text-gray-500 mt-1">
+                          Value: ${project.value?.toLocaleString() || 'N/A'}
+                        </div>
                       </div>
-                    </foreignObject>
-                    
-                    {/* Project name label */}
-                    <text
-                      x={x}
-                      y={y - 28}
-                      textAnchor="middle"
-                      className="text-xs font-semibold fill-gray-800 drop-shadow-sm pointer-events-none"
-                      style={{ fontSize: '11px' }}
-                    >
-                      {project.name.split(' ').slice(0, 2).join(' ')}
-                    </text>
-                  </g>
+                    </Popup>
+                  </Marker>
                 );
               })}
-              
-              {/* Compass */}
-              <g transform="translate(720, 60)">
-                <circle cx="0" cy="0" r="25" fill="white" stroke="#374151" strokeWidth="2" opacity="0.9" />
-                <path d="M 0 -18 L 6 0 L 0 18 L -6 0 Z" fill="#ef4444" />
-                <path d="M 0 -18 L -6 0 L 0 18 L 6 0 Z" fill="#6b7280" />
-                <text x="0" y="-32" textAnchor="middle" className="text-xs font-bold fill-gray-700">N</text>
-                <text x="32" y="5" textAnchor="middle" className="text-xs font-medium fill-gray-600">E</text>
-                <text x="0" y="45" textAnchor="middle" className="text-xs font-medium fill-gray-600">S</text>
-                <text x="-32" y="5" textAnchor="middle" className="text-xs font-medium fill-gray-600">W</text>
-              </g>
-            </svg>
+            </MapContainer>
             
             {/* Legend */}
             <div className="absolute bottom-4 left-4 bg-white rounded-lg p-3 shadow-lg">
@@ -305,11 +199,7 @@ export default function ProjectsMap({ projects }: ProjectsMapProps) {
                 }`}
               >
                 <div className="font-medium text-sm">{project.name}</div>
-                <div className={`text-xs ${
-                  selectedProject?.id === project.id ? 'text-blue-100' : 'text-gray-500'
-                }`}>
-                  {project.location}
-                </div>
+                <div className="text-xs opacity-75">{project.location}</div>
               </button>
             ))}
           </div>
