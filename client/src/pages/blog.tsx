@@ -1,4 +1,4 @@
-import { Calendar, User, ArrowRight, HardHat, Wrench, Building2, Shield, Target, BookOpen } from "lucide-react";
+import { Calendar, User, ArrowRight, HardHat, Wrench, Building2, Shield, Target, BookOpen, Instagram, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
@@ -13,7 +13,7 @@ const blogPosts = [
     category: "Safety",
     readTime: "5 min read",
     featured: true,
-    image: "https://images.unsplash.com/photo-1572484669299-b64c9b9bb7d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
+    image: "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
   },
   {
     id: 2,
@@ -46,7 +46,7 @@ const blogPosts = [
     category: "Technical",
     readTime: "7 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
+    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
   },
   {
     id: 5,
@@ -57,7 +57,7 @@ const blogPosts = [
     category: "Sustainability",
     readTime: "9 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
+    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
   },
   {
     id: 6,
@@ -242,6 +242,112 @@ export default function Blog() {
                 </div>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Instagram Feed Section */}
+      <section className="py-16 bg-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="flex justify-center mb-4">
+              <Instagram className="w-8 h-8 text-primary-burgundy" />
+            </div>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Follow Our Work on Instagram
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Get behind-the-scenes access to our construction projects, team updates, 
+              and industry insights on our Instagram feed.
+            </p>
+          </div>
+
+          {/* Instagram Post Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+              <div className="aspect-square bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+                  alt="Construction site progress"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-3 right-3">
+                  <Instagram className="w-5 h-5 text-white" />
+                </div>
+              </div>
+              <div className="p-4">
+                <p className="text-sm text-gray-600 mb-2">2 days ago</p>
+                <p className="text-gray-900 font-medium">Concrete pour in progress at our latest high-rise project in Brickell! 💪 #Construction #Miami</p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+              <div className="aspect-square bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+                  alt="Safety meeting"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-3 right-3">
+                  <Instagram className="w-5 h-5 text-white" />
+                </div>
+              </div>
+              <div className="p-4">
+                <p className="text-sm text-gray-600 mb-2">1 week ago</p>
+                <p className="text-gray-900 font-medium">Weekly safety meeting with our incredible team. Safety first, always! 🚧 #SafetyFirst #TeamWork</p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+              <div className="aspect-square bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+                  alt="Completed project"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-3 right-3">
+                  <Instagram className="w-5 h-5 text-white" />
+                </div>
+              </div>
+              <div className="p-4">
+                <p className="text-sm text-gray-600 mb-2">2 weeks ago</p>
+                <p className="text-gray-900 font-medium">Another successful project completion! Proud of our team's craftsmanship 🏗️ #ProjectComplete #QualityWork</p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+              <div className="aspect-square bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+                  alt="Team on site"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-3 right-3">
+                  <Instagram className="w-5 h-5 text-white" />
+                </div>
+              </div>
+              <div className="p-4">
+                <p className="text-sm text-gray-600 mb-2">3 weeks ago</p>
+                <p className="text-gray-900 font-medium">Our expert crew working on post-tension concrete installation. Precision matters! ⚡ #PostTension #Expertise</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Follow Button */}
+          <div className="text-center">
+            <a 
+              href="https://instagram.com/jgr_construction" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all transform hover:scale-105"
+            >
+              <Instagram className="w-5 h-5 mr-2" />
+              Follow @jgr_construction
+              <ExternalLink className="w-4 h-4 ml-2" />
+            </a>
+            <p className="text-gray-600 mt-4 text-sm">
+              Join 2,500+ followers for daily construction updates and insights
+            </p>
           </div>
         </div>
       </section>

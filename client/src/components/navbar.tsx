@@ -8,10 +8,10 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navigation = [
-    { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
     { name: "Projects", href: "/projects" },
     { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" },
     { name: "FAQ", href: "/faq" },
     { name: "Hard Hat Hub", href: "/blog" },
   ];
@@ -26,10 +26,10 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
           <div className="flex items-center">
-            <Link href="/" className="flex-shrink-0">
+            <Link href="/" className="flex-shrink-0 hover:opacity-90 transition-opacity">
               <img 
                 src="/jgr-logo.png" 
-                alt="JGR Construction" 
+                alt="JGR Construction - Go to Homepage" 
                 className="h-12 w-auto"
               />
             </Link>
