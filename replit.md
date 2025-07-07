@@ -112,6 +112,12 @@ shared/
 
 ## Changelog
 
+- July 07, 2025. Fixed navigation and Instagram feed layout:
+  - Removed "Contact" from navigation bar (logo serves as homepage link)
+  - Fixed Contact page Button import error and restored proper two-column layout with map
+  - Improved Instagram feed on Hard Hat Hub with clean three-column grid layout above the fold
+  - Eliminated duplicate Instagram sections and broken image links
+  - Enhanced Instagram posts with proper descriptions and hashtags
 - July 07, 2025. Major website expansion and enhancements:
   - Added clickable phone number (305) 262-7306 to header navigation (desktop and mobile)
   - Updated footer copyright to 2025 JGR Construction Inc.

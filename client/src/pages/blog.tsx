@@ -132,150 +132,68 @@ export default function Blog() {
             </p>
           </div>
 
-          {/* Instagram Posts Grid - Enhanced Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            {/* Featured Large Post */}
-            <div className="md:row-span-2">
-              <div className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all transform hover:scale-105">
-                <div className="aspect-[4/5] relative">
-                  <img 
-                    src="https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=750"
-                    alt="Construction site progress"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                  <div className="absolute top-4 right-4">
-                    <div className="bg-white/20 backdrop-blur-sm rounded-full p-2">
-                      <Instagram className="w-6 h-6 text-white" />
-                    </div>
-                  </div>
-                  <div className="absolute bottom-6 left-6 right-6 text-white">
-                    <p className="text-sm opacity-90 mb-2">2 days ago</p>
-                    <h4 className="text-lg font-bold mb-2">Major Concrete Pour Complete!</h4>
-                    <p className="text-sm opacity-90">Our team successfully completed a massive concrete pour for our latest high-rise project in Brickell. Another milestone achieved! 💪</p>
-                    <div className="flex gap-2 mt-3 text-xs">
-                      <span className="bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full">#Construction</span>
-                      <span className="bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full">#Miami</span>
-                      <span className="bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full">#TeamWork</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Smaller Posts Grid */}
-            <div className="space-y-6">
-              <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                <div className="aspect-square relative">
-                  <img 
-                    src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
-                    alt="Safety meeting"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute top-3 right-3">
-                    <Instagram className="w-5 h-5 text-white drop-shadow-lg" />
-                  </div>
-                </div>
-                <div className="p-4">
-                  <p className="text-xs text-gray-500 mb-1">1 week ago</p>
-                  <p className="text-sm text-gray-900 font-medium">Weekly safety meeting with our incredible team. Safety first, always! 🚧</p>
-                  <div className="flex gap-1 mt-2">
-                    <span className="text-xs text-primary-burgundy">#SafetyFirst</span>
-                    <span className="text-xs text-primary-burgundy">#TeamWork</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                <div className="aspect-square relative">
-                  <img 
-                    src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
-                    alt="Completed project"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute top-3 right-3">
-                    <Instagram className="w-5 h-5 text-white drop-shadow-lg" />
-                  </div>
-                </div>
-                <div className="p-4">
-                  <p className="text-xs text-gray-500 mb-1">2 weeks ago</p>
-                  <p className="text-sm text-gray-900 font-medium">Another successful project completion! Proud of our team's craftsmanship 🏗️</p>
-                  <div className="flex gap-1 mt-2">
-                    <span className="text-xs text-primary-burgundy">#ProjectComplete</span>
-                    <span className="text-xs text-primary-burgundy">#QualityWork</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Additional Instagram Posts Row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+          {/* Instagram Posts Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
               <div className="aspect-square relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300"
-                  alt="Team on site"
+                  src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+                  alt="Construction site safety meeting"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute top-2 right-2">
-                  <Instagram className="w-4 h-4 text-white drop-shadow-lg" />
+                <div className="absolute top-3 right-3">
+                  <Instagram className="w-5 h-5 text-white drop-shadow-lg" />
                 </div>
               </div>
-              <div className="p-3">
-                <p className="text-xs text-gray-500">3 weeks ago</p>
-                <p className="text-xs text-gray-900 mt-1">Post-tension installation ⚡</p>
-              </div>
-            </div>
-            
-            <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-              <div className="aspect-square relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300"
-                  alt="Tools and equipment"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute top-2 right-2">
-                  <Instagram className="w-4 h-4 text-white drop-shadow-lg" />
+              <div className="p-4">
+                <p className="text-sm text-gray-600 mb-2">2 days ago</p>
+                <p className="text-gray-900 font-medium">Safety first at every jobsite! Our team conducting their daily safety briefing before starting work.</p>
+                <div className="flex gap-1 mt-2 text-xs">
+                  <span className="text-primary-burgundy">#SafetyFirst</span>
+                  <span className="text-primary-burgundy">#TeamWork</span>
                 </div>
-              </div>
-              <div className="p-3">
-                <p className="text-xs text-gray-500">1 month ago</p>
-                <p className="text-xs text-gray-900 mt-1">Quality tools = Quality work 🔧</p>
               </div>
             </div>
 
-            <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+            <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
               <div className="aspect-square relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300"
-                  alt="Team celebration"
+                  src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+                  alt="Concrete construction project"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute top-2 right-2">
-                  <Instagram className="w-4 h-4 text-white drop-shadow-lg" />
+                <div className="absolute top-3 right-3">
+                  <Instagram className="w-5 h-5 text-white drop-shadow-lg" />
                 </div>
               </div>
-              <div className="p-3">
-                <p className="text-xs text-gray-500">1 month ago</p>
-                <p className="text-xs text-gray-900 mt-1">Team celebrating milestone 🎉</p>
+              <div className="p-4">
+                <p className="text-sm text-gray-600 mb-2">1 week ago</p>
+                <p className="text-gray-900 font-medium">Another successful project completion! Proud of our team's dedication to quality craftsmanship.</p>
+                <div className="flex gap-1 mt-2 text-xs">
+                  <span className="text-primary-burgundy">#ProjectComplete</span>
+                  <span className="text-primary-burgundy">#QualityWork</span>
+                </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+            <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
               <div className="aspect-square relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1572484669299-b64c9b9bb7d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300"
-                  alt="Construction progress"
+                  src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+                  alt="Construction team at work"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute top-2 right-2">
-                  <Instagram className="w-4 h-4 text-white drop-shadow-lg" />
+                <div className="absolute top-3 right-3">
+                  <Instagram className="w-5 h-5 text-white drop-shadow-lg" />
                 </div>
               </div>
-              <div className="p-3">
-                <p className="text-xs text-gray-500">1 month ago</p>
-                <p className="text-xs text-gray-900 mt-1">Progress update 📈</p>
+              <div className="p-4">
+                <p className="text-sm text-gray-600 mb-2">2 weeks ago</p>
+                <p className="text-gray-900 font-medium">Our expert crew working on precision post-tension installation. Excellence in every detail.</p>
+                <div className="flex gap-1 mt-2 text-xs">
+                  <span className="text-primary-burgundy">#PostTension</span>
+                  <span className="text-primary-burgundy">#Expertise</span>
+                </div>
               </div>
             </div>
           </div>
