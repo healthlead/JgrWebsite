@@ -11,13 +11,13 @@ export default function Hero() {
           backgroundImage: "url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')"
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-deep-blue/80 via-deep-blue/60 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-primary-burgundy/90 via-rich-black/70 to-transparent" />
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
         <div className="max-w-3xl">
           <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
             Building Miami's
-            <span className="text-sunset-orange"> Future</span>
+            <span className="text-sunflower-yellow"> Future</span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-gray-200 leading-relaxed">
             Premier structural contractors specializing in concrete and masonry construction. 

@@ -203,7 +203,7 @@ export default function ProjectsMap({ projects }: ProjectsMapProps) {
                 onClick={() => setSelectedProject(project)}
                 className={`w-full text-left p-3 rounded-lg transition-colors ${
                   selectedProject?.id === project.id 
-                    ? 'bg-ocean-blue text-white' 
+                    ? 'bg-primary-burgundy text-white' 
                     : 'bg-gray-50 hover:bg-gray-100'
                 }`}
               >

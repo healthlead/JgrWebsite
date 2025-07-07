@@ -43,7 +43,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <Badge className="bg-ocean-blue hover:bg-ocean-blue mb-6">
+              <Badge className="bg-primary-burgundy hover:bg-primary-burgundy mb-6">
                 Premier Structural Contractors
               </Badge>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
@@ -57,7 +57,7 @@ export default function Home() {
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/about">
-                  <Button className="bg-ocean-blue text-white hover:bg-deep-blue">
+                  <Button className="bg-primary-burgundy text-white hover:bg-rich-black">
                     Learn Our Story
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
@@ -126,7 +126,7 @@ export default function Home() {
       <FeaturedProjects />
 
       {/* Call to Action */}
-      <section className="py-20 bg-gradient-to-r from-deep-blue to-ocean-blue text-white">
+      <section className="py-20 bg-gradient-to-r from-primary-burgundy to-prussian-blue text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Build Something Amazing?
@@ -137,7 +137,7 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact">
-              <Button size="lg" className="bg-sunset-orange text-white hover:bg-orange-600 px-8 py-4 text-lg font-semibold">
+              <Button size="lg" className="bg-sunflower-yellow text-rich-black hover:bg-yellow-500 px-8 py-4 text-lg font-semibold">
                 Start Your Project
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>

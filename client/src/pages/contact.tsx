@@ -5,7 +5,7 @@ export default function Contact() {
   return (
     <div className="pt-20 min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-r from-deep-blue to-ocean-blue text-white">
+      <section className="py-20 bg-gradient-to-r from-primary-burgundy to-prussian-blue text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">Start Your Project</h1>

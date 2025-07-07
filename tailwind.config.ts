@@ -61,6 +61,17 @@ export default {
           border: "var(--sidebar-border)",
           ring: "var(--sidebar-ring)",
         },
+        // JGR Construction Brand Colors
+        "primary-burgundy": "var(--primary-burgundy)",
+        "silver-gray": "var(--silver-gray)",
+        "rich-black": "var(--rich-black)",
+        "sunflower-yellow": "var(--sunflower-yellow)",
+        "prussian-blue": "var(--prussian-blue)",
+        // Legacy mappings (now use brand colors)
+        "ocean-blue": "var(--ocean-blue)",
+        "deep-blue": "var(--deep-blue)",
+        "sunset-orange": "var(--sunset-orange)",
+        "construction-green": "var(--construction-green)",
       },
       keyframes: {
         "accordion-down": {
