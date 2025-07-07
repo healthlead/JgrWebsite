@@ -69,6 +69,38 @@ export default function Footer() {
           </div>
         </div>
         
+        {/* Certifications & Associations */}
+        <div className="border-t border-gray-800 mt-12 pt-8">
+          <div className="text-center mb-6">
+            <h3 className="text-lg font-semibold text-white mb-4">Certifications & Associations</h3>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {/* Safety Certification */}
+            <div className="bg-gray-800 rounded-lg p-4 text-center hover:bg-gray-700 transition-colors">
+              <div className="text-2xl font-bold text-sunflower-yellow mb-1">OSHA</div>
+              <div className="text-xs text-gray-400">Safety Certified</div>
+            </div>
+            
+            {/* Florida State License */}
+            <div className="bg-gray-800 rounded-lg p-4 text-center hover:bg-gray-700 transition-colors">
+              <div className="text-2xl font-bold text-sunflower-yellow mb-1">CGC</div>
+              <div className="text-xs text-gray-400">FL Licensed</div>
+            </div>
+            
+            {/* Associated General Contractors */}
+            <div className="bg-gray-800 rounded-lg p-4 text-center hover:bg-gray-700 transition-colors">
+              <div className="text-2xl font-bold text-sunflower-yellow mb-1">AGC</div>
+              <div className="text-xs text-gray-400">Member</div>
+            </div>
+            
+            {/* Better Business Bureau */}
+            <div className="bg-gray-800 rounded-lg p-4 text-center hover:bg-gray-700 transition-colors">
+              <div className="text-2xl font-bold text-sunflower-yellow mb-1">BBB</div>
+              <div className="text-xs text-gray-400">A+ Rating</div>
+            </div>
+          </div>
+        </div>
+        
         {/* Bottom Footer */}
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
