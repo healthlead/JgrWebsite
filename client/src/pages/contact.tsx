@@ -1,6 +1,7 @@
 import ContactForm from "@/components/contact-form";
 import { MapPin, Phone, Mail, Building, Clock, Shield, Users, Award } from "lucide-react";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Button } from "@/components/ui/button";
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
@@ -186,7 +187,7 @@ export default function Contact() {
               <div className="bg-white rounded-2xl p-6 shadow-lg">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Find Our Office</h3>
                 <div className="h-64 bg-gray-100 rounded-lg overflow-hidden">
-                  <Map 
+                  <MapContainer 
                     center={[25.8447, -80.3205]}
                     zoom={15}
                     className="w-full h-full"
@@ -201,7 +202,7 @@ export default function Contact() {
                         Medley, FL 33166
                       </Popup>
                     </Marker>
-                  </Map>
+                  </MapContainer>
                 </div>
                 <div className="mt-4 text-center">
                   <p className="text-sm text-gray-600 mb-2">
