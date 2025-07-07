@@ -1,5 +1,22 @@
 import ContactForm from "@/components/contact-form";
-import { MapPin, Phone, Mail, Building, Clock, Shield } from "lucide-react";
+import { MapPin, Phone, Mail, Building, Clock, Shield, Users, Award } from "lucide-react";
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+
+// Fix for default markers in react-leaflet
+delete (L.Icon.Default.prototype as any)._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+});
+
+const companyLocation = {
+  lat: 25.8479,
+  lng: -80.3267,
+  address: "8200 NW 52nd Terrace, Medley, FL 33166"
+};
 
 export default function Contact() {
   return (
@@ -53,11 +70,17 @@ export default function Contact() {
                       <Phone className="w-6 h-6 text-sunset-orange" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-1">Phone & Fax</h4>
+                      <h4 className="font-semibold text-gray-900 mb-1">Phone & Contact</h4>
                       <p className="text-gray-600">
-                        Main: (305) 555-0100<br />
-                        Emergency: (305) 555-0911<br />
-                        Fax: (305) 555-0101
+                        <a href="tel:+13052627306" className="text-primary-burgundy hover:text-rich-black font-medium">
+                          Main: (305) 262-7306
+                        </a><br />
+                        <a href="tel:+13052627306" className="text-primary-burgundy hover:text-rich-black">
+                          Emergency: (305) 262-7306
+                        </a><br />
+                        <a href="mailto:info@jgrconstruction.com" className="text-primary-burgundy hover:text-rich-black">
+                          Email: info@jgrconstruction.com
+                        </a>
                       </p>
                     </div>
                   </div>
@@ -95,42 +118,44 @@ export default function Contact() {
               {/* Interactive Headquarters Map */}
               <div className="bg-white rounded-2xl p-8 shadow-lg">
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Find Our Office</h3>
-                <div className="relative bg-blue-50 rounded-xl overflow-hidden border-2 border-blue-100 h-64">
-                  <svg width="100%" height="100%" viewBox="0 0 400 250" className="w-full h-full">
-                    {/* Background */}
-                    <rect width="100%" height="100%" fill="#eff6ff" />
-                    
-                    {/* Roads */}
-                    <line x1="0" y1="125" x2="400" y2="125" stroke="#94a3b8" strokeWidth="4" />
-                    <line x1="200" y1="0" x2="200" y2="250" stroke="#94a3b8" strokeWidth="4" />
-                    
-                    {/* Miami area outline */}
-                    <circle cx="300" cy="180" r="60" fill="#bfdbfe" opacity="0.5" />
-                    
-                    {/* JGR Headquarters marker */}
-                    <circle cx="160" cy="100" r="12" fill="#dc2626" stroke="white" strokeWidth="3" />
-                    <foreignObject x="152" y="92" width="16" height="16">
-                      <div className="w-4 h-4 text-white flex items-center justify-center">
-                        <Building className="w-3 h-3" />
-                      </div>
-                    </foreignObject>
-                    
-                    {/* Labels */}
-                    <text x="160" y="130" textAnchor="middle" className="text-xs font-bold fill-red-600">
-                      JGR Headquarters
-                    </text>
-                    <text x="160" y="145" textAnchor="middle" className="text-xs fill-gray-600">
-                      Medley, FL
-                    </text>
-                    
-                    <text x="300" y="210" textAnchor="middle" className="text-xs fill-blue-600">
-                      Miami Metropolitan Area
-                    </text>
-                  </svg>
+                <div className="h-64 rounded-xl overflow-hidden">
+                  <MapContainer
+                    center={[companyLocation.lat, companyLocation.lng]}
+                    zoom={15}
+                    className="h-full w-full"
+                  >
+                    <TileLayer
+                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    />
+                    <Marker position={[companyLocation.lat, companyLocation.lng]}>
+                      <Popup>
+                        <div className="text-center">
+                          <strong>JGR Construction Inc.</strong><br />
+                          {companyLocation.address}<br />
+                          <a href="tel:+13052627306" className="text-primary-burgundy">
+                            (305) 262-7306
+                          </a>
+                        </div>
+                      </Popup>
+                    </Marker>
+                  </MapContainer>
                 </div>
-                <p className="text-sm text-gray-600 mt-4">
-                  Conveniently located in Medley with easy access to all major highways serving Miami-Dade County.
-                </p>
+                <div className="mt-4 flex flex-col sm:flex-row gap-2">
+                  <a
+                    href={`https://www.google.com/maps/dir/?api=1&destination=${companyLocation.lat},${companyLocation.lng}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center text-primary-burgundy hover:text-rich-black font-medium text-sm"
+                  >
+                    <MapPin className="w-4 h-4 mr-2" />
+                    Get Directions
+                  </a>
+                  <span className="text-gray-400 hidden sm:block">|</span>
+                  <p className="text-sm text-gray-600">
+                    Conveniently located in Medley with easy highway access
+                  </p>
+                </div>
               </div>
               
               {/* Service Areas */}

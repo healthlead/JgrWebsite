@@ -8,6 +8,8 @@ import Services from "@/pages/services";
 import Projects from "@/pages/projects";
 import About from "@/pages/about";
 import Contact from "@/pages/contact";
+import FAQ from "@/pages/faq";
+import Blog from "@/pages/blog";
 import NotFound from "@/pages/not-found";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
@@ -23,6 +25,8 @@ function Router() {
           <Route path="/projects" component={Projects} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
+          <Route path="/faq" component={FAQ} />
+          <Route path="/blog" component={Blog} />
           <Route component={NotFound} />
         </Switch>
       </main>

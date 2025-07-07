@@ -112,6 +112,16 @@ shared/
 
 ## Changelog
 
+- July 07, 2025. Major website expansion and enhancements:
+  - Added clickable phone number (305) 262-7306 to header navigation (desktop and mobile)
+  - Updated footer copyright to 2025 JGR Construction Inc.
+  - Created comprehensive FAQ page with 12+ frequently asked questions about construction services, safety, licensing, and project management
+  - Built Hard Hat Hub blog index page showcasing industry insights, technical articles, and company expertise with categorized content
+  - Enhanced Contact page with interactive Leaflet map showing company headquarters location in Medley, FL
+  - Added detailed company contact information including business hours, licensing details, and emergency contact
+  - Replaced footer placeholder boxes with professional certifications section (OSHA, CGC License, AGC Membership, BBB A+ Rating)
+  - Updated navigation menu to include FAQ and Hard Hat Hub links
+  - Integrated all new pages into routing system for seamless navigation
 - July 07, 2025. Added dynamic video background to homepage hero section:
   - Replaced static background image with user's uploaded construction video
   - Configured Express server to serve video files from public directory

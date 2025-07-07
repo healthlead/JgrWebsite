@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Navbar() {
@@ -12,6 +12,8 @@ export default function Navbar() {
     { name: "Services", href: "/services" },
     { name: "Projects", href: "/projects" },
     { name: "About", href: "/about" },
+    { name: "FAQ", href: "/faq" },
+    { name: "Hard Hat Hub", href: "/blog" },
   ];
 
   const isActive = (href: string) => {
@@ -48,6 +50,13 @@ export default function Navbar() {
                 {item.name}
               </Link>
             ))}
+            <a 
+              href="tel:+13052627306" 
+              className="flex items-center text-primary-burgundy hover:text-rich-black font-semibold transition-colors"
+            >
+              <Phone className="w-4 h-4 mr-2" />
+              (305) 262-7306
+            </a>
             <Link href="/contact">
               <Button className="bg-ocean-blue text-white hover:bg-deep-blue">
                 Get Quote
@@ -91,6 +100,14 @@ export default function Navbar() {
                 {item.name}
               </Link>
             ))}
+            <a 
+              href="tel:+13052627306" 
+              className="flex items-center px-3 py-2 text-primary-burgundy hover:text-rich-black font-semibold"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <Phone className="w-4 h-4 mr-2" />
+              (305) 262-7306
+            </a>
             <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
               <Button className="mx-3 w-[calc(100%-1.5rem)] bg-ocean-blue text-white hover:bg-deep-blue">
                 Get Quote
