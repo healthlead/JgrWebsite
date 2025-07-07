@@ -9,9 +9,12 @@ export default function Footer() {
           {/* Company Info */}
           <div className="md:col-span-2">
             <div className="flex items-center mb-6">
-              <div className="text-3xl font-bold text-ocean-blue">JGR</div>
-              <div className="ml-3">
-                <div className="text-sm text-gray-400">CONSTRUCTION</div>
+              <img 
+                src="/jgr-logo.png" 
+                alt="JGR Construction" 
+                className="h-16 w-auto filter brightness-0 invert"
+              />
+              <div className="ml-4">
                 <div className="text-xs text-gray-500">Building Excellence Since 2009</div>
               </div>
             </div>

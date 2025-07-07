@@ -25,8 +25,11 @@ export default function Navbar() {
         <div className="flex justify-between h-20">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0">
-              <div className="text-2xl font-bold text-deep-blue">JGR</div>
-              <div className="text-xs text-gray-600 -mt-1">CONSTRUCTION</div>
+              <img 
+                src="/jgr-logo.png" 
+                alt="JGR Construction" 
+                className="h-12 w-auto"
+              />
             </Link>
           </div>
           
