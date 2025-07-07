@@ -11,7 +11,6 @@ export default function Navbar() {
     { name: "Services", href: "/services" },
     { name: "Projects", href: "/projects" },
     { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
     { name: "FAQ", href: "/faq" },
     { name: "Hard Hat Hub", href: "/blog" },
   ];

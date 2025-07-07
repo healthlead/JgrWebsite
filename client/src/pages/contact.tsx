@@ -34,16 +34,16 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Headquarters & Contact Section */}
+      {/* Contact Form & Information Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <div className="lg:col-span-2">
+            <div>
               <ContactForm />
             </div>
             
-            {/* Contact Information & Headquarters */}
+            {/* Contact Information & Map */}
             <div className="space-y-8">
               {/* Headquarters */}
               <div className="bg-white rounded-2xl p-8 shadow-lg">
@@ -179,6 +179,42 @@ export default function Contact() {
                       <li>• Custom Projects</li>
                     </ul>
                   </div>
+                </div>
+              </div>
+
+              {/* Headquarters Map */}
+              <div className="bg-white rounded-2xl p-6 shadow-lg">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Find Our Office</h3>
+                <div className="h-64 bg-gray-100 rounded-lg overflow-hidden">
+                  <Map 
+                    center={[25.8447, -80.3205]}
+                    zoom={15}
+                    className="w-full h-full"
+                  >
+                    <TileLayer
+                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <Marker position={[25.8447, -80.3205]}>
+                      <Popup>
+                        JGR Construction Inc.<br />
+                        8200 NW 52nd Terrace<br />
+                        Medley, FL 33166
+                      </Popup>
+                    </Marker>
+                  </Map>
+                </div>
+                <div className="mt-4 text-center">
+                  <p className="text-sm text-gray-600 mb-2">
+                    Conveniently located in Medley with easy highway access
+                  </p>
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    className="border-ocean-blue text-ocean-blue hover:bg-ocean-blue hover:text-white"
+                  >
+                    <MapPin className="w-4 h-4 mr-2" />
+                    Get Directions
+                  </Button>
                 </div>
               </div>
             </div>
