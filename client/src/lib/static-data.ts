@@ -152,16 +152,24 @@ export const getServices = () => {
 export const isStaticMode = () => {
   try {
     const hostname = window.location.hostname;
+    const pathname = window.location.pathname;
     console.log('Current hostname:', hostname);
+    console.log('Current pathname:', pathname);
+    
+    // Check if we're on GitHub Pages or a custom domain
+    const isGitHubPages = hostname.includes('github.io') || 
+                          hostname === 'coav.com' ||
+                          hostname === 'www.coav.com';
     
     // Development environments
     const isDev = hostname.includes('localhost') || 
                   hostname.includes('replit') ||
                   hostname.includes('127.0.0.1') ||
-                  hostname.includes('.dev');
+                  hostname.includes('.dev') ||
+                  (hostname.includes('replit') && !isGitHubPages);
     
     const isStatic = !isDev;
-    console.log('Static mode:', isStatic);
+    console.log('Static mode:', isStatic, 'GitHub Pages:', isGitHubPages);
     return isStatic;
   } catch (error) {
     console.error('Error checking static mode:', error);

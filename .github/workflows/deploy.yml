@@ -32,9 +32,29 @@ jobs:
         
       - name: Build
         run: |
-          npx vite build --outDir dist --base ./
-          cp CNAME dist/
+          # Determine base path based on custom domain
+          if [ -f "CNAME" ] && [ -s "CNAME" ]; then
+            BASE_URL="/"
+            echo "Building for custom domain"
+          else
+            BASE_URL="/JrgWebsite/"
+            echo "Building for GitHub Pages subdirectory"
+          fi
+          
+          npx vite build --outDir dist --base $BASE_URL
+          
+          # Copy necessary files
           cp public/404.html dist/
+          if [ -f "CNAME" ]; then
+            cp CNAME dist/
+          fi
+          
+          # Copy assets
+          cp -r attached_assets dist/ || true
+          cp -r public/*.mp4 dist/ || true
+          cp -r public/*.png dist/ || true
+          
+          echo "Build complete. Contents of dist:"
           ls -la dist/
         
       - name: Setup Pages

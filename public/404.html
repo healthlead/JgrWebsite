@@ -19,7 +19,8 @@
       // then set pathSegmentsToKeep to 1 (enterprise users may need to set it to > 1).
       // This way the code will only replace the route part and not the real folder.
       // If you're using a custom domain, set this to 0.
-      var pathSegmentsToKeep = 0;
+      // Dynamically determine path segments based on custom domain
+      var pathSegmentsToKeep = window.location.hostname.includes('github.io') ? 1 : 0;
 
       var l = window.location;
       l.replace(

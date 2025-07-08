@@ -112,6 +112,13 @@ shared/
 
 ## Changelog
 
+- July 08, 2025. Fixed GitHub Pages white page issue:
+  - Updated GitHub Actions workflow to use correct base path (/JrgWebsite/ for github.io)
+  - Made workflow dynamically detect custom domain vs GitHub Pages subdirectory
+  - Fixed 404.html to dynamically determine path segments based on hostname
+  - Enhanced static mode detection to properly identify GitHub Pages environment
+  - Added comprehensive asset copying in build process
+  - Removed CNAME temporarily for GitHub Pages subdirectory testing
 - July 07, 2025. Implemented complete GitHub Pages deployment solution:
   - Created SPA routing fix with 404.html redirect system for client-side routing
   - Added static data layer that automatically activates on GitHub Pages deployment
