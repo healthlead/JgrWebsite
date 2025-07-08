@@ -5,7 +5,7 @@ import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
 export default defineConfig({
   // 👇 ADD THIS LINE
-  base: "/JrgWebsite/",
+  base: "/",
 
   plugins: [
     react(),
