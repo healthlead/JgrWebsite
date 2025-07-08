@@ -24,9 +24,9 @@ Your JGR Construction website can be deployed as a static website using several 
 ### 3. **GitHub Pages**
 - **Why**: Free hosting for GitHub repositories
 - **Steps**:
-  1. Add GitHub Actions workflow for building
-  2. Deploy to `gh-pages` branch
-  3. Enable GitHub Pages in repository settings
+  1. Add GitHub Actions workflow for building (already created: `.github/workflows/deploy.yml`)
+  2. Enable GitHub Pages in repository settings → Pages → Source: GitHub Actions
+  3. The 404.html file and routing script are already configured for SPA support
 
 ### 4. **Firebase Hosting**
 - **Why**: Google's reliable hosting with CDN
