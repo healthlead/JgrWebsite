@@ -119,6 +119,11 @@ shared/
 
 ## Changelog
 
+- July 08, 2025. **Fixed Logo and Video Issues on Replit**: Resolved development server conflicts between React and Astro versions:
+  - Fixed navbar logo display by adding proper JGR logo image reference
+  - Fixed video background playback with corrected path and fallback handling
+  - Resolved server port conflicts - Astro server now running correctly on port 5000
+  - Website accessible at http://localhost:5000/JrgWebsite/ with all assets working
 - July 08, 2025. **Fixed GitHub Pages Asset Loading Issues**: Updated all asset references to use base path for proper deployment:
   - Fixed all internal links to use `import.meta.env.BASE_URL` for GitHub Pages compatibility
   - Updated image sources, video sources, and navigation links throughout all 7 pages
