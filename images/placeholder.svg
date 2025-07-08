@@ -1,7 +1,0 @@
-<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
-  <rect width="800" height="600" fill="#E5E7EB"/>
-  <rect x="200" y="150" width="400" height="300" fill="#9CA3AF" rx="10"/>
-  <path d="M300 250 L350 300 L450 200 L500 250 L500 350 L300 350 Z" fill="#6B7280"/>
-  <circle cx="350" cy="220" r="30" fill="#F3F4F6"/>
-  <text x="400" y="500" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#4B5563">JGR Construction</text>
-</svg>
