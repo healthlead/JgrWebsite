@@ -33,14 +33,45 @@ jobs:
       - name: Build React App
         run: |
           echo "Building React app for GitHub Pages..."
-          npx vite build --outDir dist --base /JrgWebsite/
+          NODE_ENV=production npx vite build --outDir dist --base /JrgWebsite/ --mode production
+          
+          # Verify build succeeded
+          if [ ! -d "dist" ]; then
+            echo "Build failed - dist directory not created"
+            exit 1
+          fi
+          
+          if [ ! -f "dist/index.html" ]; then
+            echo "Build failed - index.html not found"
+            exit 1
+          fi
+          
+          echo "Build successful. Contents:"
+          ls -la dist/
           
       - name: Copy additional files
         run: |
-          cp public/404.html dist/
-          mkdir -p dist/attached_assets
-          cp -r attached_assets/* dist/attached_assets/ || true
-          cp public/*.mp4 dist/ || true
+          # Ensure dist directory exists
+          mkdir -p dist
+          
+          # Copy 404.html if it exists
+          if [ -f "public/404.html" ]; then
+            cp public/404.html dist/
+          fi
+          
+          # Copy assets if they exist
+          if [ -d "attached_assets" ]; then
+            mkdir -p dist/attached_assets
+            cp -r attached_assets/* dist/attached_assets/ 2>/dev/null || true
+          fi
+          
+          # Copy video files if they exist
+          if ls public/*.mp4 1> /dev/null 2>&1; then
+            cp public/*.mp4 dist/ || true
+          fi
+          
+          echo "Files copied successfully"
+          ls -la dist/
           
       - name: Setup Pages
         uses: actions/configure-pages@v4
