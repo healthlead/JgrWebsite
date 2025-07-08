@@ -150,6 +150,22 @@ export const getServices = () => {
 
 // Check if we're in static mode (GitHub Pages)
 export const isStaticMode = () => {
-  return !window.location.hostname.includes('localhost') && 
-         !window.location.hostname.includes('replit');
+  try {
+    const hostname = window.location.hostname;
+    console.log('Current hostname:', hostname);
+    
+    // Development environments
+    const isDev = hostname.includes('localhost') || 
+                  hostname.includes('replit') ||
+                  hostname.includes('127.0.0.1') ||
+                  hostname.includes('.dev');
+    
+    const isStatic = !isDev;
+    console.log('Static mode:', isStatic);
+    return isStatic;
+  } catch (error) {
+    console.error('Error checking static mode:', error);
+    // Default to static mode if we can't determine
+    return true;
+  }
 };
