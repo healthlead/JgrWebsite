@@ -8,15 +8,24 @@ This website is built with [Astro](https://astro.build), optimized for static si
 
 ## 🚀 Quick Start
 
-### Development
+### Development (Recommended)
+```bash
+./start-astro.sh
+```
+This script will:
+- Stop any conflicting servers
+- Start the Astro development server
+- Make your site available in the Replit preview
+
+### Alternative Development
 ```bash
 npm install
-npx astro dev
+npx astro dev --host 0.0.0.0 --port 5000
 ```
 
 ### Build for Production
 ```bash
-npm run build
+npx astro build
 ```
 
 ### Preview Production Build
