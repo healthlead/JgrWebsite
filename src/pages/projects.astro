@@ -1,0 +1,280 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const completedProjects = [
+  {
+    id: 1,
+    name: "Wynwood Station",
+    description: "340,000 sq ft mixed-use development featuring 430 residential units and 15,000 sq ft of retail space in Miami's vibrant Wynwood district.",
+    location: "Wynwood, Miami",
+    coordinates: [25.801, -80.199],
+    completionDate: "2024",
+    image: "/images/wynwood-station.jpg",
+    featured: true,
+    status: "completed"
+  },
+  {
+    id: 2,
+    name: "Brickell Heights",
+    description: "Luxury high-rise residential tower with post-tension concrete construction and architectural concrete features.",
+    location: "Brickell, Miami", 
+    coordinates: [25.761, -80.191],
+    completionDate: "2023",
+    image: "/images/brickell-heights.jpg",
+    featured: true,
+    status: "completed"
+  },
+  {
+    id: 3,
+    name: "Design District Plaza",
+    description: "Premium commercial complex featuring precast concrete elements and decorative masonry work.",
+    location: "Design District, Miami",
+    coordinates: [25.801, -80.195],
+    completionDate: "2024", 
+    image: "/images/design-district.jpg",
+    featured: true,
+    status: "completed"
+  },
+  {
+    id: 4,
+    name: "Coral Gables Residences",
+    description: "Elegant residential complex with Mediterranean-inspired architecture and custom masonry work.",
+    location: "Coral Gables, Miami",
+    coordinates: [25.721, -80.254],
+    completionDate: "2023",
+    image: "/images/coral-gables.jpg",
+    featured: false,
+    status: "completed"
+  }
+];
+
+const upcomingProjects = [
+  {
+    id: 5,
+    name: "Aventura Park Tower",
+    description: "50-story luxury residential tower with advanced post-tension concrete systems and panoramic bay views.",
+    location: "Aventura, Miami",
+    coordinates: [25.956, -80.139],
+    expectedCompletion: "2025",
+    image: "/images/aventura-tower.jpg",
+    featured: false,
+    status: "upcoming"
+  },
+  {
+    id: 6,
+    name: "Little Havana Cultural Center",
+    description: "Community cultural center featuring decorative concrete work and traditional masonry elements.",
+    location: "Little Havana, Miami",
+    coordinates: [25.766, -80.220],
+    expectedCompletion: "2025",
+    image: "/images/little-havana.jpg", 
+    featured: false,
+    status: "upcoming"
+  }
+];
+
+const allProjects = [...completedProjects, ...upcomingProjects];
+---
+
+<Layout title="Projects - JGR Construction" description="Explore JGR Construction's portfolio of completed and upcoming projects in Miami, showcasing our expertise in structural concrete and masonry construction.">
+  <Navbar />
+  
+  <!-- Hero Section -->
+  <section class="pt-24 pb-16 bg-gradient-to-r from-burgundy-primary to-prussian-blue">
+    <div class="container mx-auto px-6 text-center">
+      <h1 class="text-5xl font-bold text-white mb-6">Our Projects</h1>
+      <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+        Showcasing our commitment to excellence in Miami's most prestigious developments
+      </p>
+    </div>
+  </section>
+
+  <!-- Project Map -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Project Locations</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Our projects span across Miami's most dynamic neighborhoods, from Brickell to Wynwood
+        </p>
+      </div>
+      
+      <div class="bg-white rounded-2xl p-8 shadow-lg">
+        <div class="relative h-96 bg-gray-100 rounded-lg overflow-hidden">
+          <!-- SVG Map of Miami -->
+          <svg viewBox="0 0 400 300" class="w-full h-full">
+            <!-- Miami outline -->
+            <path d="M50 50 L350 50 L350 250 L50 250 Z" fill="#e5f3ff" stroke="#93c5fd" stroke-width="2"/>
+            
+            <!-- Project markers -->
+            {allProjects.map((project, index) => (
+              <g>
+                <circle 
+                  cx={100 + (index % 3) * 80 + (index > 2 ? 40 : 0)} 
+                  cy={80 + Math.floor(index / 3) * 60} 
+                  r="8" 
+                  fill={project.status === 'completed' ? '#773B3C' : '#E7B008'}
+                  stroke="white" 
+                  stroke-width="2"
+                />
+                <text 
+                  x={100 + (index % 3) * 80 + (index > 2 ? 40 : 0)} 
+                  y={100 + Math.floor(index / 3) * 60} 
+                  text-anchor="middle" 
+                  class="text-xs font-medium fill-gray-700"
+                >
+                  {project.name.split(' ')[0]}
+                </text>
+              </g>
+            ))}
+          </svg>
+          
+          <!-- Legend -->
+          <div class="absolute bottom-4 left-4 bg-white rounded-lg p-3 shadow-lg">
+            <div class="flex items-center space-x-4 text-sm">
+              <div class="flex items-center">
+                <div class="w-3 h-3 bg-burgundy-primary rounded-full mr-2"></div>
+                <span>Completed</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-3 h-3 bg-sunflower-yellow rounded-full mr-2"></div>
+                <span>Upcoming</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Completed Projects -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">Completed Projects</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Successfully delivered projects that showcase our expertise and commitment to quality
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {completedProjects.map((project) => (
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow group">
+            <div class="relative h-64 overflow-hidden">
+              <img 
+                src={project.image} 
+                alt={project.name}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              {project.featured && (
+                <div class="absolute top-4 right-4">
+                  <span class="bg-sunflower-yellow text-rich-black px-3 py-1 rounded-full text-sm font-semibold">
+                    Featured
+                  </span>
+                </div>
+              )}
+              <div class="absolute top-4 left-4">
+                <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                  Completed
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-burgundy-primary transition-colors">
+                {project.name}
+              </h3>
+              <p class="text-gray-600 mb-4">
+                {project.description}
+              </p>
+              <div class="flex justify-between items-center text-sm text-gray-500">
+                <span class="flex items-center">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                  {project.location}
+                </span>
+                <span>{project.completionDate}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Projects -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">Upcoming Projects</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Exciting new developments currently in planning and construction phases
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        {upcomingProjects.map((project) => (
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow group">
+            <div class="relative h-64 overflow-hidden">
+              <img 
+                src={project.image} 
+                alt={project.name}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div class="absolute top-4 left-4">
+                <span class="bg-sunflower-yellow text-rich-black px-3 py-1 rounded-full text-sm font-semibold">
+                  Coming Soon
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-burgundy-primary transition-colors">
+                {project.name}
+              </h3>
+              <p class="text-gray-600 mb-4">
+                {project.description}
+              </p>
+              <div class="flex justify-between items-center text-sm text-gray-500">
+                <span class="flex items-center">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                  {project.location}
+                </span>
+                <span>Expected: {project.expectedCompletion}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-burgundy-primary to-prussian-blue">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold text-white mb-6">Ready to Start Your Project?</h2>
+      <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+        Join our portfolio of successful projects. Contact us today to discuss your construction needs.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact">
+          <button class="bg-sunflower-yellow text-rich-black hover:bg-yellow-500 px-8 py-4 text-lg font-semibold rounded-lg transition-colors">
+            Start Your Project
+          </button>
+        </a>
+        <a href="/services">
+          <button class="border-2 border-white text-white hover:bg-white hover:text-prussian-blue px-8 py-4 text-lg font-semibold rounded-lg transition-colors">
+            Our Services
+          </button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

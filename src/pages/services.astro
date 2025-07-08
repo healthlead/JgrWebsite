@@ -1,0 +1,232 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const services = [
+  {
+    icon: "🏗️",
+    title: "Conventional Concrete Shells",
+    description: "Complete structural concrete solutions for high-rise residential and commercial buildings, including slabs, beams, and columns.",
+    features: [
+      "High-rise residential towers",
+      "Commercial building structures", 
+      "Parking garage construction",
+      "Foundation and footings"
+    ]
+  },
+  {
+    icon: "🔧",
+    title: "Post-Tension Concrete",
+    description: "Advanced post-tensioning systems for longer spans and reduced concrete thickness, maximizing design flexibility.",
+    features: [
+      "Longer span capabilities",
+      "Reduced concrete thickness",
+      "Enhanced structural performance",
+      "Cost-effective solutions"
+    ]
+  },
+  {
+    icon: "🏭",
+    title: "Pre-cast Concrete",
+    description: "Quality-controlled precast elements manufactured off-site for faster installation and superior finish quality.",
+    features: [
+      "Quality-controlled manufacturing",
+      "Faster installation times",
+      "Superior finish quality",
+      "Weather-independent production"
+    ]
+  },
+  {
+    icon: "🧱",
+    title: "Masonry Construction",
+    description: "Expert masonry work including block, brick, and stone installation for both structural and architectural applications.",
+    features: [
+      "Structural masonry walls",
+      "Architectural stonework",
+      "Brick and block installation",
+      "Decorative masonry features"
+    ]
+  },
+  {
+    icon: "🎨",
+    title: "Architectural Concrete",
+    description: "Decorative and exposed concrete work with various finishes, textures, and colors to enhance building aesthetics.",
+    features: [
+      "Exposed concrete finishes",
+      "Decorative concrete work",
+      "Custom textures and colors",
+      "Architectural elements"
+    ]
+  },
+  {
+    icon: "⚡",
+    title: "Emergency Repairs",
+    description: "24/7 emergency concrete and masonry repair services to address structural issues and ensure building safety.",
+    features: [
+      "24/7 emergency response",
+      "Structural damage assessment",
+      "Immediate safety measures",
+      "Permanent repair solutions"
+    ]
+  }
+];
+
+const processSteps = [
+  {
+    step: "01",
+    title: "Consultation & Planning",
+    description: "We begin with a thorough consultation to understand your project requirements, timeline, and budget constraints."
+  },
+  {
+    step: "02", 
+    title: "Design & Engineering",
+    description: "Our engineering team works closely with architects to develop optimal structural solutions that meet all specifications."
+  },
+  {
+    step: "03",
+    title: "Project Execution", 
+    description: "Our skilled crews execute the project with precision, maintaining the highest safety and quality standards throughout."
+  },
+  {
+    step: "04",
+    title: "Quality Assurance",
+    description: "Comprehensive quality control and final inspections ensure every project meets our exacting standards before completion."
+  }
+];
+---
+
+<Layout title="Services - JGR Construction" description="Comprehensive structural contracting services including concrete shells, post-tension, precast, masonry, and architectural concrete in Miami.">
+  <Navbar />
+  
+  <!-- Hero Section -->
+  <section class="pt-24 pb-16 bg-gradient-to-r from-burgundy-primary to-prussian-blue">
+    <div class="container mx-auto px-6 text-center">
+      <h1 class="text-5xl font-bold text-white mb-6">Our Services</h1>
+      <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+        Comprehensive structural contracting services with unmatched quality and precision for Miami's most demanding projects
+      </p>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {services.map((service) => (
+          <div class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow group">
+            <div class="text-4xl mb-6">{service.icon}</div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-4 group-hover:text-burgundy-primary transition-colors">
+              {service.title}
+            </h3>
+            <p class="text-gray-600 mb-6 leading-relaxed">
+              {service.description}
+            </p>
+            <ul class="space-y-2">
+              {service.features.map((feature) => (
+                <li class="flex items-center text-sm text-gray-600">
+                  <svg class="w-4 h-4 text-sunflower-yellow mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Process</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          A proven methodology that ensures every project is delivered on time, within budget, and to the highest quality standards
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {processSteps.map((step) => (
+          <div class="text-center">
+            <div class="bg-burgundy-primary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6 text-xl font-bold">
+              {step.step}
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">{step.title}</h3>
+            <p class="text-gray-600">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-4xl font-bold text-gray-900 mb-6">Advanced Capabilities</h2>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Our state-of-the-art equipment and highly trained crews enable us to tackle the most complex structural projects with confidence and precision.
+          </p>
+          <div class="grid grid-cols-2 gap-6 mb-8">
+            <div>
+              <div class="text-2xl font-bold text-burgundy-primary mb-2">50+</div>
+              <div class="text-gray-600 text-sm">Skilled Craftsmen</div>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-burgundy-primary mb-2">24/7</div>
+              <div class="text-gray-600 text-sm">Emergency Service</div>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-burgundy-primary mb-2">100%</div>
+              <div class="text-gray-600 text-sm">Safety Compliance</div>
+            </div>
+            <div>
+              <div class="text-2xl font-bold text-burgundy-primary mb-2">15+</div>
+              <div class="text-gray-600 text-sm">Years Experience</div>
+            </div>
+          </div>
+          <a href="/contact">
+            <button class="bg-burgundy-primary text-white hover:bg-opacity-90 px-8 py-4 text-lg font-semibold rounded-lg transition-colors">
+              Start Your Project
+            </button>
+          </a>
+        </div>
+        <div class="relative">
+          <img 
+            src="/images/construction-capabilities.jpg" 
+            alt="JGR Construction capabilities" 
+            class="rounded-2xl shadow-lg w-full"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-burgundy-primary to-prussian-blue">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold text-white mb-6">Ready to Start Your Project?</h2>
+      <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+        Contact us today for a consultation and let's discuss how we can bring your vision to life.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact">
+          <button class="bg-sunflower-yellow text-rich-black hover:bg-yellow-500 px-8 py-4 text-lg font-semibold rounded-lg transition-colors">
+            Get Started
+          </button>
+        </a>
+        <a href="/projects">
+          <button class="border-2 border-white text-white hover:bg-white hover:text-prussian-blue px-8 py-4 text-lg font-semibold rounded-lg transition-colors">
+            View Our Work
+          </button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

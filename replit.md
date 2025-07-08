@@ -6,21 +6,28 @@ This is a full-stack web application for JGR Construction Inc., a premier struct
 
 ## System Architecture
 
-### Frontend Architecture
-- **Framework**: React 18 with TypeScript
+### Frontend Architecture (Astro)
+- **Framework**: Astro with React integration for interactive components
+- **Routing**: File-based routing with .astro pages
+- **Styling**: Tailwind CSS with custom color variables
+- **Build Tool**: Astro static site generator
+- **Output**: Static HTML/CSS/JS for GitHub Pages deployment
+
+### Legacy React Architecture (Available)
+- **Framework**: React 18 with TypeScript (preserved in original structure)
 - **Routing**: Wouter for client-side routing
 - **Styling**: Tailwind CSS with shadcn/ui component library
 - **State Management**: TanStack Query (React Query) for server state
 - **Forms**: React Hook Form with Zod validation
 - **Build Tool**: Vite with development server integration
 
-### Backend Architecture
+### Backend Architecture (React Version)
 - **Runtime**: Node.js with Express.js
 - **Language**: TypeScript with ES modules
 - **Development**: tsx for TypeScript execution
 - **Production**: esbuild for server bundling
 
-### Database & ORM
+### Database & ORM (React Version)
 - **Database**: PostgreSQL (configured for Neon serverless)
 - **ORM**: Drizzle ORM with drizzle-kit for migrations
 - **Validation**: Zod schemas for type-safe data validation
@@ -112,6 +119,16 @@ shared/
 
 ## Changelog
 
+- July 08, 2025. **Major Project Conversion**: Converted entire React application to Astro for GitHub Pages compatibility:
+  - Migrated all 7 pages (Home, Services, Projects, Contact, About, FAQ, Hard Hat Hub) to Astro .astro format
+  - Preserved all functionality including interactive elements and styling
+  - Maintained authentic JGR Construction branding and color scheme
+  - Created static site generation for improved GitHub Pages deployment
+  - Added comprehensive component library (Navbar, Footer, Hero, ServicesGrid, FeaturedProjects)
+  - Configured Astro build process with Tailwind CSS integration
+  - Maintained all original content including contact information, project data, and FAQ sections
+  - Astro dev server running on port 5001 with proper routing
+  - Original React version preserved for reference and potential future use
 - July 07, 2025. Fixed navigation and Instagram feed layout:
   - Removed "Contact" from navigation bar (logo serves as homepage link)
   - Fixed Contact page Button import error and restored proper two-column layout with map

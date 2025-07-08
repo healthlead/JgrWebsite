@@ -1,0 +1,59 @@
+---
+const services = [
+  {
+    icon: "🏗️",
+    title: "Conventional Concrete Shells",
+    description: "Complete structural concrete solutions for high-rise residential and commercial buildings, including slabs, beams, and columns."
+  },
+  {
+    icon: "🔧",
+    title: "Post-Tension Concrete",
+    description: "Advanced post-tensioning systems for longer spans and reduced concrete thickness, maximizing design flexibility."
+  },
+  {
+    icon: "🏭",
+    title: "Pre-cast Concrete",
+    description: "Quality-controlled precast elements manufactured off-site for faster installation and superior finish quality."
+  },
+  {
+    icon: "🧱",
+    title: "Masonry Construction",
+    description: "Expert masonry work including block, brick, and stone installation for both structural and architectural applications."
+  },
+  {
+    icon: "🎨",
+    title: "Architectural Concrete",
+    description: "Decorative and exposed concrete work with various finishes, textures, and colors to enhance building aesthetics."
+  },
+  {
+    icon: "⚡",
+    title: "Emergency Repairs",
+    description: "24/7 emergency concrete and masonry repair services to address structural issues and ensure building safety."
+  }
+];
+---
+
+<section class="py-20 bg-white">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Expertise</h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Comprehensive structural contracting services with unmatched quality and precision
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {services.map((service) => (
+        <div class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow group">
+          <div class="text-4xl mb-6">{service.icon}</div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-4 group-hover:text-burgundy-primary transition-colors">
+            {service.title}
+          </h3>
+          <p class="text-gray-600 leading-relaxed">
+            {service.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

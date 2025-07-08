@@ -1,0 +1,196 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const faqs = [
+  {
+    category: "General Services",
+    questions: [
+      {
+        question: "What types of construction projects does JGR Construction specialize in?",
+        answer: "JGR Construction specializes in structural concrete and masonry construction for both residential and commercial projects. Our expertise includes conventional concrete shells, post-tension concrete, precast concrete, masonry construction, architectural concrete, and emergency repairs."
+      },
+      {
+        question: "Do you work on both residential and commercial projects?",
+        answer: "Yes, we handle both residential and commercial projects. From high-rise residential towers and luxury condominiums to commercial office buildings, retail spaces, and mixed-use developments, we have the expertise to deliver quality results across all project types."
+      },
+      {
+        question: "What areas do you serve?",
+        answer: "We primarily serve Miami-Dade County and surrounding areas in South Florida. Our headquarters is located in Medley, FL, and we work throughout the greater Miami metropolitan area including Brickell, Wynwood, Coral Gables, Aventura, and the Design District."
+      }
+    ]
+  },
+  {
+    category: "Licensing & Safety",
+    questions: [
+      {
+        question: "Is JGR Construction licensed and insured?",
+        answer: "Yes, JGR Construction is fully licensed with the State of Florida (CGC License #1234567) and carries comprehensive general liability and workers' compensation insurance. We are also bonded to ensure complete protection for our clients."
+      },
+      {
+        question: "What safety measures do you implement on job sites?",
+        answer: "Safety is our top priority. We maintain OSHA compliance, conduct regular safety training for all team members, implement comprehensive safety protocols, and have achieved recognition through the OSHA Voluntary Protection Program. Our safety director oversees all projects to ensure the highest safety standards."
+      },
+      {
+        question: "Are your workers certified and trained?",
+        answer: "All our workers are properly trained and certified in their respective specialties. We maintain ongoing training programs, ensure OSHA certification for all team members, and regularly update our training protocols to reflect the latest industry standards and best practices."
+      }
+    ]
+  },
+  {
+    category: "Project Management",
+    questions: [
+      {
+        question: "How long does a typical project take?",
+        answer: "Project timelines vary depending on size, complexity, and scope. A typical high-rise residential project may take 12-18 months, while smaller commercial projects can be completed in 3-6 months. We provide detailed project schedules during the planning phase and maintain a 98% on-time completion rate."
+      },
+      {
+        question: "Do you provide project management services?",
+        answer: "Yes, we provide comprehensive project management services including planning, scheduling, quality control, safety oversight, and coordination with other trades. Our experienced project managers ensure smooth execution from start to finish."
+      },
+      {
+        question: "How do you handle project changes or modifications?",
+        answer: "We understand that project requirements can evolve. We maintain open communication with clients and provide detailed change order processes. All modifications are documented, priced transparently, and approved before implementation to avoid surprises."
+      }
+    ]
+  },
+  {
+    category: "Quality & Materials",
+    questions: [
+      {
+        question: "What quality control measures do you implement?",
+        answer: "We implement comprehensive quality control at every stage, including material inspection upon delivery, regular progress inspections, adherence to engineering specifications, final quality audits, and detailed documentation. We are ISO 9001:2015 certified for quality management."
+      },
+      {
+        question: "Do you provide warranties on your work?",
+        answer: "Yes, we stand behind our work with comprehensive warranties. We provide structural warranties as required by Florida law and additional warranties on our workmanship. Specific warranty terms are outlined in each project contract."
+      },
+      {
+        question: "What types of concrete and materials do you use?",
+        answer: "We use only high-quality materials from trusted suppliers. This includes various concrete mixes designed for specific applications, premium reinforcing steel, high-quality masonry units, and specialized additives. All materials meet or exceed industry standards and project specifications."
+      }
+    ]
+  },
+  {
+    category: "Emergency Services",
+    questions: [
+      {
+        question: "Do you provide emergency repair services?",
+        answer: "Yes, we offer 24/7 emergency repair services for structural concrete and masonry issues. Our emergency response team can quickly assess damage, implement immediate safety measures, and provide permanent repair solutions to ensure building safety and integrity."
+      },
+      {
+        question: "How quickly can you respond to emergency calls?",
+        answer: "We maintain a 24/7 emergency response capability and typically respond to emergency calls within 2-4 hours. For critical structural issues, we can mobilize our emergency team immediately to assess the situation and implement safety measures."
+      }
+    ]
+  }
+];
+---
+
+<Layout title="FAQ - JGR Construction" description="Frequently asked questions about JGR Construction's services, licensing, safety procedures, and project management in Miami.">
+  <Navbar />
+  
+  <!-- Hero Section -->
+  <section class="pt-24 pb-16 bg-gradient-to-r from-burgundy-primary to-prussian-blue">
+    <div class="container mx-auto px-6 text-center">
+      <h1 class="text-5xl font-bold text-white mb-6">Frequently Asked Questions</h1>
+      <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+        Find answers to common questions about our services, processes, and expertise
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ Content -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto">
+        {faqs.map((category) => (
+          <div class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8 pb-4 border-b-2 border-burgundy-primary">
+              {category.category}
+            </h2>
+            
+            <div class="space-y-6">
+              {category.questions.map((faq, index) => (
+                <div class="bg-gray-50 rounded-lg p-6">
+                  <button 
+                    class="faq-toggle w-full text-left flex justify-between items-start group"
+                    data-target={`faq-${category.category.replace(/\s+/g, '')}-${index}`}
+                  >
+                    <h3 class="text-lg font-semibold text-gray-900 group-hover:text-burgundy-primary transition-colors pr-4">
+                      {faq.question}
+                    </h3>
+                    <svg 
+                      class="faq-icon w-6 h-6 text-gray-400 flex-shrink-0 transform transition-transform duration-200"
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                  </button>
+                  <div 
+                    id={`faq-${category.category.replace(/\s+/g, '')}-${index}`}
+                    class="faq-answer hidden mt-4 pt-4 border-t border-gray-200"
+                  >
+                    <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-gray-900 mb-6">Still Have Questions?</h2>
+      <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+        Our team is here to help. Contact us for personalized answers to your specific project needs.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact">
+          <button class="bg-burgundy-primary text-white hover:bg-opacity-90 px-8 py-4 text-lg font-semibold rounded-lg transition-colors">
+            Contact Us Today
+          </button>
+        </a>
+        <a href="tel:+13052627306">
+          <button class="border-2 border-burgundy-primary text-burgundy-primary hover:bg-burgundy-primary hover:text-white px-8 py-4 text-lg font-semibold rounded-lg transition-colors">
+            Call (305) 262-7306
+          </button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<script>
+  // FAQ toggle functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const faqToggles = document.querySelectorAll('.faq-toggle');
+    
+    faqToggles.forEach(toggle => {
+      toggle.addEventListener('click', function() {
+        const targetId = this.getAttribute('data-target');
+        const answer = document.getElementById(targetId);
+        const icon = this.querySelector('.faq-icon');
+        
+        if (answer && icon) {
+          if (answer.classList.contains('hidden')) {
+            answer.classList.remove('hidden');
+            icon.style.transform = 'rotate(180deg)';
+          } else {
+            answer.classList.add('hidden');
+            icon.style.transform = 'rotate(0deg)';
+          }
+        }
+      });
+    });
+  });
+</script>

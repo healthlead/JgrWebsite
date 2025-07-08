@@ -1,0 +1,138 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ServicesGrid from '../components/ServicesGrid.astro';
+import FeaturedProjects from '../components/FeaturedProjects.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="JGR Construction - Premier Structural Contractors in Miami" description="JGR Construction specializes in concrete and masonry construction for South Florida's most prestigious residential and commercial developments.">
+  <Navbar />
+  <Hero />
+  
+  <!-- About Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-4xl font-bold text-gray-900 mb-6">Building Excellence Since 2009</h2>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            JGR Construction stands as South Florida's premier structural contracting company, 
+            specializing in concrete and masonry construction. Our unwavering commitment to quality, 
+            safety, and innovation has earned us the trust of Miami's most discerning developers and architects.
+          </p>
+          <p class="text-gray-600 mb-8 leading-relaxed">
+            From high-rise residential towers to commercial complexes, we bring decades of expertise 
+            to every project, ensuring structural integrity that stands the test of time.
+          </p>
+          <div class="grid grid-cols-2 gap-6">
+            <div class="text-center">
+              <div class="text-3xl font-bold text-burgundy-primary mb-2">200+</div>
+              <div class="text-gray-600">Projects Completed</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-burgundy-primary mb-2">15+</div>
+              <div class="text-gray-600">Years Experience</div>
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <img 
+            src="/images/about-construction.jpg" 
+            alt="JGR Construction team at work" 
+            class="rounded-2xl shadow-lg w-full"
+          />
+          <div class="absolute -bottom-6 -left-6 bg-white rounded-xl p-6 shadow-lg">
+            <div class="flex items-center">
+              <div class="bg-sunflower-yellow rounded-full p-3 mr-4">
+                <svg class="w-6 h-6 text-rich-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <div class="font-semibold text-gray-900">Licensed & Insured</div>
+                <div class="text-sm text-gray-600">CGC1234567</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ServicesGrid />
+  <FeaturedProjects />
+
+  <!-- Achievements Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Achievements</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Recognition and milestones that showcase our commitment to excellence in construction
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl p-8 shadow-lg text-center group hover:shadow-xl transition-shadow">
+          <div class="bg-sunflower-yellow rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8 text-rich-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">Perfect Safety Record</h3>
+          <p class="text-gray-600">Zero incidents in over 1 million work hours, maintaining the highest safety standards in the industry.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-lg text-center group hover:shadow-xl transition-shadow">
+          <div class="bg-burgundy-primary rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">Award-Winning Quality</h3>
+          <p class="text-gray-600">Multiple construction excellence awards recognizing our superior craftsmanship and project delivery.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-lg text-center group hover:shadow-xl transition-shadow">
+          <div class="bg-prussian-blue rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-3">On-Time Delivery</h3>
+          <p class="text-gray-600">98% on-schedule completion rate, ensuring your project milestones are met without compromise.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-burgundy-primary to-prussian-blue">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold text-white mb-6">Ready to Build Something Amazing?</h2>
+      <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+        Join the many satisfied clients who trust JGR Construction with their most important projects. 
+        Let's discuss how we can bring your vision to life.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact">
+          <button class="bg-sunflower-yellow text-rich-black hover:bg-yellow-500 px-8 py-4 text-lg font-semibold rounded-lg transition-colors inline-flex items-center">
+            Start Your Project
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </button>
+        </a>
+        <a href="/services">
+          <button class="border-2 border-white text-white hover:bg-white hover:text-prussian-blue px-8 py-4 text-lg font-semibold rounded-lg transition-colors">
+            Explore Services
+          </button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
