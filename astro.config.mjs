@@ -8,8 +8,8 @@ export default defineConfig({
   build: {
     format: 'directory'
   },
-  site: 'https://your-username.github.io',
-  base: '/jgr-construction',
+  site: 'https://heathlezad.github.io',
+  base: '/JrgWebsite',
   vite: {
     resolve: {
       alias: {
