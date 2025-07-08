@@ -31,7 +31,9 @@ jobs:
         run: npm ci
         
       - name: Build
-        run: npx vite build --outDir dist
+        run: |
+          cd client
+          npx vite build --outDir ../dist
         
       - name: Setup Pages
         uses: actions/configure-pages@v4

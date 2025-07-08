@@ -1,4 +1,5 @@
 import { QueryClient, QueryFunction } from "@tanstack/react-query";
+import { isStaticMode, getFeaturedProjects, getProjects, getServices } from "./static-data";
 
 async function throwIfResNotOk(res: Response) {
   if (!res.ok) {
@@ -29,7 +30,26 @@ export const getQueryFn: <T>(options: {
 }) => QueryFunction<T> =
   ({ on401: unauthorizedBehavior }) =>
   async ({ queryKey }) => {
-    const res = await fetch(queryKey[0] as string, {
+    const url = queryKey[0] as string;
+    
+    // Use static data for GitHub Pages deployment
+    if (isStaticMode()) {
+      // Simulate async behavior with setTimeout
+      await new Promise(resolve => setTimeout(resolve, 100));
+      
+      switch (url) {
+        case '/api/projects/featured':
+          return getFeaturedProjects() as T;
+        case '/api/projects':
+          return getProjects() as T;
+        case '/api/services':
+          return getServices() as T;
+        default:
+          throw new Error(`Static data not available for ${url}`);
+      }
+    }
+
+    const res = await fetch(url, {
       credentials: "include",
     });
 

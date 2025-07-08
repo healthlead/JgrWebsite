@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { insertContactInquirySchema, type InsertContactInquiry } from "@shared/schema";
 import { apiRequest } from "@/lib/queryClient";
+import { isStaticMode } from "@/lib/static-data";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -29,20 +30,31 @@ export default function ContactForm() {
 
   const contactMutation = useMutation({
     mutationFn: async (data: InsertContactInquiry) => {
+      if (isStaticMode()) {
+        // For static deployment, simulate successful submission
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        return { success: true };
+      }
       return apiRequest("POST", "/api/contact", data);
     },
     onSuccess: () => {
       toast({
         title: "Message Sent!",
-        description: "Thank you for your inquiry. We will contact you soon!",
+        description: isStaticMode() 
+          ? "Thank you for your inquiry. Please contact us directly at (305) 262-7306 or info@jgrconstruction.com"
+          : "Thank you for your inquiry. We will contact you soon!",
       });
       form.reset();
-      queryClient.invalidateQueries({ queryKey: ["/api/contact"] });
+      if (!isStaticMode()) {
+        queryClient.invalidateQueries({ queryKey: ["/api/contact"] });
+      }
     },
     onError: () => {
       toast({
         title: "Error",
-        description: "Failed to send message. Please try again.",
+        description: isStaticMode()
+          ? "Please contact us directly at (305) 262-7306 or info@jgrconstruction.com"
+          : "Failed to send message. Please try again.",
         variant: "destructive",
       });
     },
