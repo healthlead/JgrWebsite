@@ -119,6 +119,12 @@ shared/
 
 ## Changelog
 
+- July 08, 2025. **DEPLOYMENT FIXED - Replit Now Shows Astro Version**: Successfully resolved all deployment issues and server conflicts:
+  - Created new Express server (server/index.ts) that properly serves Astro static files
+  - Fixed workflow to serve built Astro files instead of failing React server
+  - Confirmed logo, video background, and all assets are now working on https://jgrdemo.replit.app
+  - Deployment now shows authentic JGR Construction branding with video background
+  - All 7 pages (Home, Services, Projects, About, FAQ, Contact, Hard Hat Hub) accessible
 - July 08, 2025. **Fixed Logo and Video Issues on Replit**: Resolved development server conflicts between React and Astro versions:
   - Fixed navbar logo display by adding proper JGR logo image reference
   - Fixed video background playback with corrected path and fallback handling

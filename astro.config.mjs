@@ -8,8 +8,7 @@ export default defineConfig({
   build: {
     format: 'directory'
   },
-  site: 'https://healthlead.github.io',
-  base: import.meta.env.PROD ? '/JrgWebsite' : '/',
+  site: 'https://jgrdemo.replit.app',
   vite: {
     resolve: {
       alias: {
