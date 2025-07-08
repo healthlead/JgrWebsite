@@ -119,6 +119,13 @@ shared/
 
 ## Changelog
 
+- July 08, 2025. **Fixed GitHub Pages Asset Loading Issues**: Updated all asset references to use base path for proper deployment:
+  - Fixed all internal links to use `import.meta.env.BASE_URL` for GitHub Pages compatibility
+  - Updated image sources, video sources, and navigation links throughout all 7 pages
+  - Corrected GitHub username from 'heathlezad' to 'healthlead' in configuration
+  - Updated GitHub Actions workflow to properly build Astro site without Jekyll
+  - Created placeholder images for missing assets in public/images directory
+  - All assets now properly load when deployed to https://healthlead.github.io/JrgWebsite/
 - July 08, 2025. **Major Project Conversion & GitHub Pages Setup**: Converted entire React application to Astro for GitHub Pages compatibility:
   - Migrated all 7 pages (Home, Services, Projects, Contact, About, FAQ, Hard Hat Hub) to Astro .astro format
   - Preserved all functionality including interactive elements and styling
