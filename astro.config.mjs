@@ -8,7 +8,7 @@ export default defineConfig({
   build: {
     format: 'directory'
   },
-  site: 'https://heathlezad.github.io',
+  site: 'https://healthlead.github.io',
   base: '/JrgWebsite',
   vite: {
     resolve: {

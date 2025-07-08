@@ -131,7 +131,7 @@ shared/
   - Original React version preserved for reference and potential future use
   - **GitHub Pages Deployment Ready**: Added GitHub Actions workflow for automatic deployment
   - Created .nojekyll file for proper GitHub Pages compatibility
-  - Configured astro.config.mjs with correct site URL (heathlezad.github.io/JrgWebsite)
+  - Configured astro.config.mjs with correct site URL (healthlead.github.io/JrgWebsite)
   - Successfully tested Astro build process - generates 7 static pages
   - Added comprehensive README.md with deployment instructions
 - July 07, 2025. Fixed navigation and Instagram feed layout:
