@@ -119,6 +119,12 @@ shared/
 
 ## Changelog
 
+- July 18, 2025. **Fixed Missing Logo and Video Assets**: Resolved the final deployment issues:
+  - Fixed navbar to use actual JGR logo image instead of text
+  - Ensured hero section video background loads correctly
+  - All assets now properly copy from public/ to dist/ during build
+  - Updated deployment checklist with complete asset verification
+  - Site now matches exactly between Replit preview and GitHub Pages deployment
 - July 08, 2025. **Fixed GitHub Pages Asset Loading Issues**: Updated all asset references to use base path for proper deployment:
   - Fixed all internal links to use `import.meta.env.BASE_URL` for GitHub Pages compatibility
   - Updated image sources, video sources, and navigation links throughout all 7 pages
