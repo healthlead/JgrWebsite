@@ -1,0 +1,264 @@
+---
+import type { Project } from '../data/projects.ts';
+
+export interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props;
+
+// Filter projects that have coordinates
+const mappableProjects = projects.filter(
+  (project) => project.latitude && project.longitude
+);
+---
+
+<div class="bg-white rounded-2xl p-8 shadow-lg">
+  <h3 class="text-2xl font-bold text-gray-900 mb-6">Project Locations</h3>
+  
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <!-- Map -->
+    <div class="lg:col-span-2">
+      <div class="relative rounded-xl overflow-hidden border-2 border-gray-200 h-[500px]">
+        <!-- Leaflet Map Container -->
+        <div id="map" class="w-full h-full"></div>
+        
+        <!-- Legend -->
+        <div class="absolute bottom-4 left-4 bg-white rounded-lg p-3 shadow-lg z-[1000]">
+          <h4 class="text-sm font-semibold text-gray-900 mb-2">Legend</h4>
+          <div class="space-y-2">
+            <div class="flex items-center space-x-2">
+              <div class="w-4 h-4 bg-green-500 rounded-full"></div>
+              <span class="text-xs text-gray-600">Completed</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <div class="w-4 h-4 bg-amber-500 rounded-full"></div>
+              <span class="text-xs text-gray-600">In Progress/Planning</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Project Details -->
+    <div class="space-y-4">
+      <!-- Selected project details (initially hidden) -->
+      <div id="selected-project" class="hidden bg-white border rounded-lg p-6 shadow-sm">
+        <img 
+          id="project-image"
+          src="" 
+          alt=""
+          class="w-full h-32 object-cover rounded-lg mb-4"
+        />
+        <h4 id="project-name" class="font-bold text-gray-900 mb-2"></h4>
+        <p id="project-description" class="text-gray-600 text-sm mb-3"></p>
+        
+        <div class="space-y-2">
+          <div class="flex items-center text-sm text-gray-500">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+            <span id="project-location"></span>
+          </div>
+          
+          <div id="project-badges" class="flex flex-wrap gap-2">
+            <!-- Badges will be populated by JavaScript -->
+          </div>
+          
+          <div id="project-completion" class="text-sm text-gray-500 hidden">
+            <!-- Completion date will be populated if available -->
+          </div>
+          
+          <div id="project-size" class="text-sm text-gray-500 hidden">
+            <!-- Size will be populated if available -->
+          </div>
+        </div>
+      </div>
+      
+      <!-- Default message -->
+      <div id="default-message" class="bg-white border rounded-lg p-6 shadow-sm text-center">
+        <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+        </svg>
+        <p class="text-gray-600">Click on a project marker to view details</p>
+      </div>
+      
+      <!-- Project List -->
+      <div class="space-y-2">
+        <h4 class="font-semibold text-gray-900">All Projects</h4>
+        {mappableProjects.map((project) => (
+          <button
+            class="project-list-item w-full text-left p-3 rounded-lg transition-colors bg-gray-50 hover:bg-gray-100"
+            data-project-id={project.id}
+          >
+            <div class="font-medium text-sm">{project.name}</div>
+            <div class="text-xs text-gray-600">{project.location}</div>
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Leaflet CSS -->
+<link 
+  rel="stylesheet" 
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  crossorigin=""
+/>
+
+<script 
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+  crossorigin=""
+></script>
+
+<script define:vars={{ mappableProjects }}>
+  // Project data for JavaScript
+  const projectsData = mappableProjects;
+  let map;
+  let markers = [];
+  
+  // Add click handlers for map markers and project list items
+  document.addEventListener('DOMContentLoaded', function() {
+    const selectedProjectDiv = document.getElementById('selected-project');
+    const defaultMessage = document.getElementById('default-message');
+    
+    // Initialize Leaflet map
+    map = L.map('map').setView([25.7617, -80.1918], 11); // Miami center
+    
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    
+    // Custom marker icons
+    const completedIcon = L.divIcon({
+      className: 'custom-marker completed-marker',
+      html: '<div style="background-color: #059669; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>',
+      iconSize: [20, 20],
+      iconAnchor: [10, 10]
+    });
+    
+    const inProgressIcon = L.divIcon({
+      className: 'custom-marker progress-marker',
+      html: '<div style="background-color: #d97706; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3);"></div>',
+      iconSize: [20, 20],
+      iconAnchor: [10, 10]
+    });
+    
+    // Add project markers to map
+    projectsData.forEach(project => {
+      if (project.latitude && project.longitude) {
+        const lat = parseFloat(project.latitude);
+        const lng = parseFloat(project.longitude);
+        const isCompleted = project.status === 'Completed';
+        
+        const marker = L.marker([lat, lng], {
+          icon: isCompleted ? completedIcon : inProgressIcon
+        }).addTo(map);
+        
+        // Add popup
+        marker.bindPopup(`
+          <div style="min-width: 200px;">
+            <h4 style="font-weight: bold; margin-bottom: 8px;">${project.name}</h4>
+            <p style="margin-bottom: 8px; font-size: 14px; color: #666;">${project.description}</p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="background-color: ${isCompleted ? '#059669' : '#d97706'}; color: white; padding: 4px 8px; border-radius: 12px; font-size: 12px;">
+                ${project.status}
+              </span>
+              <span style="font-size: 12px; color: #666;">${project.type}</span>
+            </div>
+          </div>
+        `);
+        
+        // Add click handler
+        marker.on('click', function() {
+          showProject(project.id);
+        });
+        
+        markers.push({ marker, project });
+      }
+    });
+    
+    function showProject(projectId) {
+      const project = projectsData.find(p => p.id === projectId);
+      if (!project) return;
+      
+      // Hide default message, show project details
+      defaultMessage.classList.add('hidden');
+      selectedProjectDiv.classList.remove('hidden');
+      
+      // Populate project details
+      document.getElementById('project-image').src = project.imageUrl || "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300";
+      document.getElementById('project-image').alt = project.name;
+      document.getElementById('project-name').textContent = project.name;
+      document.getElementById('project-description').textContent = project.description;
+      document.getElementById('project-location').textContent = project.address || project.location;
+      
+      // Create badges
+      const badgesDiv = document.getElementById('project-badges');
+      badgesDiv.innerHTML = '';
+      
+      const statusBadge = document.createElement('span');
+      statusBadge.className = `px-3 py-1 rounded-full text-sm font-medium ${
+        project.status === 'Completed' ? 'bg-green-500 text-white' : 'bg-orange-500 text-white'
+      }`;
+      statusBadge.textContent = project.status;
+      badgesDiv.appendChild(statusBadge);
+      
+      const typeBadge = document.createElement('span');
+      typeBadge.className = 'px-3 py-1 rounded-full text-sm border border-gray-300 text-gray-600';
+      typeBadge.textContent = project.type;
+      badgesDiv.appendChild(typeBadge);
+      
+      // Show completion date if available
+      const completionDiv = document.getElementById('project-completion');
+      if (project.completionDate) {
+        completionDiv.textContent = `Completed: ${project.completionDate}`;
+        completionDiv.classList.remove('hidden');
+      } else {
+        completionDiv.classList.add('hidden');
+      }
+      
+      // Show size if available
+      const sizeDiv = document.getElementById('project-size');
+      if (project.size) {
+        sizeDiv.textContent = `Size: ${project.size}`;
+        sizeDiv.classList.remove('hidden');
+      } else {
+        sizeDiv.classList.add('hidden');
+      }
+      
+      // Update active state in project list
+      document.querySelectorAll('.project-list-item').forEach(item => {
+        item.classList.remove('bg-primary-burgundy', 'text-white');
+        item.classList.add('bg-gray-50');
+      });
+      
+      const activeItem = document.querySelector(`[data-project-id="${projectId}"]`);
+      if (activeItem) {
+        activeItem.classList.remove('bg-gray-50');
+        activeItem.classList.add('bg-primary-burgundy', 'text-white');
+      }
+      
+      // Center map on selected project
+      if (project.latitude && project.longitude) {
+        const lat = parseFloat(project.latitude);
+        const lng = parseFloat(project.longitude);
+        map.setView([lat, lng], 13);
+      }
+    }
+    
+    // Add click handlers for project list items
+    document.querySelectorAll('.project-list-item').forEach(item => {
+      item.addEventListener('click', function() {
+        const projectId = parseInt(this.getAttribute('data-project-id'));
+        showProject(projectId);
+      });
+    });
+  });
+</script>

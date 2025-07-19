@@ -1,0 +1,60 @@
+---
+export interface Props {
+  project: {
+    id: number;
+    name: string;
+    description: string;
+    location: string;
+    type: string;
+    size: string | null;
+    status: string;
+    imageUrl: string | null;
+    featured?: boolean;
+    completionDate?: string | null;
+  }
+}
+
+const { project } = Astro.props;
+---
+
+<div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow group">
+  <div class="relative overflow-hidden">
+    <img 
+      src={project.imageUrl || "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400"} 
+      alt={project.name}
+      class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+    />
+    <div class="absolute top-4 right-4">
+      <span class={`px-3 py-1 rounded-full text-sm font-medium ${
+        project.status === "Completed" 
+          ? "bg-construction-green text-white" 
+          : project.status === "In Progress"
+          ? "bg-sunset-orange text-white"
+          : "bg-gray-200 text-gray-700"
+      }`}>
+        {project.status}
+      </span>
+    </div>
+  </div>
+  
+  <div class="p-6">
+    <h3 class="text-xl font-semibold text-gray-900 mb-2">{project.name}</h3>
+    <p class="text-gray-600 mb-4 line-clamp-2">{project.description}</p>
+    
+    <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+      <span>{project.location}</span>
+      {project.size && <span>{project.size}</span>}
+    </div>
+    
+    <div class="flex flex-wrap gap-2">
+      <span class="px-3 py-1 rounded-full text-sm border border-ocean-blue text-ocean-blue">
+        {project.type}
+      </span>
+      {project.completionDate && (
+        <span class="px-3 py-1 rounded-full text-sm border border-gray-300 text-gray-600">
+          Completed {project.completionDate}
+        </span>
+      )}
+    </div>
+  </div>
+</div>
