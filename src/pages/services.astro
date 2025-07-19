@@ -2,75 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
-
-const services = [
-  {
-    icon: "🏗️",
-    title: "Conventional Concrete Shells",
-    description: "Complete structural concrete solutions for high-rise residential and commercial buildings, including slabs, beams, and columns.",
-    features: [
-      "High-rise residential towers",
-      "Commercial building structures", 
-      "Parking garage construction",
-      "Foundation and footings"
-    ]
-  },
-  {
-    icon: "🔧",
-    title: "Post-Tension Concrete",
-    description: "Advanced post-tensioning systems for longer spans and reduced concrete thickness, maximizing design flexibility.",
-    features: [
-      "Longer span capabilities",
-      "Reduced concrete thickness",
-      "Enhanced structural performance",
-      "Cost-effective solutions"
-    ]
-  },
-  {
-    icon: "🏭",
-    title: "Pre-cast Concrete",
-    description: "Quality-controlled precast elements manufactured off-site for faster installation and superior finish quality.",
-    features: [
-      "Quality-controlled manufacturing",
-      "Faster installation times",
-      "Superior finish quality",
-      "Weather-independent production"
-    ]
-  },
-  {
-    icon: "🧱",
-    title: "Masonry Construction",
-    description: "Expert masonry work including block, brick, and stone installation for both structural and architectural applications.",
-    features: [
-      "Structural masonry walls",
-      "Architectural stonework",
-      "Brick and block installation",
-      "Decorative masonry features"
-    ]
-  },
-  {
-    icon: "🎨",
-    title: "Architectural Concrete",
-    description: "Decorative and exposed concrete work with various finishes, textures, and colors to enhance building aesthetics.",
-    features: [
-      "Exposed concrete finishes",
-      "Decorative concrete work",
-      "Custom textures and colors",
-      "Architectural elements"
-    ]
-  },
-  {
-    icon: "⚡",
-    title: "Emergency Repairs",
-    description: "24/7 emergency concrete and masonry repair services to address structural issues and ensure building safety.",
-    features: [
-      "24/7 emergency response",
-      "Structural damage assessment",
-      "Immediate safety measures",
-      "Permanent repair solutions"
-    ]
-  }
-];
+import { services } from '../data/services';
 
 const processSteps = [
   {
@@ -100,7 +32,7 @@ const processSteps = [
   <Navbar />
   
   <!-- Hero Section -->
-  <section class="pt-24 pb-16 bg-gradient-to-r from-burgundy-primary to-prussian-blue">
+  <section class="pt-40 pb-16 bg-gradient-to-r from-burgundy-primary to-prussian-blue">
     <div class="container mx-auto px-6 text-center">
       <h1 class="text-5xl font-bold text-white mb-6">Our Services</h1>
       <p class="text-xl text-blue-100 max-w-3xl mx-auto">
@@ -117,21 +49,23 @@ const processSteps = [
           <div class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow group">
             <div class="text-4xl mb-6">{service.icon}</div>
             <h3 class="text-xl font-semibold text-gray-900 mb-4 group-hover:text-burgundy-primary transition-colors">
-              {service.title}
+              {service.name}
             </h3>
             <p class="text-gray-600 mb-6 leading-relaxed">
               {service.description}
             </p>
-            <ul class="space-y-2">
-              {service.features.map((feature) => (
-                <li class="flex items-center text-sm text-gray-600">
-                  <svg class="w-4 h-4 text-sunflower-yellow mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                  </svg>
-                  {feature}
-                </li>
-              ))}
-            </ul>
+            {service.details && (
+              <ul class="space-y-2">
+                {service.details.map((detail) => (
+                  <li class="flex items-center text-sm text-gray-600">
+                    <svg class="w-4 h-4 text-sunflower-yellow mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    {detail}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         ))}
       </div>
@@ -189,7 +123,7 @@ const processSteps = [
               <div class="text-gray-600 text-sm">Years Experience</div>
             </div>
           </div>
-          <a href={`${import.meta.env.BASE_URL}/contact`}>
+          <a href="/contact">
             <button class="bg-burgundy-primary text-white hover:bg-opacity-90 px-8 py-4 text-lg font-semibold rounded-lg transition-colors">
               Start Your Project
             </button>
@@ -197,7 +131,7 @@ const processSteps = [
         </div>
         <div class="relative">
           <img 
-            src={`${import.meta.env.BASE_URL}/images/construction-capabilities.jpg`} 
+            src="/images/construction-capabilities.jpg" 
             alt="JGR Construction capabilities" 
             class="rounded-2xl shadow-lg w-full"
           />
@@ -219,7 +153,7 @@ const processSteps = [
             Get Started
           </button>
         </a>
-        <a href={`${import.meta.env.BASE_URL}/projects`}>
+        <a href="/projects">
           <button class="border-2 border-white text-white hover:bg-white hover:text-prussian-blue px-8 py-4 text-lg font-semibold rounded-lg transition-colors">
             View Our Work
           </button>

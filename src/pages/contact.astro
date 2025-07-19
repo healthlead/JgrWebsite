@@ -2,13 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import { companyInfo } from '../data/company';
 ---
 
 <Layout title="Contact - JGR Construction" description="Contact JGR Construction for your structural concrete and masonry needs. Located in Medley, FL, serving Miami-Dade and beyond.">
   <Navbar />
   
   <!-- Hero Section -->
-  <section class="pt-24 pb-16 bg-gradient-to-r from-burgundy-primary to-prussian-blue">
+  <section class="pt-40 pb-16 bg-gradient-to-r from-burgundy-primary to-prussian-blue">
     <div class="container mx-auto px-6 text-center">
       <h1 class="text-5xl font-bold text-white mb-6">Contact Us</h1>
       <p class="text-xl text-blue-100 max-w-3xl mx-auto">
@@ -127,8 +128,7 @@ import Footer from '../components/Footer.astro';
                 <div>
                   <h4 class="font-semibold text-gray-900 mb-1">Headquarters</h4>
                   <p class="text-gray-600">
-                    8200 NW 52nd Terrace<br>
-                    Medley, FL 33166
+                    {companyInfo.location}
                   </p>
                 </div>
               </div>
@@ -141,8 +141,8 @@ import Footer from '../components/Footer.astro';
                 </div>
                 <div>
                   <h4 class="font-semibold text-gray-900 mb-1">Phone</h4>
-                  <a href="tel:+13052627306" class="text-burgundy-primary hover:text-prussian-blue font-semibold">
-                    (305) 262-7306
+                  <a href={`tel:${companyInfo.phone}`} class="text-burgundy-primary hover:text-prussian-blue font-semibold">
+                    {companyInfo.phone}
                   </a>
                   <p class="text-sm text-gray-500">24/7 Emergency Service</p>
                 </div>
@@ -156,8 +156,8 @@ import Footer from '../components/Footer.astro';
                 </div>
                 <div>
                   <h4 class="font-semibold text-gray-900 mb-1">Email</h4>
-                  <a href="mailto:info@jgrconstruction.com" class="text-burgundy-primary hover:text-prussian-blue">
-                    info@jgrconstruction.com
+                  <a href={`mailto:${companyInfo.email}`} class="text-burgundy-primary hover:text-prussian-blue">
+                    {companyInfo.email}
                   </a>
                 </div>
               </div>
@@ -195,6 +195,19 @@ import Footer from '../components/Footer.astro';
             </div>
           </div>
 
+          <!-- Service Areas -->
+          <div class="bg-white rounded-2xl p-8 shadow-lg">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">Service Areas</h3>
+            <div class="grid grid-cols-2 gap-4">
+              {companyInfo.serviceAreas.map((area) => (
+                <div class="flex items-center">
+                  <div class="w-2 h-2 bg-burgundy-primary rounded-full mr-3"></div>
+                  <span class="text-gray-700">{area}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <!-- Map -->
           <div class="bg-white rounded-2xl p-8 shadow-lg">
             <h3 class="text-2xl font-bold text-gray-900 mb-6">Our Location</h3>
@@ -208,8 +221,8 @@ import Footer from '../components/Footer.astro';
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                     </svg>
                   </div>
-                  <p class="text-gray-700 font-medium">JGR Construction Headquarters</p>
-                  <p class="text-gray-600 text-sm">Medley, FL</p>
+                  <p class="text-gray-700 font-medium">{companyInfo.name}</p>
+                  <p class="text-gray-600 text-sm">{companyInfo.location}</p>
                 </div>
               </div>
             </div>
@@ -227,7 +240,8 @@ import Footer from '../components/Footer.astro';
   document.getElementById('contact-form')?.addEventListener('submit', function(e) {
     e.preventDefault();
     
-    const formData = new FormData(this);
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
     const data = Object.fromEntries(formData);
     
     // Here you would typically send the data to your backend
@@ -237,6 +251,6 @@ import Footer from '../components/Footer.astro';
     alert('Thank you for your message! We will get back to you soon.');
     
     // Reset form
-    this.reset();
+    form.reset();
   });
 </script>

@@ -2,7 +2,7 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./client/index.html", "./client/src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
       borderRadius: {
@@ -62,7 +62,7 @@ export default {
           ring: "var(--sidebar-ring)",
         },
         // JGR Construction Brand Colors
-        "primary-burgundy": "var(--primary-burgundy)",
+        "burgundy-primary": "var(--primary-burgundy)",
         "silver-gray": "var(--silver-gray)",
         "rich-black": "var(--rich-black)",
         "sunflower-yellow": "var(--sunflower-yellow)",

@@ -2,117 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
-
-const blogPosts = [
-  {
-    id: 1,
-    title: "The Future of Post-Tension Concrete in High-Rise Construction",
-    excerpt: "Exploring how advanced post-tensioning techniques are revolutionizing structural design and enabling longer spans with reduced material usage.",
-    category: "Technical Insights",
-    date: "2025-01-15",
-    readTime: "8 min read",
-    author: "John Rodriguez",
-    image: "/images/blog-post-tension.jpg"
-  },
-  {
-    id: 2,
-    title: "Safety Innovations That Are Changing Construction Sites",
-    excerpt: "A deep dive into the latest safety technologies and protocols that are making construction sites safer than ever before.",
-    category: "Safety",
-    date: "2025-01-10",
-    readTime: "6 min read",
-    author: "Carlos Martinez",
-    image: "/images/blog-safety.jpg"
-  },
-  {
-    id: 3,
-    title: "Sustainable Concrete: Building for Tomorrow",
-    excerpt: "How eco-friendly concrete solutions and sustainable construction practices are shaping the future of the industry.",
-    category: "Sustainability",
-    date: "2025-01-05",
-    readTime: "7 min read",
-    author: "Maria Garcia",
-    image: "/images/blog-sustainability.jpg"
-  },
-  {
-    id: 4,
-    title: "Miami's Architectural Concrete Renaissance",
-    excerpt: "Examining the growing trend of decorative and architectural concrete in Miami's most prestigious developments.",
-    category: "Industry Trends",
-    date: "2024-12-28",
-    readTime: "5 min read",
-    author: "John Rodriguez",
-    image: "/images/blog-architectural.jpg"
-  },
-  {
-    id: 5,
-    title: "Quality Control in Large-Scale Construction Projects",
-    excerpt: "Best practices for maintaining consistent quality standards across complex, multi-phase construction projects.",
-    category: "Project Management",
-    date: "2024-12-20",
-    readTime: "9 min read",
-    author: "Maria Garcia",
-    image: "/images/blog-quality.jpg"
-  },
-  {
-    id: 6,
-    title: "Understanding Seismic Design in South Florida",
-    excerpt: "While not in a high seismic zone, South Florida construction still benefits from advanced structural engineering principles.",
-    category: "Technical Insights",
-    date: "2024-12-15",
-    readTime: "6 min read",
-    author: "John Rodriguez",
-    image: "/images/blog-seismic.jpg"
-  }
-];
-
-const instagramPosts = [
-  {
-    id: 1,
-    image: "/images/instagram-1.jpg",
-    description: "Precision concrete work at Wynwood Station - every detail matters in structural excellence.",
-    hashtags: "#JGRConstruction #WynwoodStation #ConcreteWork #MiamiConstruction #QualityCraftsmanship"
-  },
-  {
-    id: 2,
-    image: "/images/instagram-2.jpg", 
-    description: "Our skilled team executing complex post-tension concrete installation with precision and safety.",
-    hashtags: "#PostTension #ConcreteConstruction #TeamWork #MiamiBuilders #StructuralEngineering"
-  },
-  {
-    id: 3,
-    image: "/images/instagram-3.jpg",
-    description: "Beautiful architectural concrete finish taking shape at our latest Brickell project.",
-    hashtags: "#ArchitecturalConcrete #BrickellConstruction #ConcreteFinishing #MiamiDevelopment #CraftedExcellence"
-  },
-  {
-    id: 4,
-    image: "/images/instagram-4.jpg",
-    description: "Safety first - our team conducting morning safety briefing before starting work.",
-    hashtags: "#SafetyFirst #ConstructionSafety #TeamMeeting #OSHACompliant #MiamiConstruction"
-  },
-  {
-    id: 5,
-    image: "/images/instagram-5.jpg",
-    description: "Massive concrete pour in progress - coordination and timing are everything in large-scale projects.",
-    hashtags: "#ConcretePour #LargeScale #TeamCoordination #ConstructionProgress #MiamiBuilding"
-  },
-  {
-    id: 6,
-    image: "/images/instagram-6.jpg",
-    description: "Quality control inspection ensuring every element meets our exacting standards.",
-    hashtags: "#QualityControl #ConstructionStandards #PrecisionWork #BuildingExcellence #JGRQuality"
-  }
-];
-
-const categories = ["All", "Technical Insights", "Safety", "Sustainability", "Industry Trends", "Project Management"];
+import { blogPosts, instagramPosts, blogCategories, getFeaturedPost } from '../data/blog';
 ---
 
 <Layout title="Hard Hat Hub - JGR Construction Blog" description="Stay updated with industry insights, technical articles, and construction expertise from JGR Construction's Hard Hat Hub blog.">
   <Navbar />
   
   <!-- Hero Section -->
-  <section class="pt-24 pb-16 bg-gradient-to-r from-burgundy-primary to-prussian-blue">
+  <section class="pt-40 pb-16 bg-gradient-to-r from-burgundy-primary to-prussian-blue">
     <div class="container mx-auto px-6 text-center">
       <h1 class="text-5xl font-bold text-white mb-6">Hard Hat Hub</h1>
       <p class="text-xl text-blue-100 max-w-3xl mx-auto">
@@ -154,7 +51,7 @@ const categories = ["All", "Technical Insights", "Safety", "Sustainability", "In
     <div class="container mx-auto px-6">
       <!-- Category Filter -->
       <div class="flex flex-wrap justify-center gap-4 mb-12">
-        {categories.map((category) => (
+        {blogCategories.map((category) => (
           <button class="category-filter px-4 py-2 rounded-full border border-gray-300 hover:border-burgundy-primary hover:text-burgundy-primary transition-colors">
             {category}
           </button>
@@ -167,8 +64,8 @@ const categories = ["All", "Technical Insights", "Safety", "Sustainability", "In
           <div class="md:flex">
             <div class="md:w-1/2">
               <img 
-                src={blogPosts[0].image} 
-                alt={blogPosts[0].title}
+                src={getFeaturedPost().image} 
+                alt={getFeaturedPost().title}
                 class="w-full h-64 md:h-full object-cover"
               />
             </div>
@@ -177,18 +74,18 @@ const categories = ["All", "Technical Insights", "Safety", "Sustainability", "In
                 <span class="bg-burgundy-primary text-white px-3 py-1 rounded-full text-sm font-semibold mr-4">
                   Featured
                 </span>
-                <span class="text-gray-500 text-sm">{blogPosts[0].category}</span>
+                <span class="text-gray-500 text-sm">{getFeaturedPost().category}</span>
               </div>
               <h2 class="text-2xl font-bold text-gray-900 mb-4 hover:text-burgundy-primary transition-colors">
-                {blogPosts[0].title}
+                {getFeaturedPost().title}
               </h2>
               <p class="text-gray-600 mb-6 leading-relaxed">
-                {blogPosts[0].excerpt}
+                {getFeaturedPost().excerpt}
               </p>
               <div class="flex items-center text-sm text-gray-500">
-                <span class="mr-4">By {blogPosts[0].author}</span>
-                <span class="mr-4">{blogPosts[0].date}</span>
-                <span>{blogPosts[0].readTime}</span>
+                <span class="mr-4">By {getFeaturedPost().author}</span>
+                <span class="mr-4">{getFeaturedPost().date}</span>
+                <span>{getFeaturedPost().readTime}</span>
               </div>
             </div>
           </div>
