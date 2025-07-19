@@ -8,8 +8,8 @@ export default defineConfig({
   build: {
     format: 'directory'
   },
-  site: 'https://healthlead.github.io',
-  base: '/JrgWebsite',
+  // Configured for Cloudflare Pages deployment
+  site: 'https://jgr-construction.pages.dev',
   vite: {
     resolve: {
       alias: {

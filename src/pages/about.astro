@@ -62,7 +62,7 @@ const values = [
   
   <div class="pt-20 min-h-screen bg-gray-50">
     <!-- Hero Section -->
-    <section class="py-20 bg-gradient-to-r from-deep-blue to-ocean-blue text-white">
+    <section class="py-20 bg-gradient-to-r from-primary-burgundy to-prussian-blue text-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
           <h1 class="text-4xl md:text-6xl font-bold mb-6">About JGR Construction</h1>
@@ -95,7 +95,7 @@ const values = [
             <div class="space-y-6">
               {values.map((value, index) => (
                 <div class="flex items-start">
-                  <div class="bg-ocean-blue/10 w-12 h-12 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                  <div class="bg-ocean-blue/10 w-12 h-12 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
                     <Fragment set:html={renderIcon(value.icon, "w-6 h-6 text-ocean-blue")} />
                   </div>
                   <div>
@@ -214,7 +214,7 @@ const values = [
         </p>
         <a 
           href="/contact" 
-          class="bg-sunset-orange text-white px-8 py-4 rounded-lg font-semibold hover:bg-orange-600 transition-colors inline-block"
+          class="bg-sunset-orange text-white px-8 py-4 rounded-xl font-semibold hover:bg-orange-600 transition-colors inline-block"
         >
           Let's Build Together
         </a>

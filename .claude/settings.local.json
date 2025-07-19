@@ -5,7 +5,12 @@
       "WebFetch(domain:github.com)",
       "Bash(npm run dev:*)",
       "Bash(npx astro:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run check:*)",
+      "Bash(rm:*)",
+      "Bash(npm run preview:*)",
+      "Bash(find:*)"
     ],
     "deny": []
   }

@@ -4,213 +4,229 @@ import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Contact - JGR Construction" description="Contact JGR Construction for your structural concrete and masonry needs. Located in Medley, FL, serving Miami-Dade and beyond.">
+<Layout title="Start Your Project - JGR Construction" description="Contact JGR Construction for your structural concrete and masonry needs. Located in Medley, FL, serving Miami-Dade and beyond.">
   <Navbar />
   
-  <!-- Hero Section -->
-  <section class="pt-24 pb-16 bg-gradient-to-r from-burgundy-primary to-prussian-blue">
-    <div class="container mx-auto px-6 text-center">
-      <h1 class="text-5xl font-bold text-white mb-6">Contact Us</h1>
-      <p class="text-xl text-blue-100 max-w-3xl mx-auto">
-        Ready to start your next construction project? Get in touch with our team of experts.
-      </p>
+  <div class="pt-20 min-h-screen bg-gray-50">
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-r from-primary-burgundy to-prussian-blue text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">Start Your Project</h1>
+        <p class="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
+          Ready to discuss your construction needs? Our team is here to provide expert consultation 
+          and competitive pricing for your next project.
+        </p>
+      </div>
     </div>
   </section>
 
-  <section class="py-20 bg-gray-50">
-    <div class="container mx-auto px-6">
-      <div class="grid lg:grid-cols-2 gap-12">
+  <!-- Contact Form & Information Section -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <!-- Contact Form -->
-        <div class="bg-white rounded-2xl p-8 shadow-lg">
-          <h2 class="text-3xl font-bold text-gray-900 mb-8">Get Started Today</h2>
-          
-          <form id="contact-form" class="space-y-6">
-            <div class="grid md:grid-cols-2 gap-6">
-              <div>
-                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
-                <input 
-                  type="text" 
-                  id="name" 
-                  name="name" 
-                  required
-                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-burgundy-primary focus:border-burgundy-primary transition-colors"
-                  placeholder="John Smith"
-                />
-              </div>
-              <div>
-                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
-                <input 
-                  type="email" 
-                  id="email" 
-                  name="email" 
-                  required
-                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-burgundy-primary focus:border-burgundy-primary transition-colors"
-                  placeholder="john@company.com"
-                />
-              </div>
-            </div>
+        <div>
+          <div class="bg-white rounded-xl p-8 shadow-lg">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">Get a Quote</h3>
             
-            <div class="grid md:grid-cols-2 gap-6">
-              <div>
-                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-                <input 
-                  type="tel" 
-                  id="phone" 
-                  name="phone"
-                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-burgundy-primary focus:border-burgundy-primary transition-colors"
-                  placeholder="(555) 123-4567"
-                />
+            <form id="contact-form" class="space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                  <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    required
+                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-ocean-blue focus:border-ocean-blue transition-colors"
+                    placeholder="John Smith"
+                  />
+                </div>
+                <div>
+                  <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    required
+                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-ocean-blue focus:border-ocean-blue transition-colors"
+                    placeholder="john@company.com"
+                  />
+                </div>
               </div>
-              <div>
-                <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company Name</label>
-                <input 
-                  type="text" 
-                  id="company" 
-                  name="company"
-                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-burgundy-primary focus:border-burgundy-primary transition-colors"
-                  placeholder="Your Company Name"
-                />
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                  <input 
+                    type="tel" 
+                    id="phone" 
+                    name="phone"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-ocean-blue focus:border-ocean-blue transition-colors"
+                    placeholder="(555) 123-4567"
+                  />
+                </div>
+                <div>
+                  <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company</label>
+                  <input 
+                    type="text" 
+                    id="company" 
+                    name="company"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-ocean-blue focus:border-ocean-blue transition-colors"
+                    placeholder="Your Company Name"
+                  />
+                </div>
               </div>
-            </div>
-
-            <div>
-              <label for="project-type" class="block text-sm font-medium text-gray-700 mb-2">Project Type</label>
-              <select 
-                id="project-type" 
-                name="project-type"
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-burgundy-primary focus:border-burgundy-primary transition-colors"
+              
+              <div>
+                <label for="project-type" class="block text-sm font-medium text-gray-700 mb-2">Project Type</label>
+                <select 
+                  id="project-type" 
+                  name="project-type"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-ocean-blue focus:border-ocean-blue transition-colors"
+                >
+                  <option value="">Select Project Type</option>
+                  <option value="concrete-shells">Conventional Concrete Shells</option>
+                  <option value="post-tension">Post-Tension Concrete</option>
+                  <option value="precast">Pre-cast Concrete</option>
+                  <option value="masonry">Masonry Construction</option>
+                  <option value="architectural">Architectural Concrete</option>
+                  <option value="preconstruction">Pre-Construction Services</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              
+              <div>
+                <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Project Details *</label>
+                <textarea 
+                  id="message" 
+                  name="message" 
+                  rows="4" 
+                  required
+                  class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-ocean-blue focus:border-ocean-blue transition-colors resize-none"
+                  placeholder="Tell us about your project requirements, timeline, and any specific needs..."
+                ></textarea>
+              </div>
+              
+              <button 
+                type="submit"
+                class="w-full bg-ocean-blue text-white hover:bg-deep-blue py-4 px-6 rounded-xl font-semibold transition-colors"
               >
-                <option value="">Select Project Type</option>
-                <option value="residential">Residential Construction</option>
-                <option value="commercial">Commercial Construction</option>
-                <option value="renovation">Renovation/Repair</option>
-                <option value="consultation">Consultation</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-
-            <div>
-              <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Project Details *</label>
-              <textarea 
-                id="message" 
-                name="message" 
-                rows="6" 
-                required
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-burgundy-primary focus:border-burgundy-primary transition-colors resize-none"
-                placeholder="Tell us about your project requirements, timeline, and any specific needs..."
-              ></textarea>
-            </div>
-
-            <button 
-              type="submit"
-              class="w-full bg-burgundy-primary text-white py-4 px-6 rounded-lg hover:bg-opacity-90 font-semibold transition-colors"
-            >
-              Send Message
-            </button>
-          </form>
+                Send Message
+              </button>
+            </form>
+          </div>
         </div>
-
+        
         <!-- Contact Information & Map -->
         <div class="space-y-8">
-          <!-- Contact Details -->
-          <div class="bg-white rounded-2xl p-8 shadow-lg">
-            <h3 class="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h3>
+          <!-- Headquarters -->
+          <div class="bg-white rounded-xl p-8 shadow-lg">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">Corporate Headquarters</h3>
             
             <div class="space-y-6">
               <div class="flex items-start">
-                <div class="bg-burgundy-primary rounded-lg p-3 mr-4">
-                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                <div class="bg-ocean-blue/10 w-12 h-12 rounded-xl flex items-center justify-center mr-4 mt-1">
+                  <svg class="w-6 h-6 text-ocean-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                   </svg>
                 </div>
                 <div>
-                  <h4 class="font-semibold text-gray-900 mb-1">Headquarters</h4>
+                  <h4 class="font-semibold text-gray-900 mb-1">Main Office</h4>
                   <p class="text-gray-600">
-                    8200 NW 52nd Terrace<br>
-                    Medley, FL 33166
+                    JGR Construction Inc.<br />
+                    8200 NW 52nd Terrace<br />
+                    Medley, FL 33166<br />
+                    United States
                   </p>
                 </div>
               </div>
-
+              
               <div class="flex items-start">
-                <div class="bg-burgundy-primary rounded-lg p-3 mr-4">
-                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-sunset-orange/10 w-12 h-12 rounded-xl flex items-center justify-center mr-4 mt-1">
+                  <svg class="w-6 h-6 text-sunset-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                   </svg>
                 </div>
                 <div>
-                  <h4 class="font-semibold text-gray-900 mb-1">Phone</h4>
-                  <a href="tel:+13052627306" class="text-burgundy-primary hover:text-prussian-blue font-semibold">
-                    (305) 262-7306
-                  </a>
-                  <p class="text-sm text-gray-500">24/7 Emergency Service</p>
+                  <h4 class="font-semibold text-gray-900 mb-1">Phone & Contact</h4>
+                  <p class="text-gray-600">
+                    <a href="tel:+13052627306" class="text-primary-burgundy hover:text-rich-black font-medium">
+                      Main: (305) 262-7306
+                    </a><br />
+                    <a href="tel:+13052627306" class="text-primary-burgundy hover:text-rich-black">
+                      Emergency: (305) 262-7306
+                    </a><br />
+                    <a href="mailto:info@jgrconstruction.com" class="text-primary-burgundy hover:text-rich-black">
+                      Email: info@jgrconstruction.com
+                    </a>
+                  </p>
                 </div>
               </div>
-
+              
               <div class="flex items-start">
-                <div class="bg-burgundy-primary rounded-lg p-3 mr-4">
-                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                  </svg>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-gray-900 mb-1">Email</h4>
-                  <a href="mailto:info@jgrconstruction.com" class="text-burgundy-primary hover:text-prussian-blue">
-                    info@jgrconstruction.com
-                  </a>
-                </div>
-              </div>
-
-              <div class="flex items-start">
-                <div class="bg-burgundy-primary rounded-lg p-3 mr-4">
-                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-deep-blue/10 w-12 h-12 rounded-xl flex items-center justify-center mr-4 mt-1">
+                  <svg class="w-6 h-6 text-deep-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                   </svg>
                 </div>
                 <div>
                   <h4 class="font-semibold text-gray-900 mb-1">Business Hours</h4>
                   <p class="text-gray-600">
-                    Monday - Friday: 7:00 AM - 6:00 PM<br>
-                    Saturday: 8:00 AM - 4:00 PM<br>
+                    Monday - Friday: 7:00 AM - 6:00 PM<br />
+                    Saturday: 8:00 AM - 2:00 PM<br />
                     Sunday: Emergency Only
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex items-start">
-                <div class="bg-burgundy-primary rounded-lg p-3 mr-4">
-                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                  </svg>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-gray-900 mb-1">Licensing</h4>
-                  <p class="text-gray-600">
-                    FL CGC License #1234567<br>
-                    Fully Insured & Bonded
                   </p>
                 </div>
               </div>
             </div>
           </div>
-
-          <!-- Map -->
-          <div class="bg-white rounded-2xl p-8 shadow-lg">
-            <h3 class="text-2xl font-bold text-gray-900 mb-6">Our Location</h3>
-            <div class="h-64 bg-gray-100 rounded-lg relative overflow-hidden">
-              <!-- Static Map Placeholder -->
-              <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-100 to-blue-200">
-                <div class="text-center">
-                  <div class="bg-burgundy-primary text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    </svg>
-                  </div>
-                  <p class="text-gray-700 font-medium">JGR Construction Headquarters</p>
-                  <p class="text-gray-600 text-sm">Medley, FL</p>
-                </div>
+          
+          <!-- Interactive Headquarters Map -->
+          <div class="bg-white rounded-xl p-8 shadow-lg">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Find Our Office</h3>
+            <div id="map" class="h-64 rounded-xl overflow-hidden"></div>
+            <div class="mt-4 flex flex-col sm:flex-row gap-2">
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=25.8479,-80.3267"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center text-primary-burgundy hover:text-rich-black font-medium text-sm"
+              >
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+                Get Directions
+              </a>
+              <span class="text-gray-400 hidden sm:block">|</span>
+              <p class="text-sm text-gray-600">
+                Conveniently located in Medley with easy highway access
+              </p>
+            </div>
+          </div>
+          
+          <!-- Service Areas -->
+          <div class="bg-gradient-to-r from-ocean-blue to-deep-blue rounded-xl p-8 text-white">
+            <h3 class="text-2xl font-bold mb-4">Service Coverage</h3>
+            <p class="text-blue-100 mb-4">Serving South Florida's construction industry</p>
+            <div class="grid grid-cols-2 gap-4 text-blue-100">
+              <div>
+                <h4 class="font-semibold mb-2">Primary Markets</h4>
+                <ul class="text-sm space-y-1">
+                  <li>• Miami-Dade County</li>
+                  <li>• Broward County</li>
+                  <li>• Monroe County</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-semibold mb-2">Extended Service</h4>
+                <ul class="text-sm space-y-1">
+                  <li>• Palm Beach County</li>
+                  <li>• Collier County</li>
+                  <li>• Custom Projects</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -219,10 +235,84 @@ import Footer from '../components/Footer.astro';
     </div>
   </section>
 
+  <!-- Why Choose Us -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Why Choose JGR Construction?</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Experience the difference that expertise, reliability, and dedication make
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="bg-ocean-blue/10 w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-6">
+            <span class="text-2xl font-bold text-ocean-blue">15+</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">Years of Excellence</h3>
+          <p class="text-gray-600">Over a decade of proven expertise in structural construction across South Florida</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-sunset-orange/10 w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-6">
+            <span class="text-2xl font-bold text-sunset-orange">200+</span>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">Skilled Professionals</h3>
+          <p class="text-gray-600">Highly trained workforce with full-time safety management and OSHA certification</p>
+        </div>
+        
+        <div class="text-center">
+          <div class="bg-construction-green/10 w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-construction-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">Safety First</h3>
+          <p class="text-gray-600">Comprehensive safety protocols with zero tolerance policy and continuous training</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+
   <Footer />
 </Layout>
 
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
 <script>
+  // Load Leaflet library and initialize map
+  import('https://unpkg.com/leaflet@1.9.4/dist/leaflet.js').then(() => {
+    // Company location coordinates
+    const companyLocation = {
+      lat: 25.8479,
+      lng: -80.3267,
+      address: "8200 NW 52nd Terrace, Medley, FL 33166"
+    };
+
+    // Initialize the map
+    const map = L.map('map').setView([companyLocation.lat, companyLocation.lng], 15);
+
+    // Add tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Add marker
+    const marker = L.marker([companyLocation.lat, companyLocation.lng]).addTo(map);
+    marker.bindPopup(`
+      <div class="text-center">
+        <strong>JGR Construction Inc.</strong><br />
+        ${companyLocation.address}<br />
+        <a href="tel:+13052627306" class="text-primary-burgundy">
+          (305) 262-7306
+        </a>
+      </div>
+    `);
+  });
+
   // Contact form handling
   document.getElementById('contact-form')?.addEventListener('submit', function(e) {
     e.preventDefault();

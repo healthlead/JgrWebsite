@@ -24,7 +24,7 @@ const mappableProjects = projects.filter(
         <div id="map" class="w-full h-full"></div>
         
         <!-- Legend -->
-        <div class="absolute bottom-4 left-4 bg-white rounded-lg p-3 shadow-lg z-[1000]">
+        <div class="absolute bottom-4 left-4 bg-white rounded-xl p-3 shadow-lg z-[1000]">
           <h4 class="text-sm font-semibold text-gray-900 mb-2">Legend</h4>
           <div class="space-y-2">
             <div class="flex items-center space-x-2">
@@ -43,12 +43,12 @@ const mappableProjects = projects.filter(
     <!-- Project Details -->
     <div class="space-y-4">
       <!-- Selected project details (initially hidden) -->
-      <div id="selected-project" class="hidden bg-white border rounded-lg p-6 shadow-sm">
+      <div id="selected-project" class="hidden bg-white border rounded-xl p-6 shadow-sm">
         <img 
           id="project-image"
           src="" 
           alt=""
-          class="w-full h-32 object-cover rounded-lg mb-4"
+          class="w-full h-32 object-cover rounded-xl mb-4"
         />
         <h4 id="project-name" class="font-bold text-gray-900 mb-2"></h4>
         <p id="project-description" class="text-gray-600 text-sm mb-3"></p>
@@ -77,7 +77,7 @@ const mappableProjects = projects.filter(
       </div>
       
       <!-- Default message -->
-      <div id="default-message" class="bg-white border rounded-lg p-6 shadow-sm text-center">
+      <div id="default-message" class="bg-white border rounded-xl p-6 shadow-sm text-center">
         <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -90,7 +90,7 @@ const mappableProjects = projects.filter(
         <h4 class="font-semibold text-gray-900">All Projects</h4>
         {mappableProjects.map((project) => (
           <button
-            class="project-list-item w-full text-left p-3 rounded-lg transition-colors bg-gray-50 hover:bg-gray-100"
+            class="project-list-item w-full text-left p-3 rounded-xl transition-colors bg-gray-50 hover:bg-gray-100"
             data-project-id={project.id}
           >
             <div class="font-medium text-sm">{project.name}</div>

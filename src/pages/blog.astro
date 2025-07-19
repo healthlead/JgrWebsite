@@ -3,254 +3,400 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 
+// Blog posts data from React version
 const blogPosts = [
   {
     id: 1,
-    title: "The Future of Post-Tension Concrete in High-Rise Construction",
-    excerpt: "Exploring how advanced post-tensioning techniques are revolutionizing structural design and enabling longer spans with reduced material usage.",
-    category: "Technical Insights",
-    date: "2025-01-15",
-    readTime: "8 min read",
-    author: "John Rodriguez",
-    image: "/images/blog-post-tension.jpg"
-  },
-  {
-    id: 2,
-    title: "Safety Innovations That Are Changing Construction Sites",
-    excerpt: "A deep dive into the latest safety technologies and protocols that are making construction sites safer than ever before.",
+    title: "Safety First: New OSHA Guidelines for 2025 Construction Sites",
+    excerpt: "Learn about the latest OSHA safety requirements and how they impact your construction project timeline and costs.",
+    author: "Maria Rodriguez",
+    date: "January 15, 2025",
     category: "Safety",
-    date: "2025-01-10",
-    readTime: "6 min read",
-    author: "Carlos Martinez",
-    image: "/images/blog-safety.jpg"
-  },
-  {
-    id: 3,
-    title: "Sustainable Concrete: Building for Tomorrow",
-    excerpt: "How eco-friendly concrete solutions and sustainable construction practices are shaping the future of the industry.",
-    category: "Sustainability",
-    date: "2025-01-05",
-    readTime: "7 min read",
-    author: "Maria Garcia",
-    image: "/images/blog-sustainability.jpg"
-  },
-  {
-    id: 4,
-    title: "Miami's Architectural Concrete Renaissance",
-    excerpt: "Examining the growing trend of decorative and architectural concrete in Miami's most prestigious developments.",
-    category: "Industry Trends",
-    date: "2024-12-28",
     readTime: "5 min read",
-    author: "John Rodriguez",
-    image: "/images/blog-architectural.jpg"
-  },
-  {
-    id: 5,
-    title: "Quality Control in Large-Scale Construction Projects",
-    excerpt: "Best practices for maintaining consistent quality standards across complex, multi-phase construction projects.",
-    category: "Project Management",
-    date: "2024-12-20",
-    readTime: "9 min read",
-    author: "Maria Garcia",
-    image: "/images/blog-quality.jpg"
-  },
-  {
-    id: 6,
-    title: "Understanding Seismic Design in South Florida",
-    excerpt: "While not in a high seismic zone, South Florida construction still benefits from advanced structural engineering principles.",
-    category: "Technical Insights",
-    date: "2024-12-15",
-    readTime: "6 min read",
-    author: "John Rodriguez",
-    image: "/images/blog-seismic.jpg"
-  }
-];
-
-const instagramPosts = [
-  {
-    id: 1,
-    image: "/images/instagram-1.jpg",
-    description: "Precision concrete work at Wynwood Station - every detail matters in structural excellence.",
-    hashtags: "#JGRConstruction #WynwoodStation #ConcreteWork #MiamiConstruction #QualityCraftsmanship"
+    featured: true,
+    image: "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
   },
   {
     id: 2,
-    image: "/images/instagram-2.jpg", 
-    description: "Our skilled team executing complex post-tension concrete installation with precision and safety.",
-    hashtags: "#PostTension #ConcreteConstruction #TeamWork #MiamiBuilders #StructuralEngineering"
+    title: "Post-Tension vs. Conventional Concrete: Making the Right Choice",
+    excerpt: "A comprehensive comparison of post-tension and conventional concrete systems for your next high-rise project.",
+    author: "Carlos Mendez",
+    date: "January 10, 2025",
+    category: "Technical",
+    readTime: "8 min read",
+    featured: true,
+    image: "https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
   },
   {
     id: 3,
-    image: "/images/instagram-3.jpg",
-    description: "Beautiful architectural concrete finish taking shape at our latest Brickell project.",
-    hashtags: "#ArchitecturalConcrete #BrickellConstruction #ConcreteFinishing #MiamiDevelopment #CraftedExcellence"
+    title: "Miami's Construction Boom: Trends and Opportunities in 2025",
+    excerpt: "Exploring the current state of Miami's construction market and what it means for developers and contractors.",
+    author: "Jennifer Garcia",
+    date: "January 5, 2025",
+    category: "Industry News",
+    readTime: "6 min read",
+    featured: false,
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
   },
   {
     id: 4,
-    image: "/images/instagram-4.jpg",
-    description: "Safety first - our team conducting morning safety briefing before starting work.",
-    hashtags: "#SafetyFirst #ConstructionSafety #TeamMeeting #OSHACompliant #MiamiConstruction"
+    title: "Quality Control in Concrete Construction: Best Practices",
+    excerpt: "Essential quality control measures that ensure structural integrity and long-term durability in concrete construction.",
+    author: "Roberto Silva",
+    date: "December 28, 2024",
+    category: "Technical",
+    readTime: "7 min read",
+    featured: false,
+    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
   },
   {
     id: 5,
-    image: "/images/instagram-5.jpg",
-    description: "Massive concrete pour in progress - coordination and timing are everything in large-scale projects.",
-    hashtags: "#ConcretePour #LargeScale #TeamCoordination #ConstructionProgress #MiamiBuilding"
+    title: "Sustainable Construction: Green Building Materials and Methods",
+    excerpt: "How modern construction practices are evolving to meet environmental sustainability goals without compromising quality.",
+    author: "Ana Gutierrez",
+    date: "December 20, 2024",
+    category: "Sustainability",
+    readTime: "9 min read",
+    featured: false,
+    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
   },
   {
     id: 6,
-    image: "/images/instagram-6.jpg",
-    description: "Quality control inspection ensuring every element meets our exacting standards.",
-    hashtags: "#QualityControl #ConstructionStandards #PrecisionWork #BuildingExcellence #JGRQuality"
+    title: "Winter Construction Challenges in South Florida",
+    excerpt: "Managing construction schedules and quality during Florida's winter months and dry season considerations.",
+    author: "Luis Hernandez",
+    date: "December 15, 2024",
+    category: "Project Management",
+    readTime: "4 min read",
+    featured: false,
+    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400"
   }
 ];
 
-const categories = ["All", "Technical Insights", "Safety", "Sustainability", "Industry Trends", "Project Management"];
+// Category data from React version
+const categories = [
+  { name: "All", count: 6 },
+  { name: "Safety", count: 1 },
+  { name: "Technical", count: 2 },
+  { name: "Industry News", count: 1 },
+  { name: "Sustainability", count: 1 },
+  { name: "Project Management", count: 1 }
+];
+
+// Split posts into featured and regular
+const featuredPosts = blogPosts.filter(post => post.featured);
+const regularPosts = blogPosts.filter(post => !post.featured);
 ---
 
 <Layout title="Hard Hat Hub - JGR Construction Blog" description="Stay updated with industry insights, technical articles, and construction expertise from JGR Construction's Hard Hat Hub blog.">
   <Navbar />
   
-  <!-- Hero Section -->
-  <section class="pt-24 pb-16 bg-gradient-to-r from-burgundy-primary to-prussian-blue">
-    <div class="container mx-auto px-6 text-center">
-      <h1 class="text-5xl font-bold text-white mb-6">Hard Hat Hub</h1>
-      <p class="text-xl text-blue-100 max-w-3xl mx-auto">
-        Industry insights, technical expertise, and construction knowledge from the JGR Construction team
-      </p>
+  <div class="pt-20 min-h-screen bg-gray-50">
+    <!-- Header -->
+    <section class="py-16 bg-gradient-to-r from-primary-burgundy to-prussian-blue text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <div class="flex justify-center mb-6">
+          <svg class="w-16 h-16 text-sunflower-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+          </svg>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          Hard Hat Hub
+        </h1>
+        <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+          Industry insights, construction expertise, and professional knowledge from 
+          JGR Construction's team of experts.
+        </p>
+      </div>
     </div>
   </section>
 
-  <!-- Instagram Feed -->
-  <section class="py-12 bg-white border-b border-gray-200">
-    <div class="container mx-auto px-6">
-      <div class="text-center mb-8">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">Follow Our Work</h2>
-        <p class="text-gray-600">Behind-the-scenes glimpses of our projects in progress</p>
+  <!-- Instagram Feed Section -->
+  <section class="py-16 bg-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <div class="flex justify-center mb-4">
+          <svg class="w-8 h-8 text-primary-burgundy" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          Follow Our Work on Instagram
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Get behind-the-scenes access to our construction projects, team updates, 
+          and industry insights on our Instagram feed.
+        </p>
       </div>
-      
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-        {instagramPosts.map((post) => (
-          <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
+
+      <!-- Instagram Posts Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <div class="aspect-square relative">
             <img 
-              src={post.image} 
-              alt="JGR Construction work"
-              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+              src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+              alt="Construction site safety meeting"
+              class="w-full h-full object-cover"
             />
-            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-end">
-              <div class="p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <p class="text-sm mb-2">{post.description}</p>
-                <p class="text-xs text-blue-200">{post.hashtags}</p>
-              </div>
+            <div class="absolute top-3 right-3">
+              <svg class="w-5 h-5 text-white drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
             </div>
           </div>
-        ))}
+          <div class="p-4">
+            <p class="text-sm text-gray-600 mb-2">2 days ago</p>
+            <p class="text-gray-900 font-medium">Safety first at every jobsite! Our team conducting their daily safety briefing before starting work.</p>
+            <div class="flex gap-1 mt-2 text-xs">
+              <span class="text-primary-burgundy">#SafetyFirst</span>
+              <span class="text-primary-burgundy">#TeamWork</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <div class="aspect-square relative">
+            <img 
+              src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+              alt="Concrete construction project"
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute top-3 right-3">
+              <svg class="w-5 h-5 text-white drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="p-4">
+            <p class="text-sm text-gray-600 mb-2">1 week ago</p>
+            <p class="text-gray-900 font-medium">Another successful project completion! Proud of our team's dedication to quality craftsmanship.</p>
+            <div class="flex gap-1 mt-2 text-xs">
+              <span class="text-primary-burgundy">#ProjectComplete</span>
+              <span class="text-primary-burgundy">#QualityWork</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <div class="aspect-square relative">
+            <img 
+              src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400"
+              alt="Construction team at work"
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute top-3 right-3">
+              <svg class="w-5 h-5 text-white drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="p-4">
+            <p class="text-sm text-gray-600 mb-2">2 weeks ago</p>
+            <p class="text-gray-900 font-medium">Our expert crew working on precision post-tension installation. Excellence in every detail.</p>
+            <div class="flex gap-1 mt-2 text-xs">
+              <span class="text-primary-burgundy">#PostTension</span>
+              <span class="text-primary-burgundy">#Expertise</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Follow Button -->
+      <div class="text-center">
+        <a 
+          href="https://instagram.com/jgr_construction" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="inline-flex items-center bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all transform hover:scale-105"
+        >
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+          Follow @jgr_construction
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+          </svg>
+        </a>
+        <p class="text-gray-600 mt-4 text-sm">
+          Join 2,500+ followers for daily construction updates and insights
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- Blog Content -->
-  <section class="py-20 bg-gray-50">
-    <div class="container mx-auto px-6">
-      <!-- Category Filter -->
-      <div class="flex flex-wrap justify-center gap-4 mb-12">
+  <!-- Categories Filter -->
+  <section class="py-8 bg-white border-b">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap gap-4 justify-center">
         {categories.map((category) => (
-          <button class="category-filter px-4 py-2 rounded-full border border-gray-300 hover:border-burgundy-primary hover:text-burgundy-primary transition-colors">
-            {category}
+          <button
+            class="flex items-center px-4 py-2 bg-gray-100 hover:bg-primary-burgundy hover:text-white rounded-full transition-colors category-filter"
+          >
+            {category.name} ({category.count})
           </button>
         ))}
       </div>
+    </div>
+  </section>
 
-      <!-- Featured Article -->
-      <div class="mb-16">
-        <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-          <div class="md:flex">
-            <div class="md:w-1/2">
-              <img 
-                src={blogPosts[0].image} 
-                alt={blogPosts[0].title}
-                class="w-full h-64 md:h-full object-cover"
-              />
-            </div>
-            <div class="md:w-1/2 p-8">
-              <div class="flex items-center mb-4">
-                <span class="bg-burgundy-primary text-white px-3 py-1 rounded-full text-sm font-semibold mr-4">
-                  Featured
-                </span>
-                <span class="text-gray-500 text-sm">{blogPosts[0].category}</span>
+  <!-- Featured Posts -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Featured Articles</h2>
+      
+      <div class="grid lg:grid-cols-2 gap-8 mb-16">
+        {featuredPosts.map((post) => {
+          const getCategoryColor = (category) => {
+            const colors = {
+              "Safety": "bg-red-100 text-red-800",
+              "Technical": "bg-blue-100 text-blue-800",
+              "Industry News": "bg-green-100 text-green-800",
+              "Sustainability": "bg-purple-100 text-purple-800",
+              "Project Management": "bg-orange-100 text-orange-800"
+            };
+            return colors[category] || "bg-gray-100 text-gray-800";
+          };
+          
+          return (
+            <article 
+              class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+            >
+              <div class="aspect-video relative">
+                <img 
+                  src={post.image}
+                  alt={post.title}
+                  class="w-full h-full object-cover"
+                />
+                <div class="absolute top-4 left-4">
+                  <span class={`px-3 py-1 rounded-full text-sm font-semibold ${getCategoryColor(post.category)}`}>
+                    {post.category}
+                  </span>
+                </div>
               </div>
-              <h2 class="text-2xl font-bold text-gray-900 mb-4 hover:text-burgundy-primary transition-colors">
-                {blogPosts[0].title}
-              </h2>
-              <p class="text-gray-600 mb-6 leading-relaxed">
-                {blogPosts[0].excerpt}
-              </p>
-              <div class="flex items-center text-sm text-gray-500">
-                <span class="mr-4">By {blogPosts[0].author}</span>
-                <span class="mr-4">{blogPosts[0].date}</span>
-                <span>{blogPosts[0].readTime}</span>
+              
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-primary-burgundy cursor-pointer">
+                  {post.title}
+                </h3>
+                <p class="text-gray-600 mb-4 line-clamp-2">
+                  {post.excerpt}
+                </p>
+                
+                <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                  <div class="flex items-center">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                    {post.author}
+                  </div>
+                  <div class="flex items-center">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                    </svg>
+                    {post.date}
+                  </div>
+                  <span>{post.readTime}</span>
+                </div>
+                
+                <button class="w-full border border-gray-300 hover:bg-primary-burgundy hover:text-white hover:border-primary-burgundy py-2 px-4 rounded-xl transition-colors font-medium">
+                  Read More
+                  <svg class="w-4 h-4 ml-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  </svg>
+                </button>
               </div>
-            </div>
-          </div>
-        </div>
+            </article>
+          );
+        })}
       </div>
+    </div>
+  </section>
 
-      <!-- Blog Grid -->
+  <!-- Recent Posts -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Recent Articles</h2>
+      
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {blogPosts.slice(1).map((post) => (
-          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow group">
-            <div class="relative h-48 overflow-hidden">
-              <img 
-                src={post.image} 
-                alt={post.title}
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div class="absolute top-4 left-4">
-                <span class="bg-black bg-opacity-50 text-white px-3 py-1 rounded-full text-sm">
-                  {post.category}
-                </span>
+        {regularPosts.map((post) => {
+          const getCategoryColor = (category) => {
+            const colors = {
+              "Safety": "bg-red-100 text-red-800",
+              "Technical": "bg-blue-100 text-blue-800",
+              "Industry News": "bg-green-100 text-green-800",
+              "Sustainability": "bg-purple-100 text-purple-800",
+              "Project Management": "bg-orange-100 text-orange-800"
+            };
+            return colors[category] || "bg-gray-100 text-gray-800";
+          };
+          
+          return (
+            <article 
+              class="bg-gray-50 rounded-xl overflow-hidden hover:shadow-lg transition-shadow group"
+            >
+              <div class="aspect-video relative">
+                <img 
+                  src={post.image}
+                  alt={post.title}
+                  class="w-full h-full object-cover"
+                />
+                <div class="absolute top-3 left-3">
+                  <span class={`px-3 py-1 rounded-full text-sm ${getCategoryColor(post.category)}`}>
+                    {post.category}
+                  </span>
+                </div>
               </div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-lg font-semibold text-gray-900 mb-3 group-hover:text-burgundy-primary transition-colors line-clamp-2">
-                {post.title}
-              </h3>
-              <p class="text-gray-600 mb-4 line-clamp-3">
-                {post.excerpt}
-              </p>
-              <div class="flex items-center justify-between text-sm text-gray-500">
-                <span>By {post.author}</span>
-                <span>{post.readTime}</span>
+              
+              <div class="p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-2 hover:text-primary-burgundy cursor-pointer">
+                  {post.title}
+                </h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                  {post.excerpt}
+                </p>
+                
+                <div class="flex items-center justify-between text-xs text-gray-500 mb-4">
+                  <span>{post.author}</span>
+                  <span>{post.date}</span>
+                  <span>{post.readTime}</span>
+                </div>
+                
+                <button class="w-full text-gray-700 hover:bg-primary-burgundy hover:text-white py-2 px-4 rounded-xl transition-colors text-sm font-medium">
+                  Read Article
+                </button>
               </div>
-              <div class="text-sm text-gray-500 mt-2">{post.date}</div>
-            </div>
-          </div>
-        ))}
+            </article>
+          );
+        })}
       </div>
     </div>
   </section>
 
-  <!-- Newsletter Signup -->
-  <section class="py-20 bg-gradient-to-r from-burgundy-primary to-prussian-blue">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-4xl font-bold text-white mb-6">Stay Updated</h2>
-      <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-        Subscribe to Hard Hat Hub for the latest industry insights, project updates, and construction expertise.
+  <!-- Newsletter CTA -->
+  <section class="py-16 bg-rich-black text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-4">
+        Stay Updated with Industry Insights
+      </h2>
+      <p class="text-gray-300 text-lg mb-8">
+        Subscribe to our Hard Hat Hub newsletter for the latest construction industry 
+        news, technical guides, and expert insights delivered monthly.
       </p>
-      <div class="max-w-md mx-auto">
-        <div class="flex gap-4">
-          <input 
-            type="email" 
-            placeholder="Enter your email"
-            class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sunflower-yellow focus:border-sunflower-yellow"
-          />
-          <button class="bg-sunflower-yellow text-rich-black hover:bg-yellow-500 px-6 py-3 rounded-lg font-semibold transition-colors">
-            Subscribe
-          </button>
-        </div>
+      
+      <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+        <input
+          type="email"
+          placeholder="Enter your email"
+          class="flex-1 px-4 py-3 rounded-xl border border-gray-600 bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-sunflower-yellow"
+        />
+        <button class="bg-sunflower-yellow text-rich-black hover:bg-yellow-500 font-semibold px-6 py-3 rounded-xl transition-colors">
+          Subscribe
+        </button>
       </div>
     </div>
   </section>
+  </div>
 
   <Footer />
 </Layout>
@@ -264,13 +410,13 @@ const categories = ["All", "Technical Insights", "Safety", "Sustainability", "In
       filter.addEventListener('click', function() {
         // Remove active class from all filters
         categoryFilters.forEach(f => {
-          f.classList.remove('bg-burgundy-primary', 'text-white');
-          f.classList.add('border-gray-300');
+          f.classList.remove('bg-primary-burgundy', 'text-white');
+          f.classList.add('bg-gray-100');
         });
         
         // Add active class to clicked filter
-        this.classList.add('bg-burgundy-primary', 'text-white');
-        this.classList.remove('border-gray-300');
+        this.classList.add('bg-primary-burgundy', 'text-white');
+        this.classList.remove('bg-gray-100');
         
         // Filter logic would go here for a dynamic implementation
       });
@@ -278,8 +424,8 @@ const categories = ["All", "Technical Insights", "Safety", "Sustainability", "In
     
     // Set initial active state for "All" filter
     if (categoryFilters.length > 0) {
-      categoryFilters[0].classList.add('bg-burgundy-primary', 'text-white');
-      categoryFilters[0].classList.remove('border-gray-300');
+      categoryFilters[0].classList.add('bg-primary-burgundy', 'text-white');
+      categoryFilters[0].classList.remove('bg-gray-100');
     }
   });
 </script>
