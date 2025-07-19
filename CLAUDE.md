@@ -75,3 +75,57 @@ No test files exist in the project root - avoid assuming specific testing framew
 - Vite handles frontend bundling
 - ESBuild compiles server for production
 - Output goes to `dist/` directory
+
+## MIGRATION STATUS - React to Astro Conversion
+
+### Project Goal
+Converting hybrid React/Express + Astro to pure Astro static site for Cloudflare Pages deployment.
+
+### ✅ COMPLETED PAGES (5/7)
+1. **Homepage** (`src/pages/index.astro`) 
+   - Video background hero, services grid, featured projects, stats section
+   - Pixel-perfect match to React version
+
+2. **Services** (`src/pages/services.astro`)
+   - Custom SVG icon renderer using exact Lucide paths
+   - 6 core services with proper descriptions from `server/storage.ts`
+   - Process steps and capabilities sections
+
+3. **Projects** (`src/pages/projects.astro`) 
+   - Interactive Leaflet map with real Miami geography
+   - Featured, completed, and upcoming project sections
+   - Project data from `server/storage.ts` with exact coordinates
+
+4. **About** (`src/pages/about.astro`)
+   - Company story, growth stats, safety training
+   - Values section with custom icons
+   - Professional styling matching React version
+
+5. **FAQ** (`src/pages/faq.astro`)
+   - Interactive accordion with numbered badges
+   - 12 FAQs with exact content from React version
+   - Enhanced styling with professional images
+
+### 🔄 REMAINING TASKS
+1. **Contact Page Migration** - Form, company info, location details
+2. **Blog Page Migration** - Articles and blog posts
+3. **Cleanup Phase**:
+   - Remove Express/server dependencies from package.json
+   - Configure for Cloudflare Pages deployment
+   - Remove React client code after verification
+
+### 🎯 KEY ACCOMPLISHMENTS
+- **Data Migration**: Complete extraction from `server/storage.ts`
+- **Styling System**: Full CSS variables and Tailwind config migration
+- **Interactive Components**: Custom icon system, map integration, accordions
+- **Visual Fidelity**: Pixel-perfect replication of React designs
+
+### 📁 CRITICAL FILES
+- **React Source** (reference): `client/src/pages/`, `client/src/components/`
+- **Astro Pages**: `src/pages/`
+- **Data Source**: `server/storage.ts` (projects, services, exact content)
+- **Styling**: `client/src/index.css`, `tailwind.config.ts`
+- **Components**: `src/components/` (Navbar, Footer, ProjectsMap, etc.)
+
+### 🚀 NEXT SESSION
+Continue with Contact page migration using React source as single source of truth.
