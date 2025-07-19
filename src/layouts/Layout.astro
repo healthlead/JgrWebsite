@@ -22,29 +22,48 @@ const { title, description = "JGR Construction - Premier structural contractors 
 </html>
 
 <style is:global>
+  /* JGR Construction Authentic Brand Colors */
   :root {
-    --burgundy-primary: #773B3C;
-    --sunflower-yellow: #E7B008;
-    --prussian-blue: #002642;
+    --primary-burgundy: #773B3C;
     --silver-gray: #C3B8B6;
     --rich-black: #111827;
+    --sunflower-yellow: #E7B008;
+    --prussian-blue: #002642;
+    
+    /* Legacy color mappings for existing components */
+    --ocean-blue: #773B3C; /* Map to primary burgundy */
+    --deep-blue: #002642; /* Map to prussian blue */
+    --sunset-orange: #E7B008; /* Map to sunflower yellow */
+    --construction-green: #773B3C; /* Map to primary burgundy */
   }
 
-  .bg-burgundy-primary { background-color: var(--burgundy-primary); }
+  .bg-primary-burgundy { background-color: var(--primary-burgundy); }
   .bg-sunflower-yellow { background-color: var(--sunflower-yellow); }
   .bg-prussian-blue { background-color: var(--prussian-blue); }
   .bg-silver-gray { background-color: var(--silver-gray); }
   .bg-rich-black { background-color: var(--rich-black); }
+  .bg-ocean-blue { background-color: var(--ocean-blue); }
+  .bg-deep-blue { background-color: var(--deep-blue); }
+  .bg-sunset-orange { background-color: var(--sunset-orange); }
   
-  .text-burgundy-primary { color: var(--burgundy-primary); }
+  .text-primary-burgundy { color: var(--primary-burgundy); }
   .text-sunflower-yellow { color: var(--sunflower-yellow); }
   .text-prussian-blue { color: var(--prussian-blue); }
   .text-silver-gray { color: var(--silver-gray); }
   .text-rich-black { color: var(--rich-black); }
+  .text-ocean-blue { color: var(--ocean-blue); }
+  .text-deep-blue { color: var(--deep-blue); }
+  .text-sunset-orange { color: var(--sunset-orange); }
   
-  .border-burgundy-primary { border-color: var(--burgundy-primary); }
+  .border-primary-burgundy { border-color: var(--primary-burgundy); }
   .border-sunflower-yellow { border-color: var(--sunflower-yellow); }
   .border-prussian-blue { border-color: var(--prussian-blue); }
+  .border-ocean-blue { border-color: var(--ocean-blue); }
+
+  .hover\:bg-ocean-blue:hover { background-color: var(--ocean-blue); }
+  .hover\:bg-deep-blue:hover { background-color: var(--deep-blue); }
+  .hover\:bg-sunset-orange:hover { background-color: var(--sunset-orange); }
+  .hover\:text-ocean-blue:hover { color: var(--ocean-blue); }
 
   html {
     font-family: system-ui, sans-serif;

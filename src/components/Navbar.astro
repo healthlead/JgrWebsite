@@ -4,65 +4,91 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <nav class="bg-white shadow-lg fixed w-full z-50 top-0">
-  <div class="container mx-auto px-6">
-    <div class="flex justify-between items-center py-4">
-      <!-- Logo -->
-      <a href={`${base}/`} class="flex items-center space-x-3">
-        <img 
-          src={`${base}/jgr-logo.png`} 
-          alt="JGR Construction - Go to Homepage" 
-          class="h-12 w-auto"
-        />
-        <div>
-          <div class="text-sm font-semibold text-gray-900">Construction Inc.</div>
-          <div class="text-xs text-gray-500">Building Excellence Since 2009</div>
-        </div>
-      </a>
-
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-20">
+      <div class="flex items-center">
+        <a href={`${base}/`} class="flex-shrink-0 hover:opacity-90 transition-opacity">
+          <img 
+            src={`${base}/jgr-logo.png`} 
+            alt="JGR Construction - Go to Homepage" 
+            class="h-12 w-auto"
+          />
+        </a>
+      </div>
+      
       <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center space-x-8">
-        <a href={`${base}/services`} class="text-gray-700 hover:text-burgundy-primary font-medium transition-colors">Services</a>
-        <a href={`${base}/projects`} class="text-gray-700 hover:text-burgundy-primary font-medium transition-colors">Projects</a>
-        <a href={`${base}/about`} class="text-gray-700 hover:text-burgundy-primary font-medium transition-colors">About</a>
-        <a href={`${base}/faq`} class="text-gray-700 hover:text-burgundy-primary font-medium transition-colors">FAQ</a>
-        <a href={`${base}/blog`} class="text-gray-700 hover:text-burgundy-primary font-medium transition-colors">Hard Hat Hub</a>
-        <a href="tel:+13052627306" class="text-burgundy-primary hover:text-prussian-blue font-semibold transition-colors">
+        <a href={`${base}/services`} class="font-medium transition-colors text-gray-700 hover:text-ocean-blue">Services</a>
+        <a href={`${base}/projects`} class="font-medium transition-colors text-gray-700 hover:text-ocean-blue">Projects</a>
+        <a href={`${base}/about`} class="font-medium transition-colors text-gray-700 hover:text-ocean-blue">About</a>
+        <a href={`${base}/faq`} class="font-medium transition-colors text-gray-700 hover:text-ocean-blue">FAQ</a>
+        <a href={`${base}/blog`} class="font-medium transition-colors text-gray-700 hover:text-ocean-blue">Hard Hat Hub</a>
+        <a href="tel:+13052627306" class="flex items-center text-primary-burgundy hover:text-rich-black font-semibold transition-colors">
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+          </svg>
           (305) 262-7306
         </a>
+        <a href={`${base}/contact`} class="bg-ocean-blue text-white hover:bg-deep-blue px-6 py-2 rounded-md font-medium transition-colors">
+          Get Quote
+        </a>
       </div>
-
-      <!-- Mobile Menu Button -->
-      <button id="mobile-menu-button" class="md:hidden p-2">
-        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
+      
+      <!-- Mobile menu button -->
+      <div class="md:hidden flex items-center">
+        <button id="mobile-menu-button" class="p-2 rounded-md text-gray-700 hover:text-ocean-blue focus:outline-none">
+          <svg id="menu-icon" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg id="close-icon" class="h-6 w-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
     </div>
-
-    <!-- Mobile Navigation -->
-    <div id="mobile-menu" class="md:hidden bg-white border-t border-gray-200 hidden">
-      <div class="py-4 space-y-4">
-        <a href={`${base}/services`} class="block text-gray-700 hover:text-burgundy-primary font-medium">Services</a>
-        <a href={`${base}/projects`} class="block text-gray-700 hover:text-burgundy-primary font-medium">Projects</a>
-        <a href={`${base}/about`} class="block text-gray-700 hover:text-burgundy-primary font-medium">About</a>
-        <a href={`${base}/faq`} class="block text-gray-700 hover:text-burgundy-primary font-medium">FAQ</a>
-        <a href={`${base}/blog`} class="block text-gray-700 hover:text-burgundy-primary font-medium">Hard Hat Hub</a>
-        <a href="tel:+13052627306" class="block text-burgundy-primary font-semibold py-2">
-          (305) 262-7306
-        </a>
-      </div>
+  </div>
+  
+  <!-- Mobile Navigation Menu -->
+  <div id="mobile-menu" class="md:hidden bg-white border-t border-gray-200 hidden">
+    <div class="px-2 pt-2 pb-3 space-y-1">
+      <a href={`${base}/services`} class="block px-3 py-2 font-medium text-gray-700 hover:text-ocean-blue">Services</a>
+      <a href={`${base}/projects`} class="block px-3 py-2 font-medium text-gray-700 hover:text-ocean-blue">Projects</a>
+      <a href={`${base}/about`} class="block px-3 py-2 font-medium text-gray-700 hover:text-ocean-blue">About</a>
+      <a href={`${base}/faq`} class="block px-3 py-2 font-medium text-gray-700 hover:text-ocean-blue">FAQ</a>
+      <a href={`${base}/blog`} class="block px-3 py-2 font-medium text-gray-700 hover:text-ocean-blue">Hard Hat Hub</a>
+      <a href="tel:+13052627306" class="flex items-center px-3 py-2 text-primary-burgundy hover:text-rich-black font-semibold">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+        </svg>
+        (305) 262-7306
+      </a>
+      <a href={`${base}/contact`} class="mx-3 block bg-ocean-blue text-white hover:bg-deep-blue px-6 py-2 rounded-md font-medium transition-colors text-center">
+        Get Quote
+      </a>
     </div>
   </div>
 </nav>
 
 <script>
-  // Mobile menu toggle
+  // Mobile menu toggle with icon switching
   const mobileMenuButton = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
   
-  if (mobileMenuButton && mobileMenu) {
+  if (mobileMenuButton && mobileMenu && menuIcon && closeIcon) {
     mobileMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
+      const isHidden = mobileMenu.classList.contains('hidden');
+      
+      if (isHidden) {
+        mobileMenu.classList.remove('hidden');
+        menuIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+      } else {
+        mobileMenu.classList.add('hidden');
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      }
     });
   }
 </script>

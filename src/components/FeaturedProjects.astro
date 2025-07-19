@@ -1,89 +1,63 @@
 ---
-const featuredProjects = [
-  {
-    id: 1,
-    name: "Wynwood Station",
-    description: "340,000 sq ft mixed-use development featuring 430 residential units and 15,000 sq ft of retail space in Miami's vibrant Wynwood district.",
-    location: "Wynwood, Miami",
-    completionDate: "2024",
-    image: "/images/wynwood-station.jpg",
-    featured: true
-  },
-  {
-    id: 2,
-    name: "Brickell Heights",
-    description: "Luxury high-rise residential tower with post-tension concrete construction and architectural concrete features.",
-    location: "Brickell, Miami",
-    completionDate: "2023",
-    image: "/images/brickell-heights.jpg",
-    featured: true
-  },
-  {
-    id: 3,
-    name: "Design District Plaza",
-    description: "Premium commercial complex featuring precast concrete elements and decorative masonry work.",
-    location: "Design District, Miami",
-    completionDate: "2024",
-    image: "/images/design-district.jpg",
-    featured: true
-  }
-];
+import { featuredProjects, additionalProjects } from '../data/projects.ts';
+const base = import.meta.env.BASE_URL;
 ---
 
-<section class="py-20 bg-gray-50">
-  <div class="container mx-auto px-6">
+<section class="py-20 bg-gray-900 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
-      <h2 class="text-4xl font-bold text-gray-900 mb-4">Featured Projects</h2>
-      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-        Showcasing our commitment to excellence in Miami's most prestigious developments
+      <h2 class="text-4xl md:text-5xl font-bold mb-6">Signature Projects</h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+        Proud to have contributed to Miami's most iconic developments and luxury residential projects
       </p>
     </div>
     
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
       {featuredProjects.map((project) => (
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow group">
-          <div class="relative h-64 overflow-hidden">
-            <img 
-              src={project.image} 
-              alt={project.name}
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-            />
-            <div class="absolute top-4 right-4">
-              <span class="bg-sunflower-yellow text-rich-black px-3 py-1 rounded-full text-sm font-semibold">
-                Featured
-              </span>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-burgundy-primary transition-colors">
-              {project.name}
-            </h3>
-            <p class="text-gray-600 mb-4 line-clamp-3">
-              {project.description}
-            </p>
-            <div class="flex justify-between items-center text-sm text-gray-500">
-              <span class="flex items-center">
-                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                </svg>
-                {project.location}
-              </span>
-              <span>{project.completionDate}</span>
+        <div class="group relative overflow-hidden rounded-2xl">
+          <img 
+            src={project.imageUrl} 
+            alt={project.name}
+            class="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-500" 
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-8">
+            <h3 class="text-2xl font-bold mb-2">{project.name}</h3>
+            <p class="text-gray-300 mb-4">{project.description}</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-ocean-blue hover:bg-ocean-blue px-3 py-1 rounded-full text-sm font-medium">{project.type}</span>
+              {project.size && (
+                <span class="bg-sunset-orange hover:bg-sunset-orange px-3 py-1 rounded-full text-sm font-medium">{project.size}</span>
+              )}
             </div>
           </div>
         </div>
       ))}
     </div>
     
+    <!-- Additional Projects Grid -->
+    {additionalProjects && additionalProjects.length > 0 && (
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {additionalProjects.map((project) => (
+          <div class="group relative overflow-hidden rounded-xl">
+            <img 
+              src={project.imageUrl} 
+              alt={project.name}
+              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" 
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <h4 class="text-lg font-semibold mb-1">{project.name}</h4>
+              <p class="text-gray-300 text-sm">{project.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    )}
+    
     <div class="text-center mt-12">
-      <a href={`${import.meta.env.BASE_URL}/projects`}>
-        <button class="bg-burgundy-primary text-white hover:bg-opacity-90 px-8 py-4 text-lg font-semibold rounded-lg transition-colors inline-flex items-center">
-          View All Projects
-          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-          </svg>
-        </button>
+      <a href={`${base}/contact`} class="bg-sunset-orange text-white hover:bg-orange-600 px-8 py-4 font-semibold rounded-lg transition-colors inline-block">
+        Discuss Your Project
       </a>
     </div>
   </div>

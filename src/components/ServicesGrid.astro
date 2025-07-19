@@ -1,57 +1,46 @@
 ---
-const services = [
-  {
-    icon: "🏗️",
-    title: "Conventional Concrete Shells",
-    description: "Complete structural concrete solutions for high-rise residential and commercial buildings, including slabs, beams, and columns."
-  },
-  {
-    icon: "🔧",
-    title: "Post-Tension Concrete",
-    description: "Advanced post-tensioning systems for longer spans and reduced concrete thickness, maximizing design flexibility."
-  },
-  {
-    icon: "🏭",
-    title: "Pre-cast Concrete",
-    description: "Quality-controlled precast elements manufactured off-site for faster installation and superior finish quality."
-  },
-  {
-    icon: "🧱",
-    title: "Masonry Construction",
-    description: "Expert masonry work including block, brick, and stone installation for both structural and architectural applications."
-  },
-  {
-    icon: "🎨",
-    title: "Architectural Concrete",
-    description: "Decorative and exposed concrete work with various finishes, textures, and colors to enhance building aesthetics."
-  },
-  {
-    icon: "⚡",
-    title: "Emergency Repairs",
-    description: "24/7 emergency concrete and masonry repair services to address structural issues and ensure building safety."
-  }
-];
+import { services } from '../data/services.ts';
+
+const iconMap = {
+  building: `<svg class="w-8 h-8 text-ocean-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+  </svg>`,
+  "shield-check": `<svg class="w-8 h-8 text-ocean-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+  </svg>`,
+  layers: `<svg class="w-8 h-8 text-ocean-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+  </svg>`,
+  brick: `<svg class="w-8 h-8 text-ocean-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+  </svg>`,
+  eye: `<svg class="w-8 h-8 text-ocean-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+  </svg>`,
+  "clipboard-list": `<svg class="w-8 h-8 text-ocean-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+  </svg>`
+};
 ---
 
 <section class="py-20 bg-white">
-  <div class="container mx-auto px-6">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
-      <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Expertise</h2>
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Our Expertise</h2>
       <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-        Comprehensive structural contracting services with unmatched quality and precision
+        Comprehensive structural construction services for commercial and residential projects across South Florida
       </p>
     </div>
     
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {services.map((service) => (
-        <div class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow group">
-          <div class="text-4xl mb-6">{service.icon}</div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-4 group-hover:text-burgundy-primary transition-colors">
-            {service.title}
-          </h3>
-          <p class="text-gray-600 leading-relaxed">
-            {service.description}
-          </p>
+        <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow group">
+          <div class="bg-ocean-blue/10 w-16 h-16 rounded-lg flex items-center justify-center mb-6 group-hover:bg-ocean-blue/20 transition-colors">
+            <Fragment set:html={iconMap[service.icon as keyof typeof iconMap] || `<svg class="w-8 h-8 text-ocean-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>`} />
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">{service.name}</h3>
+          <p class="text-gray-600 leading-relaxed">{service.description}</p>
         </div>
       ))}
     </div>
