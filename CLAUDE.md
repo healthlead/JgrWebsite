@@ -5,76 +5,46 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Development Commands
 
 ### Primary Commands
-- `npm run dev` - Start development server with Express backend and React frontend (port 5000)
-- `npm run build` - Build for production (Vite + ESBuild)
-- `npm run start` - Start production server
-- `npm run check` - TypeScript type checking
-- `npm run db:push` - Push database schema changes via Drizzle
-
-### Astro Commands (Legacy/Alternative)
-- `npx astro dev` - Start Astro development server
-- `npm run build` - Build Astro static site
+- `npm run dev` - Start Astro development server
+- `npm run build` - Build Astro static site for production
 - `npm run preview` - Preview Astro production build
+- `npm run check` - TypeScript type checking
 
 ## Architecture Overview
 
-This is a **hybrid application** with both modern React/Express stack and legacy Astro components:
+This is now a **pure Astro static site** optimized for Cloudflare Pages deployment:
 
-### Current Active Stack (React/Express)
-- **Frontend**: React with TypeScript, Vite bundler
-  - Located in `client/src/`
-  - Uses Wouter for routing
-  - TanStack Query for state management
-  - Radix UI + shadcn/ui components
-  - Tailwind CSS for styling
-
-- **Backend**: Express.js server
-  - Located in `server/`
-  - PostgreSQL database with Drizzle ORM
-  - RESTful API endpoints
-  - Session management with Passport.js
-
-### Legacy Astro Stack
-- Static site components in `src/`
-- Configured for GitHub Pages deployment
-- Uses Astro with React integration
+### Current Stack (Astro Static Site)
+- **Framework**: Astro with React integration for interactive components
+- **Styling**: Tailwind CSS with custom variables
+- **Build**: Static site generation (SSG)
+- **Deployment**: Cloudflare Pages ready
 
 ### Key Directories
-- `client/src/` - React frontend application
-- `server/` - Express backend API
-- `shared/` - Shared TypeScript schemas and types
-- `src/` - Legacy Astro components and pages
-- `attached_assets/` - Media files and assets
-- `public/` - Static assets
-
-### Database
-- PostgreSQL with Drizzle ORM
-- Schema defined in `shared/schema.ts`
-- Connection configured via DATABASE_URL environment variable
+- `src/` - Astro pages, components, and layouts
+- `public/` - Static assets (video, images, logo)
+- `dist/` - Build output (7 static pages)
 
 ### Path Aliases
-- `@/` → `client/src/`
-- `@shared/` → `shared/`
-- `@assets/` → `attached_assets/`
+- `@/` → `src/`
 
 ## Important Notes
 
-### Dual Architecture
-This project contains both a modern React/Express application and legacy Astro components. The React app appears to be the primary active development target.
+### Pure Static Site
+This project is now a pure Astro static site with no backend dependencies.
 
 ### No Test Framework
 No test files exist in the project root - avoid assuming specific testing frameworks are available.
 
 ### Environment
-- Development runs on port 5000
+- Development runs on default Astro port (4321+)
 - Uses TypeScript with strict mode
-- Configured for Replit deployment with specific plugins
-- GitHub Pages deployment configured for Astro version
+- Configured for Cloudflare Pages deployment
 
 ### Build Process
-- Vite handles frontend bundling
-- ESBuild compiles server for production
-- Output goes to `dist/` directory
+- Astro static site generation
+- Output goes to `dist/` directory (7 pages)
+- Ready for Cloudflare Pages deployment
 
 ## MIGRATION STATUS - React to Astro Conversion
 
@@ -123,12 +93,16 @@ Converting hybrid React/Express + Astro to pure Astro static site for Cloudflare
 - **Border Radius**: Unified all rounded corners to `rounded-xl` throughout the site
 - **FAQ Enhancements**: Removed duplicate CTA section and fixed color scheme
 
-### 🔄 REMAINING TASKS
-1. **Cleanup Phase**:
-   - Remove Express/server dependencies from package.json
-   - Configure for Cloudflare Pages deployment
-   - Remove React client code after verification
-   - Final testing and optimization
+### ✅ CLEANUP COMPLETED (July 19, 2025)
+1. **Code Review & Cleanup**:
+   - ✅ Removed all legacy React/Express code (`client/`, `server/`, `shared/`)
+   - ✅ Cleaned up unused config files (`components.json`, `.github/workflows/`)
+   - ✅ Removed development files (`temp.txt`, `deployment-checklist.md`, `replit.md`)
+   - ✅ Eliminated duplicate assets (`attached_assets/` directory - 24 files, ~15MB)
+   - ✅ Removed development screenshots (`screenshots/` - 8 files, ~6MB)
+   - ✅ Fixed Hero video path from `/attached_assets/...` to `/construction-video.mp4`
+   - ✅ Verified all 7 pages build successfully
+   - ✅ Project optimized for Cloudflare Pages deployment
 
 ### 🎯 KEY ACCOMPLISHMENTS
 - **Data Migration**: Complete extraction from `server/storage.ts`
@@ -136,12 +110,12 @@ Converting hybrid React/Express + Astro to pure Astro static site for Cloudflare
 - **Interactive Components**: Custom icon system, map integration, accordions
 - **Visual Fidelity**: Pixel-perfect replication of React designs
 
-### 📁 CRITICAL FILES
-- **React Source** (reference): `client/src/pages/`, `client/src/components/`
-- **Astro Pages**: `src/pages/`
-- **Data Source**: `server/storage.ts` (projects, services, exact content)
-- **Styling**: `client/src/index.css`, `tailwind.config.ts`
-- **Components**: `src/components/` (Navbar, Footer, ProjectsMap, etc.)
+### 📁 FINAL PROJECT STRUCTURE
+- **Astro Pages**: `src/pages/` (7 pages - index, services, projects, about, faq, contact, blog)
+- **Components**: `src/components/` (Navbar, Footer, Hero, ProjectsMap, etc.)
+- **Data**: `src/data/` (projects.ts, services.ts)
+- **Styling**: `src/styles/global.css`, `tailwind.config.ts`
+- **Static Assets**: `public/` (construction-video.mp4, jgr-logo.png, images/)
 
 ### 🚀 STATUS
-**MIGRATION COMPLETE** - All 7 pages successfully migrated from React to Astro with pixel-perfect fidelity. Ready for cleanup phase and Cloudflare Pages deployment.
+**PROJECT COMPLETE** - Pure Astro static site with pixel-perfect fidelity. All legacy code removed. Optimized and ready for Cloudflare Pages deployment.
