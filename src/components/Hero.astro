@@ -5,70 +5,92 @@ const base = import.meta.env.BASE_URL;
 
 <section class="relative pt-20 min-h-screen flex items-center overflow-hidden">
   <!-- Video background -->
-  <video 
-    autoplay 
-    muted 
-    loop 
+  <video
+    autoplay
+    muted
+    loop
     playsinline
+    poster="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080"
     class="absolute inset-0 w-full h-full object-cover"
   >
-    <source src="/attached_assets/AQOZOlByVEB3EMNabX3zPhrGllsI9675kwqZYLZoSGystuB7k0er_KeWKRHZJk2uEDbxHMsrtImUzTjf-m8REmo67Qlg8nStA6gsU-s_1751929702130.mp4" type="video/mp4" />
-    <!-- Fallback image if video fails to load -->
-    <div 
-      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-      style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')"
-    >
-    </div>
+    <source
+      src="/attached_assets/AQOZOlByVEB3EMNabX3zPhrGllsI9675kwqZYLZoSGystuB7k0er_KeWKRHZJk2uEDbxHMsrtImUzTjf-m8REmo67Qlg8nStA6gsU-s_1751929702130.mp4"
+      type="video/mp4"
+    />
   </video>
   <!-- Enhanced overlay for better text readability -->
-  <div class="absolute inset-0 bg-gradient-to-r from-primary-burgundy/95 via-rich-black/85 to-primary-burgundy/60"></div>
+  <div
+    class="absolute inset-0 bg-gradient-to-r from-primary-burgundy/95 via-rich-black/85 to-primary-burgundy/60"
+  >
+  </div>
   <div class="absolute inset-0 bg-black/40"></div>
-  
+
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
     <div class="max-w-3xl">
-      <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6 drop-shadow-lg">
+      <h1
+        class="text-5xl md:text-7xl font-bold leading-tight mb-6 drop-shadow-lg"
+      >
         Building Miami's
         <span class="text-sunflower-yellow drop-shadow-lg"> Future</span>
       </h1>
-      <p class="text-xl md:text-2xl mb-8 text-gray-200 leading-relaxed drop-shadow-md">
-        Premier structural contractors specializing in concrete and masonry construction. 
-        Over 15 years of excellence in South Florida's most prestigious projects.
+      <p
+        class="text-xl md:text-2xl mb-8 text-gray-200 leading-relaxed drop-shadow-md"
+      >
+        Premier structural contractors specializing in concrete and masonry
+        construction. Over 15 years of excellence in South Florida's most
+        prestigious projects.
       </p>
-      
+
       <div class="flex flex-col sm:flex-row gap-4 mb-12">
         <a href={`${base}/contact`}>
-          <button 
+          <button
             class="bg-sunset-orange text-white hover:bg-orange-600 px-8 py-4 text-lg font-semibold rounded-xl transition-colors inline-flex items-center"
           >
             Start Your Project
           </button>
         </a>
         <a href={`${base}/projects`}>
-          <button 
+          <button
             class="border-2 border-white hover:bg-white hover:text-deep-blue px-8 py-4 text-lg font-semibold rounded-xl transition-colors text-white"
           >
             View Our Work
           </button>
         </a>
       </div>
-      
+
       <!-- Key Stats -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
         <div class="text-center">
-          <div class="text-3xl font-bold text-sunset-orange drop-shadow-md">15+</div>
-          <div class="text-sm text-gray-300 drop-shadow-sm">Years Experience</div>
+          <div class="text-3xl font-bold text-sunset-orange drop-shadow-md">
+            15+
+          </div>
+          <div class="text-sm text-gray-300 drop-shadow-sm">
+            Years Experience
+          </div>
         </div>
         <div class="text-center">
-          <div class="text-3xl font-bold text-sunset-orange drop-shadow-md">50+</div>
-          <div class="text-sm text-gray-300 drop-shadow-sm">Projects Completed</div>
+          <div class="text-3xl font-bold text-sunset-orange drop-shadow-md">
+            50+
+          </div>
+          <div class="text-sm text-gray-300 drop-shadow-sm">
+            Projects Completed
+          </div>
         </div>
         <div class="text-center">
-          <div class="text-3xl font-bold text-sunset-orange drop-shadow-md">200+</div>
-          <div class="text-sm text-gray-300 drop-shadow-sm">Skilled Workers</div>
+          <div class="text-3xl font-bold text-sunset-orange drop-shadow-md">
+            200+
+          </div>
+          <div class="text-sm text-gray-300 drop-shadow-sm">
+            Skilled Workers
+          </div>
         </div>
         <div class="text-center">
-          <div class="text-3xl font-bold text-sunset-orange drop-shadow-md">24/7</div>
-          <div class="text-sm text-gray-300 drop-shadow-sm">Project Support</div>
+          <div class="text-3xl font-bold text-sunset-orange drop-shadow-md">
+            24/7
+          </div>
+          <div class="text-sm text-gray-300 drop-shadow-sm">
+            Project Support
+          </div>
         </div>
       </div>
     </div>
